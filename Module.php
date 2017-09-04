@@ -99,11 +99,10 @@ class Module extends \yii\base\Module {
 				$connectionSet[$i] = Yii::createObject($connectionSet[$i]);
 			}
 
-			$behaviors         = ArrayHelper::getValue($this->volumeBehaviors, $name, []);
-			$components[$name] = new ElFinder([
-				'roots'     => $connectionSet,
-				'behaviors' => $behaviors
-			]);
+			$behaviors = ArrayHelper::getValue($this->volumeBehaviors, $name, []);
+			$config    = ArrayHelper::merge($behaviors, ['roots' => $connectionSet]);
+
+			$components[$name] = new ElFinder($config);
 		}
 		$this->setComponents($components);
 

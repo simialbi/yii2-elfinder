@@ -14,6 +14,7 @@ use yii\base\Widget;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\View;
 
 class ElFinder extends Widget {
@@ -362,6 +363,8 @@ class ElFinder extends Widget {
 		if (empty($this->lang)) {
 			$this->lang = Yii::$app->language;
 		}
+
+		$this->url = Url::to($this->url);
 
 		parent::init();
 	}

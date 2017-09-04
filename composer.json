@@ -1,0 +1,36 @@
+{
+	"name": "simialbi/yii2-elfinder",
+	"description": "Elfinder implementation for yii2 framework",
+	"keywords": ["yii2", "elfinder"],
+	"type": "yii2-extension",
+	"license": "MIT",
+	"support": {
+		"issues": "https://github.com/simialbi/yii2-elfinder/issues",
+		"source": "https://github.com/simialbi/yii2-elfinder"
+	},
+	"authors": [
+		{
+			"name": "Simon Karlen",
+			"email": "simi.albi@gmail.com"
+		}
+	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"yiisoft/yii2": ">=2.0.5",
+		"studio-42/elfinder": ">=2.1.14"
+	},
+	"config": {
+		"process-timeout": 1800,
+		"secure-http": false,
+		"fxp-asset": {
+			"installer-paths": {
+				"npm-asset-library": "vendor/npm",
+				"bower-asset-library": "vendor/bower"
+			}
+		}
+	},
+	"autoload": {
+		"psr-4": { "simialbi\\yii2\\elfinder\\": "" }
+	}
+}

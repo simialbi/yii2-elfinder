@@ -28,23 +28,13 @@ class ConnectionController extends Controller {
 	 * @throws NotFoundHttpException
 	 */
 	public function actionIndex($name) {
-		$roots     = ArrayHelper::getValue($this->module->connectionSets, $name);
-		$behaviors = ArrayHelper::getValue($this->module->volumeBehaviors, $name);
+		$elFinder = ArrayHelper::getValue($this->module->components, $name);
 
-		if (is_null($roots) || !is_array($roots)) {
+		if (is_null($elFinder) || !$elFinder instanceof ElFinder) {
 			throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
 		}
 
-		for ($i = 0; $i < count($roots); $i++) {
-			$roots[$i] = Yii::createObject($roots[$i]);
-		}
-
-		$elFinder  = new ElFinder([
-			'roots'     => $roots,
-			'behaviors' => $behaviors
-		]);
 		$connector = new \elFinderConnector($elFinder->getApi());
-
 		$connector->run();
 	}
 }

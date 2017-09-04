@@ -9,6 +9,9 @@
 namespace simialbi\yii2\elfinder;
 
 
+use yii\helpers\ArrayHelper;
+use Yii;
+
 class Module extends \yii\base\Module {
 	/**
 	 * @var string the namespace that controller classes are in.
@@ -85,4 +88,25 @@ class Module extends \yii\base\Module {
 	 * ```
 	 */
 	public $volumeBehaviors = [];
+
+	/**
+	 * @inheritdoc
+	 */
+	public function init() {
+		$components = [];
+		foreach ($this->connectionSets as $name => $connectionSet) {
+			for ($i = 0; $i < count($connectionSet); $i++) {
+				$connectionSet[$i] = Yii::createObject($connectionSet[$i]);
+			}
+
+			$behaviors         = ArrayHelper::getValue($this->volumeBehaviors, $name, []);
+			$components[$name] = new ElFinder([
+				'roots'     => $connectionSet,
+				'behaviors' => $behaviors
+			]);
+		}
+		$this->setComponents($components);
+
+		parent::init();
+	}
 }

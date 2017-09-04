@@ -273,6 +273,12 @@ class ElFinder extends Component {
 	 * Sets the elFinder API instance
 	 */
 	public function setApi() {
+		foreach ($this->roots as &$root) {
+			$root->path       = Yii::getAlias($root->path);
+			$root->tmbPath    = Yii::getAlias($root->tmbPath);
+			$root->tmpPath    = Yii::getAlias($root->tmpPath);
+			$root->quarantine = Yii::getAlias($root->quarantine);
+		}
 		$roots = ArrayHelper::toArray($this->roots);
 
 		$this->_elfinder = new ElFinderApi([

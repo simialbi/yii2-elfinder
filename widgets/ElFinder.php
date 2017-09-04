@@ -358,7 +358,7 @@ class ElFinder extends Widget {
 			$this->options['id'] = $this->getId();
 		}
 		if (empty($this->url)) {
-			$this->url = ['elfinder/index'];
+			$this->url = ['elfinder/connection'];
 		}
 		if (empty($this->lang)) {
 			$this->lang = Yii::$app->language;

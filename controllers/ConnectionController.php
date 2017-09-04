@@ -27,7 +27,7 @@ class ConnectionController extends Controller {
 	 *
 	 * @throws NotFoundHttpException
 	 */
-	public function actionIndex($name) {
+	public function actionIndex($name = 'default') {
 		$elFinder = ArrayHelper::getValue($this->module->components, $name);
 
 		if (is_null($elFinder) || !$elFinder instanceof ElFinder) {

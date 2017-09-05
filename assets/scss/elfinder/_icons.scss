@@ -843,6 +843,7 @@ $icons: (
 		selectinvert: map-get($fa-icons, window-maximize),
 	),
 	navbar: (
+		dir: map-get($fa-icons, folder),
 		root: map-get($fa-icons, home),
 		root-local: map-get($fa-icons, hdd-o),
 		root-trash: map-get($fa-icons, trash-o),
@@ -852,8 +853,7 @@ $icons: (
 		root-googledrive: map-get($fa-icons, google),
 		root-onedrive: map-get($fa-icons, windows),
 		root-box: map-get($fa-icons, archive),
-		root-network: map-get($fa-icons, server),
-		dir: map-get($fa-icons, folder)
+		root-network: map-get($fa-icons, server)
 	),
 	cwd: (
 		default: map-get($fa-icons, file-o),
@@ -958,8 +958,15 @@ $icons: (
 				}
 			} @else {
 				@if ($icon-type == navbar) {
-					.elfinder-navbar-#{$icon-name} &::after {
-						content: $content;
+					.elfinder-navbar-#{$icon-name} {
+						@if ($icon-name == dir) {
+							&.ui-state-active::after {
+								content: map-get($fa-icons, folder-open);
+							}
+						}
+						&::after {
+							content: $content;
+						}
 					}
 				} @else {
 					&.elfinder-#{$icon-type}-icon-#{$icon-name}::after {

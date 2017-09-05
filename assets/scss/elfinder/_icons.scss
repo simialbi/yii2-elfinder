@@ -969,14 +969,14 @@ $icons: (
 							.elfinder-navbar-arrow {
 								content: map-get($fa-icons, caret-right);
 							}
-						}
-						&.ui-state-active {
-							&.elfinder-navbar-collapsed.elfinder-navbar-expanded {
+							&.elfinder-navbar-expanded {
 								.elfinder-navbar-arrow {
 									content: map-get($fa-icons, caret-down);
 								}
 							}
+						}
 
+						&.ui-state-active {
 							@if ($icon-name == dir) {
 								.elfinder-#{$icon-type}-icon::after {
 									content: map-get($fa-icons, folder-open);

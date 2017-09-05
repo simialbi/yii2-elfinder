@@ -14,10 +14,10 @@ use yii\web\AssetBundle;
 class ElFinderPluginAsset extends AssetBundle {
 	public $sourcePath = '@vendor/studio-42/elfinder';
 	public $js = [
-		'js/elfinder.min.js'
+		YII_DEBUG ? 'js/elfinder.full.js' : 'js/elfinder.min.js'
 	];
 
 	public $depends = [
-		'yii\jui\JuiAsset'
+		'simialbi\yii2\elfinder\JuiAsset'
 	];
 }

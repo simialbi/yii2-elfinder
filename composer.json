@@ -18,7 +18,7 @@
 	"prefer-stable": true,
 	"require": {
 		"yiisoft/yii2": ">=2.0.5",
-		"yiisoft/yii2-jui": ">=2.0.5",
+		"bower-asset/jquery-ui": "1.11.*@stable",
 		"studio-42/elfinder": "2.1.28"
 	},
 	"config": {

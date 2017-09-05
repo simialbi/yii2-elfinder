@@ -6,36 +6,13 @@
 @import "elfinder/button-groups";
 @import "elfinder/icons";
 @import "elfinder/list-group";
-@import "elfinder/panel";
+@import "elfinder/panels";
 
 .elfinder {
 	.elfinder-toolbar {
 	}
 
 	.elfinder-workzone {
-		@include make-row();
-
-		> .elfinder-navbar {
-			@include make-xs-column($grid-columns / 4);
-
-			> .ui-resizeable-handler {
-				@include fa-icon;
-				height: 100%;
-				position: absolute;
-				right: ceil($grid-gutter-width / 4) !important;
-
-				&::after {
-					content: map-get($fa-icons, ellipsis-v);
-				}
-			}
-		}
-		> .elfinder-cwd-wrapper {
-			@include make-xs-column($grid-columns / 4 * 3);
-
-			.elfinder-cwd {
-				@include clearfix;
-			}
-		}
 	}
 
 	.elfinder-statusbar {

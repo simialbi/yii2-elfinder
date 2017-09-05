@@ -39,6 +39,44 @@
 		@include opacity(.65);
 		cursor: $cursor-disabled;
 	}
+
+	&.elfinder-button-search {
+		background-color: transparent;
+		border: none transparent;
+		cursor: default;
+		float: right;
+		font-weight: normal;
+		padding: 0;
+
+		> input[type="text"] {
+			@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+			@include transition(border-color .15s ease-in-out, box-shadow .15s ease-in-out);
+
+			background-color: $input-bg;
+			background-image: none;
+			border: 1px solid $input-border;
+			border-radius: $input-border-radius;
+			color: $input-color;
+			display: block;
+			font-size: $font-size-base;
+			height: $input-height-base;
+			line-height: $line-height-base;
+			padding: $padding-base-vertical $padding-base-horizontal;
+			width: auto;
+
+			@include form-control-focus();
+			@include placeholder();
+
+			&[disabled],
+			&[readonly],
+			&.ui-state-disabled,
+			fieldset[disabled] & {
+				background-color: $input-bg-disabled;
+				cursor: $cursor-disabled;
+				opacity: 1;
+			}
+		}
+	}
 }
 
 a.elfinder-button {

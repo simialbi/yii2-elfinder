@@ -965,12 +965,16 @@ $icons: (
 					}
 
 					.elfinder-navbar-#{$icon-name} {
-						.elfinder-arrow {
-							content: map-get($fa-icons, caret-right);
+						&.elfinder-navbar-collapsed {
+							.elfinder-navbar-arrow {
+								content: map-get($fa-icons, caret-right);
+							}
 						}
 						&.ui-state-active {
-							.elfinder-arrow {
-								content: map-get($fa-icons, caret-down);
+							&.elfinder-navbar-collapsed.elfinder-navbar-expanded {
+								.elfinder-navbar-arrow {
+									content: map-get($fa-icons, caret-down);
+								}
 							}
 
 							@if ($icon-name == dir) {

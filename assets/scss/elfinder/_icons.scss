@@ -818,7 +818,7 @@ $icons: (
 		view: map-get($fa-icons, window-maximize),
 		view-list: map-get($fa-icons, list-alt),
 		help: map-get($fa-icons, question),
-		resize: map-get($fa-icons, expand),
+		resize: map-get($fa-icons, pencil-square-o),
 		link: map-get($fa-icons, link),
 		search: map-get($fa-icons, search),
 		sort: map-get($fa-icons, sort),
@@ -844,6 +844,7 @@ $icons: (
 	),
 	navbar: (),
 	cwd: (
+		default: map-get($fa-icons, file-o),
 		directory: map-get($fa-icons, folder),
 		application: map-get($fa-icons, window-maximize),
 		x-empty: map-get($fa-icons, file-code-o),
@@ -939,8 +940,14 @@ $icons: (
 		@include fa-icon;
 
 		@each $icon-name, $content in $type-icons {
-			&.elfinder-#{$icon-type}-icon-#{$icon-name}::after {
-				content: $content;
+			@if ($icon-name == default) {
+				&::after {
+					content: $content;
+				}
+			} @else {
+				&.elfinder-#{$icon-type}-icon-#{$icon-name}::after {
+					content: $content;
+				}
 			}
 		}
 	}

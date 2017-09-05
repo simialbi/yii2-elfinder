@@ -1,0 +1,71 @@
+.elfinder-buttonset {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+
+	> .elfinder-button {
+		float: left;
+		position: relative;
+		&:hover, &:focus, &:active, &.active {
+			z-index: 2;
+		}
+	}
+}
+
+.elfinder-buttonset {
+	.elfinder-button + .elfinder-button,
+	.elfinder-button + .elfinder-buttonset,
+	.elfinder-buttonset + .elfinder-button,
+	.elfinder-buttonset + .elfinder-buttonset {
+		margin-left: -1px;
+	}
+}
+
+.elfinder-toolbar {
+	@include clearfix;
+
+	margin-left: -5px;
+
+	.elfinder-button,
+	.elfinder-buttonset {
+		float: left;
+	}
+	> .elfinder-button,
+	> .elfinder-buttonset {
+		margin-left: 5px;
+	}
+}
+
+.elfinder-buttonset {
+	> .elfinder-button {
+		&:not(:first-child):not(:last-child) {
+			border-radius: 0;
+		}
+		&:first-child {
+			margin-left: 0;
+
+			&:not(:last-child) {
+				@include border-right-radius(0);
+			}
+		}
+		&:last-child:not(:first-child) {
+			@include border-left-radius(0);
+		}
+	}
+
+	> .elfinder-buttonset {
+		float: left;
+
+		&:not(:first-child):not(:last-child) > .elfinder-button {
+			border-radius: 0;
+		}
+		&:first-child:not(:last-child) {
+			> .elfinder-button:last-child {
+				@include border-right-radius(0);
+			}
+		}
+		&:last-child:not(:first-child) > .elfinder-button:first-child {
+			@include border-left-radius(0);
+		}
+	}
+}

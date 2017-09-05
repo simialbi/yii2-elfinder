@@ -1,1 +1,18 @@
 @import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "elfinder/buttons";
+@import "elfinder/buttonset";
+
+.elfinder {
+	.elfinder-toolbar {
+	}
+
+	.elfinder-workzone {
+
+	}
+
+	.elfinder-statusbar {
+
+	}
+}

@@ -20,6 +20,17 @@
 		margin-bottom: -1px;
 		padding: 10px 15px;
 		position: relative;
+
+		// Link styles
+		color: $list-group-link-color;
+
+		&:hover,
+		&:focus,
+		&.ui-state-hover {
+			background-color: $list-group-hover-bg;
+			color: $list-group-link-hover-color;
+			text-decoration: none;
+		}
 	}
 
 	&:first-child {

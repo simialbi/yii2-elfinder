@@ -3,9 +3,10 @@
 
 @import "elfinder/mixins";
 @import "elfinder/buttons";
-@import "elfinder/buttonset";
+@import "elfinder/button-groups";
 @import "elfinder/icons";
 @import "elfinder/list-group";
+@import "elfinder/panel";
 
 .elfinder {
 	.elfinder-toolbar {
@@ -16,13 +17,35 @@
 
 		> .elfinder-navbar {
 			@include make-xs-column($grid-columns / 4);
+
+			> .ui-resizeable-handler {
+				@include fa-icon;
+				height: 100%;
+				position: absolute;
+				right: ceil($grid-gutter-width / 4) !important;
+
+				&::after {
+					content: map-get($fa-icons, ellipsis-v);
+				}
+			}
 		}
 		> .elfinder-cwd-wrapper {
 			@include make-xs-column($grid-columns / 4 * 3);
+
+			.elfinder-cwd {
+				@include clearfix;
+			}
 		}
 	}
 
 	.elfinder-statusbar {
+		@include clearfix;
 
+		.elfinder-stat-size {
+			float: right;
+		}
+		.elfinder-stat-path {
+			float: left;
+		}
 	}
 }

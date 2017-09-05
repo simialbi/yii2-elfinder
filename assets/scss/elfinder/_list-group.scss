@@ -9,11 +9,9 @@
 			$sel: if($i == 1, "> .elfinder-navbar-subtree", selector-nest($sel, "> .elfinder-navbar-wrapper > .elfinder-navbar-subtree"));
 
 			#{$sel} {
-				margin-left: $i * ($grid-gutter-width / -2);
-				margin-right: $grid-gutter-width / -2;
-
 				> .elfinder-navbar-wrapper {
 					> .elfinder-navbar-dir {
+						@include border-top-radius(0);
 						padding: 10px 15px 10px (($i * ($grid-gutter-width / 2)) + ($grid-gutter-width / 2));
 					}
 
@@ -49,7 +47,7 @@
 	}
 
 	&:first-child {
-		> .elfinder-navbar-dir:not(.elfinder-navbar-collapsed) {
+		> .elfinder-navbar-dir {
 			@include border-top-radius($list-group-border-radius);
 		}
 	}

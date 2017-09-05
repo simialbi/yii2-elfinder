@@ -53,17 +53,20 @@
 			.elfinder-cwd {
 				@include make-row();
 
-				.elfinder-cwd-file {
-					float: left;
-					padding-left: $grid-gutter-width;
-					padding-right: $grid-gutter-width;
+				&.elfinder-cwd-view-icons {
+					.elfinder-cwd-file {
+						float: left;
+						padding-left: $grid-gutter-width;
+						padding-right: $grid-gutter-width;
 
-					.elfinder-cwd-icon {
-						font-size: $font-size-h1;
-						text-align: center;
-					}
-					.elfinder-cwd-filename {
-						text-align: center;
+						.elfinder-cwd-icon {
+							display: block;
+							font-size: $font-size-h1;
+							text-align: center;
+						}
+						.elfinder-cwd-filename {
+							text-align: center;
+						}
 					}
 				}
 			}

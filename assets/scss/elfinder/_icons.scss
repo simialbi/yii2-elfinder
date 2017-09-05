@@ -975,6 +975,10 @@ $icons: (
 
 
 .elfinder-navbar-dir {
+	.elfinder-navbar-arrow {
+		@include fa-icon;
+	}
+
 	&.elfinder-navbar-collapsed {
 		.elfinder-navbar-arrow {
 			content: map-get($fa-icons, caret-right);

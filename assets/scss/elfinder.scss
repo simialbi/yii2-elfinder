@@ -19,12 +19,16 @@
 
 				cursor: e-resize;
 				height: 100%;
-				padding-top: 49%;
-				padding-top: calc(50% - #{$font-size-base});
 				position: absolute;
+				width: 10px;
 
 				&::after {
+					@include translate(-50%, -50%);
+
 					content: map-get($fa-icons, ellipsis-v);
+					left: 50%;
+					position: absolute;
+					top: 50%;
 				}
 			}
 

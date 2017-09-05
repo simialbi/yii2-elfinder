@@ -16,9 +16,10 @@
 		> .elfinder-navbar {
 			> .ui-resizable-handle {
 				@include fa-icon;
+
+				cursor: e-resize;
 				height: 100%;
 				position: absolute;
-				right: ($grid-gutter-width / 2) !important;
 
 				&::after {
 					content: map-get($fa-icons, ellipsis-v);
@@ -50,6 +51,15 @@
 					float: left;
 					padding-left: $grid-gutter-width / 2;
 					padding-right: $grid-gutter-width / 2;
+
+					.elfinder-cwd-icon {
+						font-size: $font-size-h1;
+						text-align: center;
+					}
+					.elfinder-cwd-filename {
+						font-size: $font-size-large;
+						text-align: center;
+					}
 				}
 			}
 		}

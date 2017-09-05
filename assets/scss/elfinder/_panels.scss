@@ -27,9 +27,14 @@
 
 		border-right: 1px solid $panel-inner-border;
 		padding-right: 0;
+		z-index: $zindex-navbar;
 	}
 	> .elfinder-cwd-wrapper {
-		@include make-xs-column($grid-columns / 4 * 3);
+		float: none;
+		padding: $panel-body-padding;
+		position: relative;
+		width: auto;
+		z-index: 0;
 	}
 }
 

@@ -958,14 +958,26 @@ $icons: (
 				}
 			} @else {
 				@if ($icon-type == navbar) {
-					.elfinder-navbar-#{$icon-name} {
-						@if ($icon-name == dir) {
-							&.ui-state-active::after {
-								content: map-get($fa-icons, folder-open);
-							}
-						}
+					.elfinder-navbar-#{$icon-name} & {
 						&::after {
 							content: $content;
+						}
+					}
+
+					.elfinder-navbar-#{$icon-name} {
+						.elfinder-arrow {
+							content: map-get($fa-icons, caret-right);
+						}
+						&.ui-state-active {
+							.elfinder-arrow {
+								content: map-get($fa-icons, caret-down);
+							}
+
+							@if ($icon-name == dir) {
+								.elfinder-#{$icon-type}-icon::after {
+									content: map-get($fa-icons, folder-open);
+								}
+							}
 						}
 					}
 				} @else {

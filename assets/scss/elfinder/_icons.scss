@@ -987,8 +987,10 @@ $icons: (
 			.elfinder-navbar-arrow::after {
 				content: map-get($fa-icons, caret-down);
 			}
-			.elfinder-navbar-icon::after {
-				content: map-get($fa-icons, folder-open);
+			&:not(.elfinder-navbar-root) {
+				.elfinder-navbar-icon::after {
+					content: map-get($fa-icons, folder-open);
+				}
 			}
 		}
 	}

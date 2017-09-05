@@ -842,7 +842,19 @@ $icons: (
 		selectnone: map-get($fa-icons, table),
 		selectinvert: map-get($fa-icons, window-maximize),
 	),
-	navbar: (),
+	navbar: (
+		root: map-get($fa-icons, home),
+		root-local: map-get($fa-icons, hdd-o),
+		root-trash: map-get($fa-icons, trash-o),
+		root-ftp: map-get($fa-icons, server),
+		root-sql: map-get($fa-icons, database),
+		root-dropbox: map-get($fa-icons, dropbox),
+		root-googledrive: map-get($fa-icons, google),
+		root-onedrive: map-get($fa-icons, windows),
+		root-box: map-get($fa-icons, archive),
+		root-network: map-get($fa-icons, server),
+		dir: map-get($fa-icons, folder)
+	),
 	cwd: (
 		default: map-get($fa-icons, file-o),
 		directory: map-get($fa-icons, folder),
@@ -945,8 +957,14 @@ $icons: (
 					content: $content;
 				}
 			} @else {
-				&.elfinder-#{$icon-type}-icon-#{$icon-name}::after {
-					content: $content;
+				@if ($icon-type == navbar) {
+					.elfinder-navbar-#{$icon-name} &::after {
+						content: $content;
+					}
+				} @else {
+					&.elfinder-#{$icon-type}-icon-#{$icon-name}::after {
+						content: $content;
+					}
 				}
 			}
 		}

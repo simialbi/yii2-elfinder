@@ -14,7 +14,7 @@
 
 	.elfinder-workzone {
 		> .elfinder-navbar {
-			> .ui-resizeable-handle {
+			> .ui-resizable-handle {
 				@include fa-icon;
 				height: 100%;
 				position: absolute;
@@ -60,6 +60,9 @@
 		}
 		.elfinder-path {
 			float: left;
+		}
+		.elfinder-stat-selected {
+			text-align: center;
 		}
 	}
 }

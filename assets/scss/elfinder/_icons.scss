@@ -980,11 +980,11 @@ $icons: (
 	}
 
 	&.elfinder-navbar-collapsed {
-		.elfinder-navbar-arrow {
+		.elfinder-navbar-arrow::after {
 			content: map-get($fa-icons, caret-right);
 		}
 		&.elfinder-navbar-expanded {
-			.elfinder-navbar-arrow {
+			.elfinder-navbar-arrow::after {
 				content: map-get($fa-icons, caret-down);
 			}
 			.elfinder-navbar-icon::after {

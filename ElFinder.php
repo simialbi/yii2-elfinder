@@ -277,6 +277,7 @@ class ElFinder extends Component {
 			$root->path       = Yii::getAlias($root->path);
 			$root->tmbPath    = Yii::getAlias($root->tmbPath);
 			$root->tmpPath    = Yii::getAlias($root->tmpPath);
+			$root->tmbURL     = Yii::getAlias($root->tmbURL);
 			$root->quarantine = Yii::getAlias($root->quarantine);
 		}
 		$roots = ArrayHelper::toArray($this->roots);

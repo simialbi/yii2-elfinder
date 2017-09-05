@@ -14,6 +14,7 @@
 
 .elfinder-buttonset {
 	.elfinder-button + .elfinder-button,
+	.elfinder-button + .elfinder-toolbar-button-separator + .elfinder-button,
 	.elfinder-button + .elfinder-buttonset,
 	.elfinder-buttonset + .elfinder-button,
 	.elfinder-buttonset + .elfinder-buttonset {
@@ -33,6 +34,10 @@
 	> .elfinder-button,
 	> .elfinder-buttonset {
 		margin-left: 5px;
+	}
+
+	.elfinder-toolbar-button-separator {
+		display: none;
 	}
 }
 

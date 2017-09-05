@@ -1,8 +1,10 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 
+@import "elfinder/mixins";
 @import "elfinder/buttons";
 @import "elfinder/buttonset";
+@import "elfinder/icons";
 
 .elfinder {
 	.elfinder-toolbar {

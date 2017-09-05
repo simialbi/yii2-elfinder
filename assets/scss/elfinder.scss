@@ -13,6 +13,34 @@
 	}
 
 	.elfinder-workzone {
+		> .elfinder-navbar {
+			> .ui-resizeable-handle {
+				@include fa-icon;
+				height: 100%;
+				position: absolute;
+				right: ($grid-gutter-width / 2) !important;
+
+				&::after {
+					content: map-get($fa-icons, ellipsis-v);
+				}
+			}
+
+			.elfinder-navbar-dir {
+				border-radius: 0 !important;
+			}
+		}
+		> .elfinder-cwd-wrapper {
+			.elfinder-cwd {
+				@include make-row();
+
+				.elfinder-cwd-file {
+					float: left;
+					padding-left: $grid-gutter-width / 2;
+					padding-right: $grid-gutter-width / 2;
+				}
+			}
+		}
+
 	}
 
 	.elfinder-statusbar {

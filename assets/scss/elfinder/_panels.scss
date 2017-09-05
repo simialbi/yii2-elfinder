@@ -26,24 +26,10 @@
 		@include make-xs-column($grid-columns / 4);
 
 		border-right: 1px solid $panel-inner-border;
-
-		> .ui-resizeable-handler {
-			@include fa-icon;
-			height: 100%;
-			position: absolute;
-			right: ceil($grid-gutter-width / 4) !important;
-
-			&::after {
-				content: map-get($fa-icons, ellipsis-v);
-			}
-		}
+		padding-right: 0;
 	}
 	> .elfinder-cwd-wrapper {
 		@include make-xs-column($grid-columns / 4 * 3);
-
-		.elfinder-cwd {
-			@include clearfix;
-		}
 	}
 }
 

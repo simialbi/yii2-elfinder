@@ -19,6 +19,8 @@
 
 				cursor: e-resize;
 				height: 100%;
+				padding-top: 49%;
+				padding-top: calc(50% - #{$font-size-base});
 				position: absolute;
 
 				&::after {
@@ -49,15 +51,14 @@
 
 				.elfinder-cwd-file {
 					float: left;
-					padding-left: $grid-gutter-width / 2;
-					padding-right: $grid-gutter-width / 2;
+					padding-left: $grid-gutter-width;
+					padding-right: $grid-gutter-width;
 
 					.elfinder-cwd-icon {
 						font-size: $font-size-h1;
 						text-align: center;
 					}
 					.elfinder-cwd-filename {
-						font-size: $font-size-large;
 						text-align: center;
 					}
 				}

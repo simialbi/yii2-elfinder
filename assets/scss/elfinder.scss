@@ -12,7 +12,14 @@
 	}
 
 	.elfinder-workzone {
+		@include make-row();
 
+		> .elfinder-navbar {
+			@include make-xs-column($grid-columns / 4);
+		}
+		> .elfinder-cwd-wrapper {
+			@include make-xs-column($grid-columns / 4 * 3);
+		}
 	}
 
 	.elfinder-statusbar {

@@ -54,3 +54,14 @@
 		}
 	}
 }
+
+.elfinder-contextmenu {
+	@extend .elfinder-button-menu;
+
+	.elfinder-contextmenu-separator {
+		@include nav-divider($dropdown-divider-bg);
+	}
+	> .elfinder-contextmenu-item {
+		@extend .elfinder-button-menu-item;
+	}
+}

@@ -83,4 +83,8 @@
 			@include border-left-radius(0);
 		}
 	}
+
+	> .ui-helper-hidden-accessible {
+		display: none;
+	}
 }

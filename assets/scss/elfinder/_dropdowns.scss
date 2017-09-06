@@ -35,7 +35,7 @@
 		display: block;
 		font-weight: normal;
 		line-height: $line-height-base;
-		padding: 3px 20px;
+		padding: 3px 20px 3px 25px;
 		position: relative;
 		white-space: nowrap;
 
@@ -50,7 +50,9 @@
 			@include translate(0, -50%);
 			left: 5px;
 			position: absolute;
+			text-align: center;
 			top: 50%;
+			width: $font-size-base;
 		}
 
 		&.elfinder-button-menu-item-selected {

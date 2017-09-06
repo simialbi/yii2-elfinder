@@ -2,16 +2,18 @@
 @import "bootstrap/mixins";
 
 @import "elfinder/mixins";
-@import "elfinder/buttons";
-@import "elfinder/button-groups";
-@import "elfinder/dropdowns";
-@import "elfinder/icons";
-@import "elfinder/list-group";
-@import "elfinder/modals";
-@import "elfinder/navs";
-@import "elfinder/panels";
 
 .elfinder {
+	@import "elfinder/buttons";
+	@import "elfinder/button-groups";
+	@import "elfinder/dropdowns";
+	@import "elfinder/icons";
+	@import "elfinder/list-group";
+	@import "elfinder/modals";
+	@import "elfinder/navs";
+	@import "elfinder/panels";
+	@import "elfinder/tables";
+
 	> .ui-resizable-handle {
 		display: none;
 	}
@@ -70,6 +72,11 @@
 						.elfinder-cwd-filename {
 							text-align: center;
 						}
+					}
+				}
+				&.elfinder-cwd-view-list {
+					table {
+						width: 100%;
 					}
 				}
 			}

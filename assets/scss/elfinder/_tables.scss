@@ -1,0 +1,49 @@
+caption {
+	color: $text-muted;
+	padding-bottom: $table-cell-padding;
+	padding-top: $table-cell-padding;
+	text-align: left;
+}
+th {
+	text-align: left;
+}
+
+table {
+	background-color: $table-bg;
+	margin-bottom: $line-height-computed;
+	max-width: 100%;
+	width: 100%;
+
+	> thead,
+	> tbody,
+	> tfoot {
+		> tr {
+			> th, > td {
+				border-top: 1px solid $table-border-color;
+				line-height: $line-height-base;
+				padding: $table-cell-padding;
+				vertical-align: top;
+			}
+		}
+	}
+	> thead > tr > th {
+		border-bottom: 2px solid $table-border-color;
+		vertical-align: bottom;
+	}
+	> tbody > tr:hover {
+		background-color: $table-bg-hover;
+	}
+	> caption + thead,
+	> colgroup + thead,
+	> thead:first-child {
+		> tr:first-child {
+			> th,
+			> td {
+				border-top: 0;
+			}
+		}
+	}
+	> tbody + tbody {
+		border-top: 2px solid $table-border-color;
+	}
+}

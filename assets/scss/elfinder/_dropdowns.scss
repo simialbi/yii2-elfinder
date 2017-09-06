@@ -28,4 +28,29 @@
 			content: "";
 		}
 	}
+	> .elfinder-button-menu-item {
+		clear: both;
+		color: $dropdown-link-color;
+		display: block;
+		font-weight: normal;
+		line-height: $line-height-base;
+		padding: 3px 20px;
+		white-space: nowrap;
+
+		&:hover, &:focus,
+		&.ui-state-hover {
+			background-color: $dropdown-link-hover-bg;
+			color: $dropdown-link-hover-color;
+			text-decoration: none;
+		}
+
+		&.elfinder-button-menu-item-selected {
+			&, &:hover, &:focus, &.ui-state-hover {
+				background-color: $dropdown-link-active-bg;
+				color: $dropdown-link-active-color;
+				text-decoration: none;
+				outline: 0;
+			}
+		}
+	}
 }

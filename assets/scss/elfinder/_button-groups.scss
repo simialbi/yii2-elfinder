@@ -86,5 +86,9 @@
 
 	> .ui-helper-hidden-accessible {
 		display: none;
+
+		&:first-child + .ui-button {
+			@include border-left-radius($btn-border-radius-base);
+		}
 	}
 }

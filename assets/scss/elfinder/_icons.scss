@@ -788,7 +788,7 @@ $fa-icons: (
 );
 
 $icons: (
-	button: (
+	elfinder-button: (
 		home: map-get($fa-icons, home),
 		back: map-get($fa-icons, chevron-left),
 		forward: map-get($fa-icons, chevron-right),
@@ -842,7 +842,7 @@ $icons: (
 		selectnone: map-get($fa-icons, table),
 		selectinvert: map-get($fa-icons, window-maximize),
 	),
-	navbar: (
+	elfinder-navbar: (
 		dir: map-get($fa-icons, folder),
 		root: map-get($fa-icons, home),
 		root-local: map-get($fa-icons, hdd-o),
@@ -855,7 +855,7 @@ $icons: (
 		root-box: map-get($fa-icons, archive),
 		root-network: map-get($fa-icons, server)
 	),
-	cwd: (
+	elfinder-cwd: (
 		default: map-get($fa-icons, file-o),
 		directory: map-get($fa-icons, folder),
 		application: map-get($fa-icons, window-maximize),
@@ -944,11 +944,159 @@ $icons: (
 		x-rar-compressed: map-get($fa-icons, file-archive-o),
 		x-shockwave-flash: map-get($fa-icons, file-video-o),
 		group: map-get($fa-icons, files-o),
+	),
+	ui: (
+		carat-1-n: map-get($fa-icons, angle-up),
+		carat-1-e: map-get($fa-icons, angle-right),
+		carat-1-s: map-get($fa-icons, angle-down),
+		carat-1-w: map-get($fa-icons, angle-left),
+		carat-2-n-s: map-get($fa-icons, sort),
+		triangle-1-n: map-get($fa-icons, caret-up),
+		triangle-1-e: map-get($fa-icons, caret-right),
+		triangle-1-s: map-get($fa-icons, caret-down),
+		triangle-1-w: map-get($fa-icons, caret-left),
+		triangle-2-n-s: map-get($fa-icons, sort),
+		arrow-1-n: map-get($fa-icons, long-arrow-up),
+		arrow-1-e: map-get($fa-icons, long-arrow-right),
+		arrow-1-s: map-get($fa-icons, long-arrow-down),
+		arrow-1-w: map-get($fa-icons, long-arrow-left),
+		arrow-2-n-s: map-get($fa-icons, arrows-v),
+		arrow-2-ne-sw: map-get($fa-icons, expand),
+		arrow-2-e-w: map-get($fa-icons, arrows-h),
+		arrow-2-se-nw: map-get($fa-icons, expand),
+		arrowstop-1-n: map-get($fa-icons, long-arrow-up),
+		arrowstop-1-e: map-get($fa-icons, long-arrow-right),
+		arrowstop-1-s: map-get($fa-icons, long-arrow-down),
+		arrowstop-1-w: map-get($fa-icons, long-arrow-left),
+		arrowthick-1-n: map-get($fa-icons, arrow-up),
+		arrowthick-1-e: map-get($fa-icons, arrow-right),
+		arrowthick-1-s: map-get($fa-icons, arrow-down),
+		arrowthick-1-w: map-get($fa-icons, arrow-left),
+		arrowthickstop-1-n: map-get($fa-icons, arrow-up),
+		arrowthickstop-1-e: map-get($fa-icons, arrow-right),
+		arrowthickstop-1-s: map-get($fa-icons, arrow-down),
+		arrowthickstop-1-w: map-get($fa-icons, arrow-left),
+		arrowreturnthick-1-w: map-get($fa-icons, reply),
+		arrowreturnthick-1-e: map-get($fa-icons, share),
+		arrowreturn-1-w: map-get($fa-icons, reply),
+		arrowreturn-1-e: map-get($fa-icons, share),
+		arrowrefresh-1-w: map-get($fa-icons, refresh),
+		arrowrefresh-1-n: map-get($fa-icons, refresh),
+		arrowrefresh-1-e: map-get($fa-icons, refresh),
+		arrowrefresh-1-s: map-get($fa-icons, refresh),
+		arrow-4: map-get($fa-icons, arrows),
+		arrow-4-diag: map-get($fa-icons, arrows-alt),
+		extlink: map-get($fa-icons, external-link),
+		newwin: map-get($fa-icons, window-restore),
+		refresh: map-get($fa-icons, refresh),
+		shuffle: map-get($fa-icons, random),
+		transfer-e-w: map-get($fa-icons, exchange),
+		transferthick-e-w: map-get($fa-icons, exchange),
+		folder-collapsed: map-get($fa-icons, folder-o),
+		folder-open: map-get($fa-icons, folder-open-o),
+		document: map-get($fa-icons, file-o),
+		document-b: map-get($fa-icons, file-o),
+		note: map-get($fa-icons, sticky-note-o),
+		mail-closed: map-get($fa-icons, envelope-o),
+		mail-open: map-get($fa-icons, envelope-open-o),
+		suitcase: map-get($fa-icons, suitcase),
+		comment: map-get($fa-icons, comment-o),
+		person: map-get($fa-icons, user-o),
+		print: map-get($fa-icons, print),
+		trash: map-get($fa-icons, trash-o),
+		locked: map-get($fa-icons, lock),
+		unlocked: map-get($fa-icons, unlock),
+		bookmark: map-get($fa-icons, bookmark-o),
+		tag: map-get($fa-icons, tag),
+		home: map-get($fa-icons, home),
+		flag: map-get($fa-icons, flag-o),
+		calendar: map-get($fa-icons, calendar),
+		cart: map-get($fa-icons, shopping-cart),
+		pencil: map-get($fa-icons, pencil),
+		clock: map-get($fa-icons, clock-o),
+		disk: map-get($fa-icons, floppy-o),
+		calculator: map-get($fa-icons, calculator),
+		zoomin: map-get($fa-icons, search-plus),
+		zoomout: map-get($fa-icons, search-minus),
+		search: map-get($fa-icons, search),
+		wrench: map-get($fa-icons, wrench),
+		gear: map-get($fa-icons, cog),
+		heart: map-get($fa-icons, heart),
+		star: map-get($fa-icons, star),
+		link: map-get($fa-icons, link),
+		cancel: map-get($fa-icons, ban),
+		plus: map-get($fa-icons, plus),
+		plusthick: map-get($fa-icons, plus),
+		minus: map-get($fa-icons, minus),
+		minusthick: map-get($fa-icons, minus),
+		close: map-get($fa-icons, times),
+		closethick: map-get($fa-icons, times),
+		key: map-get($fa-icons, key),
+		lightbulb: map-get($fa-icons, lightbulb-o),
+		scissors: map-get($fa-icons, scissors),
+		clipboard: map-get($fa-icons, clipboard),
+		copy: map-get($fa-icons, files-o),
+		contact: map-get($fa-icons, address-card-o),
+		image: map-get($fa-icons, picture-o),
+		video: map-get($fa-icons, film),
+		script: map-get($fa-icons, code),
+		alert: map-get($fa-icons, exclamation-triangle),
+		info: map-get($fa-icons, info-circle),
+		notice: map-get($fa-icons, exclamation),
+		help: map-get($fa-icons, question),
+		check: map-get($fa-icons, check),
+		bullet: map-get($fa-icons, circle),
+		radio-on: map-get($fa-icons, toggle-on),
+		radio-off: map-get($fa-icons, toggle-off),
+		pin-w: map-get($fa-icons, thumb-tack),
+		pin-s: map-get($fa-icons, thumb-tack),
+		play: map-get($fa-icons, play),
+		pause: map-get($fa-icons, pause),
+		seek-next: map-get($fa-icons, forward),
+		seek-prev: map-get($fa-icons, backward),
+		seek-end: map-get($fa-icons, fast-forward),
+		seek-start: map-get($fa-icons, fast-backward),
+		seek-first: map-get($fa-icons, fast-backward),
+		stop: map-get($fa-icons, stop),
+		eject: map-get($fa-icons, eject),
+		volume-off: map-get($fa-icons, volume-off),
+		volume-on: map-get($fa-icons, volume-up),
+		power: map-get($fa-icons, power-off),
+		signal-diag: map-get($fa-icons, rss),
+		signal: map-get($fa-icons, signal),
+		battery-0: map-get($fa-icons, battery-empty),
+		battery-1: map-get($fa-icons, battery-quarter),
+		battery-2: map-get($fa-icons, battery-half),
+		battery-3: map-get($fa-icons, battery-full),
+		circle-plus: map-get($fa-icons, plus-circle),
+		circle-minus: map-get($fa-icons, minus-circle),
+		circle-close: map-get($fa-icons, times-circle),
+		circle-triangle-e: map-get($fa-icons, caret-square-right),
+		circle-triangle-s: map-get($fa-icons, caret-square-down),
+		circle-triangle-w: map-get($fa-icons, caret-square-left),
+		circle-triangle-n: map-get($fa-icons, caret-square-up),
+		circle-arrow-e: map-get($fa-icons, arrow-circle-right),
+		circle-arrow-s: map-get($fa-icons, arrow-circle-down),
+		circle-arrow-w: map-get($fa-icons, arrow-circle-left),
+		circle-arrow-n: map-get($fa-icons, arrow-circle-up),
+		circle-zoomin: map-get($fa-icons, search-plus),
+		circle-zoomout: map-get($fa-icons, search-minus),
+		circle-check: map-get($fa-icons, check-circle),
+		circlesmall-plus: map-get($fa-icons, plus-circle),
+		circlesmall-minus: map-get($fa-icons, minus-circle),
+		circlesmall-close: map-get($fa-icons, times-circle),
+		squaresmall-plus: map-get($fa-icons, plus-square),
+		squaresmall-minus: map-get($fa-icons, minus-square),
+		squaresmall-close: map-get($fa-icons, window-close),
+		grip-dotted-vertical: map-get($fa-icons, ellipsis-v),
+		grip-dotted-horizontal: map-get($fa-icons, ellipsis-h),
+		grip-solid-vertical: map-get($fa-icons, ellipsis-v),
+		grip-solid-horizontal: map-get($fa-icons, ellipsis-h)
 	)
 );
 
 @each $icon-type, $type-icons in $icons {
-	.elfinder-#{$icon-type}-icon {
+	.#{$icon-type}-icon {
 		@include fa-icon;
 
 		@each $icon-name, $content in $type-icons {
@@ -957,14 +1105,14 @@ $icons: (
 					content: $content;
 				}
 			} @else {
-				@if ($icon-type == navbar) {
+				@if ($icon-type == elfinder-navbar) {
 					.elfinder-navbar-#{$icon-name} & {
 						&::after {
 							content: $content;
 						}
 					}
 				} @else {
-					&.elfinder-#{$icon-type}-icon-#{$icon-name}::after {
+					&.#{$icon-type}-icon-#{$icon-name}::after {
 						content: $content;
 					}
 				}

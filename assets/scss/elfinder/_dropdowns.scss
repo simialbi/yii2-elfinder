@@ -1,0 +1,31 @@
+.elfinder-menubutton {
+	position: relative;
+}
+
+.elfinder-button-menu {
+	@include box-shadow(0 6px 12px rgba(0,0,0,.175));
+	background-clip: padding-box;
+	background-color: $dropdown-bg;
+	border: 1px solid $dropdown-fallback-border;
+	border: 1px solid $dropdown-border;
+	border-radius: $border-radius-base;
+	display: none;
+	float: left;
+	font-size: $font-size-base;
+	left: 0;
+	list-style: none;
+	margin: 2px 0 0;
+	min-width: 160px;
+	padding: 5px 0;
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	z-index: $zindex-dropdown;
+
+	.elfinder-button-menu-item-separated {
+		&::before {
+			@include nav-divider($dropdown-divider-bg);
+			content: "";
+		}
+	}
+}

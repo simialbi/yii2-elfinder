@@ -19,10 +19,15 @@
 		padding: $modal-title-padding;
 
 		.elfinder-dialog-title {
+			color: $headings-color;
+			font-size: $font-size-h4;
+			font-weight: $headings-font-weight;
 			line-height: $modal-title-line-height;
 			margin: 0;
 		}
 		.elfinder-titlebar-button {
+			cursor: pointer;
+			float: right;
 			margin-top: -2px;
 		}
 	}

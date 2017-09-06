@@ -1,0 +1,70 @@
+.ui-tabs {
+	@include clearfix;
+
+	border-bottom: 1px solid $nav-tabs-border-color;
+	list-style: none;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	> li {
+		display: block;
+		float: left;
+		margin-bottom: -1px;
+		position: relative;
+
+		> a {
+			border: 1px solid transparent;
+			border-radius: $border-radius-base $border-radius-base 0 0;
+			display: block;
+			line-height: $line-height-base;
+			margin-right: 2px;
+			padding: $nav-link-padding;
+			position: relative;
+
+			&:hover,
+			&:focus,
+			&.ui-state-hover {
+				background-color: $nav-link-hover-bg;
+				text-decoration: none;
+			}
+
+			&:hover,
+			&.ui-state-hover {
+				border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color;
+			}
+		}
+
+		&.ui-state-disabled,
+		&.disabled,
+		&[disabled] {
+			> a {
+				color: $nav-disabled-link-color;
+			}
+
+			&:hover,
+			&:focus,
+			&.ui-state-hover {
+				background-color: transparent;
+				color: $nav-disabled-link-hover-color;
+				cursor: $cursor-disabled;
+				text-decoration: none;
+			}
+		}
+
+		&:active,
+		&.ui-state-active {
+			> a {
+				&,
+				&:hover,
+				&:focus,
+				&.ui-state-hover {
+					background-color: $nav-tabs-active-link-hover-bg;
+					border: 1px solid $nav-tabs-active-link-hover-border-color;
+					border-bottom-color: transparent;
+					color: $nav-tabs-active-link-hover-color;
+					cursor: default;
+				}
+			}
+		}
+	}
+}

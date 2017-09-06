@@ -31,10 +31,12 @@
 	> .elfinder-button-menu-item {
 		clear: both;
 		color: $dropdown-link-color;
+		cursor: pointer;
 		display: block;
 		font-weight: normal;
 		line-height: $line-height-base;
 		padding: 3px 20px;
+		position: relative;
 		white-space: nowrap;
 
 		&:hover, &:focus,
@@ -42,6 +44,13 @@
 			background-color: $dropdown-link-hover-bg;
 			color: $dropdown-link-hover-color;
 			text-decoration: none;
+		}
+
+		> .ui-icon, > .elfinder-button-icon {
+			@include translate(0, -50%);
+			left: 5px;
+			position: absolute;
+			top: 50%;
 		}
 
 		&.elfinder-button-menu-item-selected {

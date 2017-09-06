@@ -47,6 +47,7 @@
 		float: right !important;
 		font-weight: normal;
 		padding: 0;
+		position: relative;
 
 		> input[type="text"] {
 			@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
@@ -74,6 +75,18 @@
 				background-color: $input-bg-disabled;
 				cursor: $cursor-disabled;
 				opacity: 1;
+			}
+		}
+		> .ui-icon {
+			@include translate(0, -50%);
+
+			position: absolute;
+			top: 50%;
+			left: $grid-gutter-width / 2;
+
+			+ .ui-icon {
+				left: auto;
+				right: $grid-gutter-width / 2;
 			}
 		}
 	}

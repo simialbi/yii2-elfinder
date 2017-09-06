@@ -1,9 +1,9 @@
-.elfinder-buttonset {
+.elfinder-buttonset, .ui-buttonset {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
 
-	> .elfinder-button {
+	> .elfinder-button, > .ui-button {
 		float: left;
 		position: relative;
 		&:hover, &:focus, &:active, &.active {
@@ -18,6 +18,16 @@
 	.elfinder-button + .elfinder-buttonset,
 	.elfinder-buttonset + .elfinder-button,
 	.elfinder-buttonset + .elfinder-buttonset {
+		margin-left: -1px;
+	}
+}
+
+.ui-buttonset {
+	.ui-button + .ui-button,
+	.ui-button + .ui-helper-hidden-accessible + .ui-button,
+	.ui-button + .ui-buttonset,
+	.ui-buttonset + .ui-button,
+	.ui-buttonset + .ui-buttonset {
 		margin-left: -1px;
 	}
 }
@@ -41,8 +51,8 @@
 	}
 }
 
-.elfinder-buttonset {
-	> .elfinder-button {
+.elfinder-buttonset, .ui-buttonset {
+	> .elfinder-button, > .ui-button {
 		&:not(:first-child):not(:last-child) {
 			border-radius: 0;
 		}
@@ -58,7 +68,7 @@
 		}
 	}
 
-	> .elfinder-buttonset {
+	> .elfinder-buttonset, > .ui-buttonset {
 		float: left;
 
 		&:not(:first-child):not(:last-child) > .elfinder-button {

@@ -10,6 +10,10 @@
 @import "elfinder/panels";
 
 .elfinder {
+	> .ui-resizable-handle {
+		display: none;
+	}
+
 	.elfinder-workzone {
 		> .elfinder-navbar {
 			> .ui-resizable-handle {

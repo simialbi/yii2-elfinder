@@ -20,6 +20,32 @@
 		display: none;
 	}
 
+	.elfinder-drag-helper {
+		float: none;
+		margin: 1px;
+		min-height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
+		padding-left: floor($grid-gutter-width / 4);
+		padding-right: floor($grid-gutter-width / 4);
+		width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
+
+		.elfinder-cwd-icon {
+			display: block;
+			font-size: $font-size-h1;
+			height: ceil($font-size-h1 * $line-height-base);
+			text-align: center;
+			width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
+
+			&.elfinder-cwd-bgurl {
+				background-repeat: no-repeat;
+				background-size: cover;
+
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
+
 	.elfinder-statusbar {
 		@include clearfix;
 

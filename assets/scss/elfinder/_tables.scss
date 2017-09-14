@@ -66,23 +66,45 @@ table {
 		//		border-bottom-width: 2px;
 		//	}
 		//}
-		> tbody > tr:nth-of-type(odd) {
-			background-color: $table-bg-accent;
+		> tbody > tr {
+			&:hover {
+				background-color: $table-bg-hover;
+			}
+			&:nth-of-type(odd) {
+				background-color: $table-bg-accent;
+
+				&:hover {
+					background-color: $table-bg-hover;
+				}
+			}
+			&.ui-selected {
+				background-color: $table-bg-active;
+
+				&:hover {
+					background-color: $table-bg-hover;
+				}
+			}
 		}
 	}
 
 	&.elfinder-cwd-fixheader {
+		padding-bottom: 0;
+		padding-top: 0;
+
 		table {
-			.elfinder-cwd-view-th-name {
-				position: relative;
+			> thead > tr {
+				> th, > td {
+					font-weight: bold;
+					position: relative;
 
-				.ui-resizable-handle {
-					@include translate(0, -50%);
+					.ui-resizable-handle {
+						@include translate(0, -50%);
 
-					cursor: e-resize;
-					position: absolute;
-					right: floor($grid-gutter-width / 4);
-					top: 50%;
+						cursor: e-resize;
+						position: absolute;
+						right: floor($grid-gutter-width / 4);
+						top: 50%;
+					}
 				}
 			}
 		}

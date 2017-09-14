@@ -31,10 +31,16 @@
 	}
 	> .elfinder-cwd-wrapper {
 		float: none;
+		overflow: auto;
 		padding: $panel-body-padding;
 		position: relative;
 		width: auto;
 		z-index: 0;
+
+		&.elfinder-cwd-wrapper-list.elfinder-cwd-fixheader {
+			position: absolute;
+			overflow: hidden;
+		}
 	}
 }
 

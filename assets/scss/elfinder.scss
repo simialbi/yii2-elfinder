@@ -1,6 +1,5 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
-
 @import "elfinder/mixins";
 
 .elfinder {
@@ -26,17 +25,17 @@
 		width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
 		z-index: $zindex-tooltip;
 
-		&.elfinder-drag-helper-move {
+		&.elfinder-drag-helper-move .elfinder-drag-helper-icon-status {
 			color: $brand-info;
 
-			.elfinder-drag-helper-icon-status::after {
+			&::after {
 				content: map-get($fa-icons, arrow-right);
 			}
 		}
-		&.elfinder-drag-helper-plus {
+		&.elfinder-drag-helper-move .elfinder-drag-helper-icon-status {
 			color: $brand-success;
 
-			.elfinder-drag-helper-icon-status::after {
+			&::after {
 				content: map-get($fa-icons, plus);
 			}
 		}

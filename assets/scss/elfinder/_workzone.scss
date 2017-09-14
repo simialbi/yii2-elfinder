@@ -43,6 +43,9 @@
 					&.ui-state-hover, &:hover, &:focus {
 						background-color: $table-bg-hover;
 					}
+					&.elfinder-droppable-active {
+						background-color: mix($btn-primary-bg, $table-bg-hover, 75%);
+					}
 					&.ui-state-active, &.ui-selected, &:active {
 						background-color: $btn-primary-bg;
 						color: $btn-primary-color;
@@ -50,6 +53,11 @@
 						&.ui-state-hover, &:hover {
 							background-color: mix($btn-primary-bg, $table-bg-hover, 75%);
 						}
+					}
+					&.ui-state-disabled, &:disabled {
+						background-color: $pagination-disabled-bg;
+						color: $pagination-disabled-color;
+						cursor: $cursor-disabled;
 					}
 				}
 			}

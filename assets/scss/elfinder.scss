@@ -55,6 +55,17 @@
 						.elfinder-cwd-filename {
 							text-align: center;
 						}
+
+						&.ui-state-hover, &:hover, &:focus {
+							background-color: $table-bg-hover;
+						}
+						&.ui-state-active, &:active {
+							background-color: $table-bg-active;
+
+							&.ui-state-hover, &:hover {
+								background-color: $table-bg-hover;
+							}
+						}
 					}
 				}
 				&.elfinder-cwd-view-list {
@@ -62,6 +73,7 @@
 						.elfinder-cwd-icon {
 							height: $line-height-computed;
 							margin-right: 5px;
+							vertical-align: middle;
 							width: $line-height-computed;
 
 							&.elfinder-cwd-bgurl {
@@ -72,6 +84,9 @@
 									display: none;
 								}
 							}
+						}
+						.elfinder-cwd-filename {
+							vertical-align: middle;
 						}
 					}
 				}

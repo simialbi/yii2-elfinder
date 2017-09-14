@@ -51,10 +51,10 @@
 							color: $input-color;
 							display: block;
 							font-size: $font-size-base;
-							height: $input-height-base;
+							height: $input-height-base !important;
 							line-height: $line-height-base;
 							padding: $padding-base-vertical $padding-base-horizontal;
-							width: 100%;
+							width: 100% !important;
 						}
 					}
 
@@ -116,11 +116,11 @@
 							height: $input-height-base;
 							line-height: $line-height-base;
 							padding: $padding-base-vertical $padding-base-horizontal;
-							width: 98%;
+							width: 98% !important;
 
-							width: -webkit-calc(100% - #{$line-height-computed});
-							width: -moz-calc(100% - #{$line-height-computed});
-							width: calc(100% - #{$line-height-computed});
+							width: -webkit-calc(100% - #{$line-height-computed + 5px}) !important;
+							width: -moz-calc(100% - #{$line-height-computed + 5px}) !important;
+							width: calc(100% - #{$line-height-computed + 5px}) !important;
 						}
 					}
 				}

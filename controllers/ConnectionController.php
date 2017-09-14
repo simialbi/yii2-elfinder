@@ -23,15 +23,14 @@ use Yii;
  */
 class ConnectionController extends Controller {
 	/**
-	 * @param string $name
+	 * @param string $instanceName
 	 *
 	 * @throws NotFoundHttpException
 	 */
-	public function actionIndex($name = 'default') {
-		$elFinder = ArrayHelper::getValue($this->module->components, $name);
+	public function actionIndex($instanceName = 'default') {
+		$elFinder = ArrayHelper::getValue($this->module->components, $instanceName);
 
 		if (is_null($elFinder) || !$elFinder instanceof ElFinder) {
-			Yii::trace([$name => $this->module->components], $this->module->id);
 			throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
 		}
 

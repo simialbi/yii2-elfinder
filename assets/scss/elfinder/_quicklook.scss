@@ -58,9 +58,9 @@
 	position: relative;
 	width: 100%;
 
-	height: -webkit-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)});
-	height: -moz-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)});
-	height: calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)});
+	height: -webkit-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
+	height: -moz-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
+	height: calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
 }
 
 .elfinder-quicklook-navbar {
@@ -68,5 +68,11 @@
 
 	border-top: 1px solid $modal-footer-border-color;
 	padding: $modal-inner-padding;
-	text-align: right;
+	text-align: center;
+
+	.elfinder-quicklook-navbar-icon, .elfinder-quicklook-navbar-separator {
+		display: inline-block;
+		font-size: $font-size-h2;
+		line-height: 1;
+	}
 }

@@ -91,7 +91,7 @@
 	}
 }
 
-.elfinder-contextmenu {
+.elfinder-contextmenu, .elfinder-contextmenu-sub {
 	@extend .elfinder-button-menu;
 
 	.elfinder-contextmenu-separator {
@@ -99,5 +99,39 @@
 	}
 	> .elfinder-contextmenu-item {
 		@extend .elfinder-button-menu-item;
+
+		> .elfinder-contextmenu-extra-icon, > .elfinder-contextmenu-arrow {
+			@include translate(0, -50%);
+
+			position: absolute;
+			right: 5px;
+			text-align: center;
+			top: 50%;
+			width: $font-size-base;
+		}
+		> .elfinder-contextmenu-arrow {
+			@include fa-icon;
+
+			&::after {
+				content: map-get($fa-icons, caret-right);
+			}
+		}
+		> .elfinder-contextmenu-extra-icon {
+			cursor: pointer;
+
+			> * {
+				display: none;
+			}
+			> a {
+				@include text-hide;
+
+				bottom: 0;
+				display: block;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+		}
 	}
 }

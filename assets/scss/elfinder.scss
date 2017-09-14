@@ -3,10 +3,11 @@
 @import "elfinder/mixins";
 
 .elfinder {
+	@import "elfinder/icons";
+
 	@import "elfinder/buttons";
 	@import "elfinder/button-groups";
 	@import "elfinder/dropdowns";
-	@import "elfinder/icons";
 	@import "elfinder/list-group";
 	@import "elfinder/modals";
 	@import "elfinder/navs";

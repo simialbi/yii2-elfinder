@@ -31,6 +31,7 @@ class ConnectionController extends Controller {
 		$elFinder = ArrayHelper::getValue($this->module->components, $name);
 
 		if (is_null($elFinder) || !$elFinder instanceof ElFinder) {
+			Yii::trace([$name => $this->module->components], $this->module->id);
 			throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
 		}
 

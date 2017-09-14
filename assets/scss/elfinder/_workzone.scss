@@ -111,12 +111,16 @@
 							border: 1px solid $input-border;
 							border-radius: $input-border-radius;
 							color: $input-color;
-							display: block;
+							display: inline-block;
 							font-size: $font-size-base;
 							height: $input-height-base;
 							line-height: $line-height-base;
 							padding: $padding-base-vertical $padding-base-horizontal;
-							width: 100%;
+							width: 98%;
+
+							width: -webkit-calc(100% - #{$line-height-computed});
+							width: -moz-calc(100% - #{$line-height-computed});
+							width: calc(100% - #{$line-height-computed});
 						}
 					}
 				}

@@ -34,6 +34,12 @@
 }
 
 .elfinder-quicklook-preview, .elfinder-quicklook-info-wrapper, .elfinder-quicklook-cover {
+	height: 100%;
 	padding: $modal-inner-padding;
 	position: relative;
+	width: 100%;
+
+	height: -webkit-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) - (2 * $modal-title-padding)});
+	height: -moz-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) - (2 * $modal-title-padding)});
+	height: calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) - (2 * $modal-title-padding)});
 }

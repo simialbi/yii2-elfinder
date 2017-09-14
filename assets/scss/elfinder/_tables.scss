@@ -4,6 +4,7 @@ caption {
 	padding-top: $table-cell-padding;
 	text-align: left;
 }
+
 th {
 	text-align: left;
 }
@@ -45,5 +46,45 @@ table {
 	}
 	> tbody + tbody {
 		border-top: 2px solid $table-border-color;
+	}
+}
+
+.elfinder-workzone > .elfinder-cwd-wrapper.elfinder-cwd-wrapper-list {
+	table {
+		//border: 1px solid $table-border-color;
+		margin-bottom: 0;
+
+		//> thead, > tbody, > tfoot {
+		//	> tr {
+		//		> th, > td {
+		//			border: 1px solid $table-border-color;
+		//		}
+		//	}
+		//}
+		//> thead > tr {
+		//	> th, > td {
+		//		border-bottom-width: 2px;
+		//	}
+		//}
+		> tbody > tr:nth-of-type(odd) {
+			background-color: $table-bg-accent;
+		}
+	}
+
+	&.elfinder-cwd-fixheader {
+		table {
+			.elfinder-cwd-view-th-name {
+				position: relative;
+
+				.ui-resizable-handle {
+					@include translate(0, -50%);
+
+					cursor: e-resize;
+					position: absolute;
+					right: floor($grid-gutter-width / 4);
+					top: 50%;
+				}
+			}
+		}
 	}
 }

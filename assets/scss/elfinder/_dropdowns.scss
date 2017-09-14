@@ -118,6 +118,12 @@
 		}
 		> .elfinder-contextmenu-extra-icon {
 			cursor: pointer;
+			left: auto;
+
+			&:hover {
+				color: $link-hover-color;
+				text-decoration: $link-hover-decoration;
+			}
 
 			> * {
 				display: none;

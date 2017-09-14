@@ -6,7 +6,6 @@
 .elfinder {
 	@import "elfinder/buttons";
 	@import "elfinder/button-groups";
-	@import "elfinder/cwd";
 	@import "elfinder/dropdowns";
 	@import "elfinder/icons";
 	@import "elfinder/list-group";
@@ -15,28 +14,10 @@
 	@import "elfinder/panels";
 	@import "elfinder/quicklook";
 	@import "elfinder/tables";
+	@import "elfinder/workzone";
 
 	> .ui-resizable-handle {
 		display: none;
-	}
-
-	.elfinder-workzone {
-		> .elfinder-navbar {
-			> .elfinder-tree {
-				> .elfinder-navbar-wrapper > .elfinder-navbar-dir:first-child {
-					border-top: 0 !important;
-				}
-				.elfinder-navbar-dir {
-					border-left: 0 !important;
-					border-radius: 0 !important;
-					border-right: 0 !important;
-
-					.elfinder-navbar-arrow, .elfinder-navbar-icon {
-						margin-right: 5px;
-					}
-				}
-			}
-		}
 	}
 
 	.elfinder-statusbar {

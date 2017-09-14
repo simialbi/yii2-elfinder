@@ -92,20 +92,24 @@ table {
 		table {
 			> thead > tr {
 				> th, > td {
+					cursor: pointer;
 					font-weight: bold;
 					position: relative;
 
 					.ui-icon {
-						@include translate(0, -50%);
-
-						cursor: pointer;
-						position: absolute;
-						right: floor($grid-gutter-width / 2);
-						top: 50%;
+						display: inline;
+						margin-left: 5px;
+						position: static;
+						vertical-align: middle;
 
 						&.ui-resizable-handle {
+							@include translate(0, -50%);
+
 							cursor: e-resize;
+							display: block;
+							position: absolute;
 							right: floor($grid-gutter-width / 4);
+							top: 50%;
 						}
 					}
 				}

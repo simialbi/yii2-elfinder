@@ -54,11 +54,14 @@
 		width: auto;
 		z-index: 0;
 
-		&.elfinder-cwd-wrapper-list.elfinder-cwd-fixheader {
-			padding-bottom: 0;
+		&.elfinder-cwd-wrapper-list{
 			padding-top: 0;
-			position: absolute;
-			overflow: hidden;
+
+			&.elfinder-cwd-fixheader {
+				padding-bottom: 0;
+				position: absolute;
+				overflow: hidden;
+			}
 		}
 	}
 }

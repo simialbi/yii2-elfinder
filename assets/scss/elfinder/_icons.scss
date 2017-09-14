@@ -1096,20 +1096,26 @@ $icons: (
 );
 
 @each $icon-type, $type-icons in $icons {
-	.#{$icon-type}-icon {
-		@include fa-icon;
-
+	@if ($icon-type == elfinder-navbar) {
 		@each $icon-name, $content in $type-icons {
 			@if ($icon-name == default) {
 				&::after {
 					content: $content;
 				}
 			} @else {
-				@if ($icon-type == elfinder-navbar) {
-					.elfinder-navbar-#{$icon-name} & {
-						&::after {
-							content: $content;
-						}
+				.elfinder-navbar-#{$icon-name} .#{$icon-type}-icon::after {
+					content: $content;
+				}
+			}
+		}
+	} @else {
+		.#{$icon-type}-icon {
+			@include fa-icon;
+
+			@each $icon-name, $content in $type-icons {
+				@if ($icon-name == default) {
+					&::after {
+						content: $content;
 					}
 				} @else {
 					&.#{$icon-type}-icon-#{$icon-name}::after {
@@ -1119,6 +1125,29 @@ $icons: (
 			}
 		}
 	}
+	//.#{$icon-type}-icon {
+	//	@include fa-icon;
+	//
+	//	@each $icon-name, $content in $type-icons {
+	//		@if ($icon-name == default) {
+	//			&::after {
+	//				content: $content;
+	//			}
+	//		} @else {
+	//			@if ($icon-type == elfinder-navbar) {
+	//				.elfinder-navbar-#{$icon-name} & {
+	//					&::after {
+	//						content: $content;
+	//					}
+	//				}
+	//			} @else {
+	//				&.#{$icon-type}-icon-#{$icon-name}::after {
+	//					content: $content;
+	//				}
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 

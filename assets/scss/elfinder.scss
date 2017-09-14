@@ -57,7 +57,19 @@
 					}
 				}
 				&.elfinder-cwd-view-list {
+					.elfinder-cwd-file {
+						.elfinder-cwd-icon {
+							height: $line-height-computed;
+							margin-right: 5px;
+							width: $line-height-computed;
 
+							&.elfinder-cwd-bgurl {
+								&::after {
+									display: none;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

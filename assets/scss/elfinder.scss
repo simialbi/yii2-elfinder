@@ -32,7 +32,7 @@
 				content: map-get($fa-icons, arrow-right);
 			}
 		}
-		&.elfinder-drag-helper-move .elfinder-drag-helper-icon-status {
+		&.elfinder-drag-helper-plus .elfinder-drag-helper-icon-status {
 			color: $brand-success;
 
 			&::after {

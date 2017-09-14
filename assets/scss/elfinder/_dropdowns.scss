@@ -3,7 +3,7 @@
 }
 
 .elfinder-button-menu {
-	@include box-shadow(0 6px 12px rgba(0,0,0,.175));
+	@include box-shadow(0 6px 12px rgba(0, 0, 0, .175));
 	background-clip: padding-box;
 	background-color: $dropdown-bg;
 	border: 1px solid $dropdown-fallback-border;
@@ -48,6 +48,8 @@
 
 		> .ui-icon, > .elfinder-button-icon {
 			@include translate(0, -50%);
+
+			display: none;
 			left: 5px;
 			position: absolute;
 			text-align: center;
@@ -56,6 +58,20 @@
 		}
 
 		&.elfinder-button-menu-item-selected {
+			> .ui-icon, > .elfinder-button-icon {
+				display: inline-block;
+			}
+
+			&.elfinder-button-menu-item-selected-desc {
+				> .ui-icon.ui-icon-arrowthick-1-n {
+					display: none;
+				}
+			}
+			&.elfinder-button-menu-item-selected-asc {
+				> .ui-icon.ui-icon-arrowthick-1-s {
+					display: none;
+				}
+			}
 			&, &:hover, &:focus, &.ui-state-hover {
 				background-color: $dropdown-link-active-bg;
 				color: $dropdown-link-active-color;

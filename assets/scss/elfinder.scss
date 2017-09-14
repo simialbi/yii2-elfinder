@@ -6,6 +6,7 @@
 .elfinder {
 	@import "elfinder/buttons";
 	@import "elfinder/button-groups";
+	@import "elfinder/cwd";
 	@import "elfinder/dropdowns";
 	@import "elfinder/icons";
 	@import "elfinder/list-group";
@@ -36,63 +37,6 @@
 				}
 			}
 		}
-
-		> .elfinder-cwd-wrapper {
-			.elfinder-cwd {
-				@include make-row();
-
-				&.elfinder-cwd-view-icons {
-					.elfinder-cwd-file {
-						float: left;
-						padding-left: $grid-gutter-width;
-						padding-right: $grid-gutter-width;
-
-						.elfinder-cwd-icon {
-							display: block;
-							font-size: $font-size-h1;
-							text-align: center;
-						}
-						.elfinder-cwd-filename {
-							text-align: center;
-						}
-
-						&.ui-state-hover, &:hover, &:focus {
-							background-color: $table-bg-hover;
-						}
-						&.ui-state-active, &:active {
-							background-color: $table-bg-active;
-
-							&.ui-state-hover, &:hover {
-								background-color: $table-bg-hover;
-							}
-						}
-					}
-				}
-				&.elfinder-cwd-view-list {
-					.elfinder-cwd-file {
-						.elfinder-cwd-icon {
-							height: $line-height-computed;
-							margin-right: 5px;
-							vertical-align: middle;
-							width: $line-height-computed;
-
-							&.elfinder-cwd-bgurl {
-								background-repeat: no-repeat;
-								background-size: cover;
-
-								&::after {
-									display: none;
-								}
-							}
-						}
-						.elfinder-cwd-filename {
-							vertical-align: middle;
-						}
-					}
-				}
-			}
-		}
-
 	}
 
 	.elfinder-statusbar {

@@ -32,6 +32,26 @@
 	}
 }
 
+.elfinder-button-menu {
+	@include clearfix;
+
+	margin-left: -5px;
+
+	.elfinder-button,
+	.elfinder-buttonset,
+	.ui-button,
+	.ui-buttonset {
+		float: left;
+	}
+
+	> .elfinder-button,
+	> .elfinder-buttonset,
+	> .ui-button,
+	> .ui-buttonset {
+		margin-left: 5px;
+	}
+}
+
 .elfinder-toolbar {
 	@include clearfix;
 

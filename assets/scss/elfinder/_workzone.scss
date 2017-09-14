@@ -35,20 +35,32 @@
 						text-align: center;
 					}
 					.elfinder-cwd-filename {
-						@include hyphens();
+						@include multi-line-ellipsis($line-height-computed, 2, $panel-bg);
 
 						text-align: center;
 					}
 
 					&.ui-state-hover, &:hover, &:focus {
 						background-color: $table-bg-hover;
+
+						.elfinder-cwd-filename::after {
+							background: $table-bg-hover;
+						}
 					}
 					&.ui-state-active, &.ui-selected, &:active {
 						background-color: $btn-primary-bg;
 						color: $btn-primary-color;
 
+						.elfinder-cwd-filename::after {
+							background: $btn-primary-bg;
+						}
+
 						&.ui-state-hover, &:hover {
 							background-color: mix($btn-primary-bg, $table-bg-hover, 75%);
+
+							.elfinder-cwd-filename::after {
+								background: mix($btn-primary-bg, $table-bg-hover, 75%);
+							}
 						}
 					}
 				}

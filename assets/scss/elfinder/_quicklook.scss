@@ -61,6 +61,42 @@
 	height: -webkit-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
 	height: -moz-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
 	height: calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
+
+	&:empty {
+		display: none;
+		height: 0;
+	}
+}
+
+.elfinder-quicklook-info-wrapper {
+	&, > .elfinder-quicklook-info {
+		overflow: hidden;
+		zoom: 1;
+	}
+
+	> .elfinder-quicklook-info,
+	> .elfinder-cwd-icon {
+		display: table-cell;
+		vertical-align: top;
+	}
+	> .elfinder-cwd-icon {
+		font-size: $font-size-h1;
+		padding-right: 10px;
+	}
+	> .elfinder-quicklook-info {
+		width: 10000px;
+
+		> .elfinder-quicklook-info-data {
+			display: block;
+
+			&:first-child {
+				font-size: $font-size-h5;
+				font-weight: $headings-font-weight;
+				line-height: $headings-line-height;
+				margin-bottom: ($line-height-computed / 2);
+			}
+		}
+	}
 }
 
 .elfinder-quicklook-navbar {

@@ -68,21 +68,22 @@ table {
 		//	}
 		//}
 		> tbody > tr {
-			&:hover {
+			&:hover, &.ui-state-hover {
 				background-color: $table-bg-hover;
 			}
 			&:nth-of-type(odd) {
 				background-color: $table-bg-accent;
 
-				&:hover {
+				&:hover, &.ui-state-hover {
 					background-color: $table-bg-hover;
 				}
 			}
 			&.ui-selected {
-				background-color: $table-bg-active;
+				background-color: $btn-primary-bg;
+				color: $btn-primary-color;
 
-				&:hover {
-					background-color: $table-bg-hover;
+				&:hover, &.ui-state-hover {
+					background-color: mix($btn-primary-bg, $table-bg-hover, 75%);
 				}
 			}
 		}

@@ -113,11 +113,15 @@
 	padding: $modal-inner-padding;
 	text-align: center;
 
-	.elfinder-quicklook-navbar-icon, .elfinder-quicklook-navbar-separator {
+	.elfinder-quicklook-navbar-icon {
 		display: inline-block;
 		font-size: $font-size-h2;
 		line-height: 1;
 		padding-left: $grid-gutter-width / 2;
 		padding-right: $grid-gutter-width / 2;
+	}
+
+	.elfinder-quicklook-navbar-icon.elfinder-quicklook-navbar-icon-close, .elfinder-quicklook-navbar-separator {
+		display: none;
 	}
 }

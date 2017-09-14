@@ -1099,12 +1099,20 @@ $icons: (
 	@if ($icon-type == elfinder-navbar) {
 		@each $icon-name, $content in $type-icons {
 			@if ($icon-name == default) {
-				&::after {
-					content: $content;
+				.elfinder-navbar .#{$icon-type}-icon {
+					@include fa-icon;
+
+					&::after {
+						content: $content;
+					}
 				}
 			} @else {
-				.elfinder-navbar-#{$icon-name} .#{$icon-type}-icon::after {
-					content: $content;
+				.elfinder-navbar-#{$icon-name} .#{$icon-type}-icon {
+					@include fa-icon;
+
+					&::after {
+						content: $content;
+					}
 				}
 			}
 		}

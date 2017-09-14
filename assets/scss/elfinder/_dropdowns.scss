@@ -48,8 +48,6 @@
 
 		> .ui-icon, > .elfinder-button-icon {
 			@include translate(0, -50%);
-
-			display: none;
 			left: 5px;
 			position: absolute;
 			text-align: center;
@@ -58,25 +56,36 @@
 		}
 
 		&.elfinder-button-menu-item-selected {
-			> .ui-icon, > .elfinder-button-icon {
-				display: inline-block;
-			}
-
-			&.elfinder-button-menu-item-selected-desc {
-				> .ui-icon.ui-icon-arrowthick-1-n {
-					display: none;
-				}
-			}
-			&.elfinder-button-menu-item-selected-asc {
-				> .ui-icon.ui-icon-arrowthick-1-s {
-					display: none;
-				}
-			}
 			&, &:hover, &:focus, &.ui-state-hover {
 				background-color: $dropdown-link-active-bg;
 				color: $dropdown-link-active-color;
 				text-decoration: none;
 				outline: 0;
+			}
+		}
+	}
+}
+
+.elfiner-button-sort, .elfinder-button-sort {
+	.elfinder-button-menu {
+		> .elfinder-button-menu-item {
+			> .ui-icon, > .elfinder-button-icon {
+				display: none;
+			}
+			&.elfinder-button-menu-item-selected {
+				> .ui-icon, > .elfinder-button-icon {
+					display: inline-block;
+				}
+				&.elfinder-button-menu-item-selected-desc {
+					> .ui-icon.ui-icon-arrowthick-1-n {
+						display: none;
+					}
+				}
+				&.elfinder-button-menu-item-selected-asc {
+					> .ui-icon.ui-icon-arrowthick-1-s {
+						display: none;
+					}
+				}
 			}
 		}
 	}

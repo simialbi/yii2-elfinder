@@ -78,6 +78,11 @@ table {
 					background-color: $table-bg-hover;
 				}
 			}
+			&.ui-selectee {
+				&.ui-selecting {
+					background-color: mix($btn-primary-bg, $table-bg-hover, 65%);
+				}
+			}
 			&.ui-selected {
 				background-color: $btn-primary-bg;
 				color: $btn-primary-color;

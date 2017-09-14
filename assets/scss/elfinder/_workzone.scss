@@ -64,6 +64,11 @@
 					&.elfinder-droppable-active {
 						background-color: mix($btn-primary-bg, $table-bg-hover, 75%);
 					}
+					&.ui-selectee {
+						&.ui-selecting {
+							background-color: mix($btn-primary-bg, $table-bg-hover, 65%);
+						}
+					}
 					&.ui-state-active, &.ui-selected, &:active {
 						background-color: $btn-primary-bg;
 						color: $btn-primary-color;

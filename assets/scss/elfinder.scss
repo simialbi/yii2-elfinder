@@ -12,6 +12,7 @@
 	@import "elfinder/modals";
 	@import "elfinder/navs";
 	@import "elfinder/panels";
+	@import "elfinder/quicklook";
 	@import "elfinder/tables";
 
 	> .ui-resizable-handle {
@@ -64,6 +65,9 @@
 							width: $line-height-computed;
 
 							&.elfinder-cwd-bgurl {
+								background-repeat: no-repeat;
+								background-size: cover;
+
 								&::after {
 									display: none;
 								}

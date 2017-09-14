@@ -27,7 +27,7 @@
 					min-height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
 					padding-left: $grid-gutter-width / 2;
 					padding-right: $grid-gutter-width / 2;
-					width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 4 * 3);
+					width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
 
 					.elfinder-cwd-icon {
 						display: block;
@@ -48,7 +48,7 @@
 						color: $btn-primary-color;
 
 						&.ui-state-hover, &:hover {
-							background-color: $table-bg-hover;
+							background-color: mix($btn-primary-bg, $table-bg-hover, 75%);
 						}
 					}
 				}

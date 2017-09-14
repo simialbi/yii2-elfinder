@@ -11,6 +11,18 @@
 	outline: 0;
 	position: absolute;
 	z-index: $zindex-modal;
+
+	.ui-draggable-handle {
+		cursor: move;
+	}
+	.ui-resizable-handle {
+		bottom: 0;
+		cursor: se-resize;
+		height: $grid-gutter-width / 2;
+		position: absolute;
+		right: 0;
+		width: $grid-gutter-width / 2;
+	}
 }
 
 .elfinder-quicklook-titlebar {
@@ -49,4 +61,12 @@
 	height: -webkit-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)});
 	height: -moz-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)});
 	height: calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)});
+}
+
+.elfinder-quicklook-navbar {
+	@include clearfix;
+
+	border-top: 1px solid $modal-footer-border-color;
+	padding: $modal-inner-padding;
+	text-align: right;
 }

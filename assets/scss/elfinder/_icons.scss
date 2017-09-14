@@ -1092,6 +1092,11 @@ $icons: (
 		grip-dotted-horizontal: map-get($fa-icons, ellipsis-h),
 		grip-solid-vertical: map-get($fa-icons, ellipsis-v),
 		grip-solid-horizontal: map-get($fa-icons, ellipsis-h)
+	),
+	elfinder-quicklook-navbar: (
+		prev: map-get($fa-icons, arrow-left),
+		fullscreen: map-get($fa-icons, expand),
+		next: map-get($fa-icons, arrow-right)
 	)
 );
 

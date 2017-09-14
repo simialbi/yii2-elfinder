@@ -58,8 +58,22 @@
 			display: block;
 			font-size: $font-size-h1;
 			height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
+			position: absolute;
 			text-align: center;
 			width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
+
+			@for $i from 2 to 5 {
+				&:nth-child(#{$i}) {
+					&::after {
+						left: ($i - 1) * 5px;
+						text-shadow: 0 0 3px #fff;
+						top: ($i - 1) * 5px;
+					}
+				}
+			}
+			&:nth-child(n + 6) {
+				display: none;
+			}
 
 			&.elfinder-cwd-bgurl {
 				background-position: center;
@@ -69,6 +83,29 @@
 				&::after {
 					display: none;
 				}
+			}
+		}
+		.elfinder-drag-num {
+			@include label-variant($label-primary-bg);
+			@include translate(-50%, -50%);
+
+			border: 1px solid $label-color;
+			border-radius: .25em;
+			color: $label-color;
+			display: block;
+			font-size: ceil(.75 * $font-size-base);
+			font-weight: bold;
+			left: 50%;
+			line-height: 1;
+			padding: .2em .6em .3em;
+			position: absolute;
+			text-align: center;
+			top: 50%;
+			vertical-align: baseline;
+			white-space: nowrap;
+
+			&:empty {
+				display: none;
 			}
 		}
 	}

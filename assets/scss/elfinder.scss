@@ -26,6 +26,21 @@
 		width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
 		z-index: $zindex-tooltip;
 
+		&.elfinder-drag-helper-move {
+			color: $brand-info;
+
+			.elfinder-drag-helper-icon-status::after {
+				content: map-get($fa-icons, arrow-right);
+			}
+		}
+		&.elfinder-drag-helper-plus {
+			color: $brand-success;
+
+			.elfinder-drag-helper-icon-status::after {
+				content: map-get($fa-icons, plus);
+			}
+		}
+
 		.elfinder-drag-helper-icon-status {
 			@include fa-icon;
 			@include translate(50%, 50%);

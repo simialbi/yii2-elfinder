@@ -86,3 +86,20 @@
 		}
 	}
 }
+
+.elfinder, .elfinder-contextmenu {
+	* {
+		&:not(input):not(textarea):not(select):not([contenteditable=true]) {
+			@include user-select(none);
+
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+	}
+}
+
+.ui-selectable-helper {
+	background-color: rgba($btn-primary-bg, .6);
+	border: 1px solid $btn-primary-border;
+	position: absolute;
+	z-index: $zindex-tooltip + 1;
+}

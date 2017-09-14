@@ -21,6 +21,7 @@
 	}
 
 	.elfinder-drag-helper {
+		background-color: rgba(mix($btn-primary-bg, $table-bg-hover, 75%), .75);
 		float: none;
 		height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
 		width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);

@@ -22,22 +22,29 @@
 
 	.elfinder-drag-helper {
 		float: none;
-		margin: 1px;
-		min-height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
+		height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
 		padding-left: floor($grid-gutter-width / 4);
 		padding-right: floor($grid-gutter-width / 4);
 		width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
 
+		.elfinder-drag-helper-icon-status {
+			@include fa-icon;
+
+			&::after {
+				content: map-get($fa-icons, ban);
+			}
+		}
 		.elfinder-cwd-icon {
 			display: block;
 			font-size: $font-size-h1;
-			height: ceil($font-size-h1 * $line-height-base);
+			height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
 			text-align: center;
-			width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
+			width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4) - ($grid-gutter-width / 2);
 
 			&.elfinder-cwd-bgurl {
+				background-position: center;
 				background-repeat: no-repeat;
-				background-size: cover;
+				background-size: contain;
 
 				&::after {
 					display: none;

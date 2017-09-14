@@ -33,11 +33,17 @@
 	position: relative;
 
 	.elfinder-quicklook-title {
+		@include text-overflow;
+
 		color: $headings-color;
 		font-size: $font-size-h4;
 		font-weight: $headings-font-weight;
 		line-height: $modal-title-line-height;
 		margin: 0;
+		max-width: 96%;
+		max-width: -webkit-calc(100% - #{$font-size-base});
+		max-width: -moz-calc(100% - #{$font-size-base});
+		max-width: calc(100% - #{$font-size-base});
 	}
 	.ui-icon {
 		@include translate(0, -50%);

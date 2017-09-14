@@ -88,9 +88,6 @@ table {
 	}
 
 	&.elfinder-cwd-fixheader {
-		padding-bottom: 0;
-		padding-top: 0;
-
 		table {
 			> thead > tr {
 				> th, > td {
@@ -103,6 +100,14 @@ table {
 						cursor: e-resize;
 						position: absolute;
 						right: floor($grid-gutter-width / 4);
+						top: 50%;
+					}
+					.ui-icon {
+						@include translate(0, -50%);
+
+						cursor: pointer;
+						position: absolute;
+						right: floor($grid-gutter-width / 2);
 						top: 50%;
 					}
 				}

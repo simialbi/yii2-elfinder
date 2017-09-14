@@ -38,6 +38,24 @@
 						overflow: hidden;
 						text-align: center;
 						word-break: break-all;
+
+						textarea {
+							@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+							@include form-control-focus;
+							@include placeholder;
+
+							background-color: $input-bg;
+							background-image: none;
+							border: 1px solid $input-border;
+							border-radius: $input-border-radius;
+							color: $input-color;
+							display: block;
+							font-size: $font-size-base;
+							height: $input-height-base;
+							line-height: $line-height-base;
+							padding: $padding-base-vertical $padding-base-horizontal;
+							width: 100%;
+						}
 					}
 
 					&.ui-state-hover, &:hover, &:focus {
@@ -82,6 +100,24 @@
 					}
 					.elfinder-cwd-filename {
 						vertical-align: middle;
+
+						input {
+							@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+							@include form-control-focus;
+							@include placeholder;
+
+							background-color: $input-bg;
+							background-image: none;
+							border: 1px solid $input-border;
+							border-radius: $input-border-radius;
+							color: $input-color;
+							display: block;
+							font-size: $font-size-base;
+							height: $input-height-base;
+							line-height: $line-height-base;
+							padding: $padding-base-vertical $padding-base-horizontal;
+							width: 100%;
+						}
 					}
 				}
 			}

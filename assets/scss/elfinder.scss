@@ -20,24 +20,6 @@
 
 	.elfinder-workzone {
 		> .elfinder-navbar {
-			> .ui-resizable-handle {
-				@include fa-icon;
-
-				cursor: e-resize;
-				height: 100%;
-				position: absolute;
-				width: 10px;
-
-				&::after {
-					@include translate(-50%, -50%);
-
-					content: map-get($fa-icons, ellipsis-v);
-					left: 50%;
-					position: absolute;
-					top: 50%;
-				}
-			}
-
 			> .elfinder-tree {
 				> .elfinder-navbar-wrapper > .elfinder-navbar-dir:first-child {
 					border-top: 0 !important;
@@ -75,9 +57,7 @@
 					}
 				}
 				&.elfinder-cwd-view-list {
-					table {
-						width: 100%;
-					}
+
 				}
 			}
 		}

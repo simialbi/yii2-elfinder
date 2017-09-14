@@ -53,6 +53,7 @@ table {
 	table {
 		//border: 1px solid $table-border-color;
 		margin-bottom: 0;
+		width: 100%;
 
 		//> thead, > tbody, > tfoot {
 		//	> tr {
@@ -94,14 +95,6 @@ table {
 					font-weight: bold;
 					position: relative;
 
-					.ui-resizable-handle {
-						@include translate(0, -50%);
-
-						cursor: e-resize;
-						position: absolute;
-						right: floor($grid-gutter-width / 4);
-						top: 50%;
-					}
 					.ui-icon {
 						@include translate(0, -50%);
 
@@ -109,6 +102,11 @@ table {
 						position: absolute;
 						right: floor($grid-gutter-width / 2);
 						top: 50%;
+
+						&.ui-resizable-handle {
+							cursor: e-resize;
+							right: floor($grid-gutter-width / 4);
+						}
 					}
 				}
 			}

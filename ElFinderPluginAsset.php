@@ -32,6 +32,17 @@ class ElFinderPluginAsset extends AssetBundle {
 	];
 
 	/**
+	 * @var array the options to be passed to [[AssetManager::publish()]] when the asset bundle
+	 * is being published.
+	 */
+	public $publishOptions = [
+		'only' => [
+			'js/'
+		],
+		'forceCopy' => YII_DEBUG
+	];
+
+	/**
 	 * @inheritdoc
 	 */
 	public function init() {

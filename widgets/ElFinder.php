@@ -116,7 +116,7 @@ class ElFinder extends Widget {
 	 * @var string Default sort type. Can be [[ElFinder::SORT_NAMEDIRSFIRST]], [[ElFinder::SORT_NAME]],
 	 * [[ElFinder::SORT_KIND]], [[ElFinder::SORT_SIZE]], [[ElFinder::SORT_DATE]]
 	 */
-	public $sortType = self::SORT_NAMEDIRSFIRST;
+	public $sortType = self::SORT_NAME;
 
 	/**
 	 * @var integer Default sort order. Either [[SORT_ASC]] or [[SORT_DESC]]

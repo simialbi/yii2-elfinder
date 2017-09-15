@@ -1,7 +1,7 @@
 # yii2-elfinder
 This extension integrates the jQuery elFinder into yii2 framework (the yii way: with elFinder component, behaviors, 
 configurable objects etc.). Additionally it prevents jui css from loading and provides it's own styles for elfinder 
-(bootstrap 3 scss style).
+(bootstrap3 / fontawesome scss based style).
 
 ## Resources
  * [elFinder](https://github.com/Studio-42/elFinder)

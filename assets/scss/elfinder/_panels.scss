@@ -1,3 +1,10 @@
+.elfinder-toolbar {
+	@include border-top-radius(($panel-border-radius - 1));
+
+	border-bottom: 1px solid transparent;
+	padding: $panel-heading-padding;
+}
+
 & {
 	background-color: $panel-bg;
 	border: 1px solid $panel-default-border;
@@ -10,13 +17,6 @@
 		border-color: $panel-default-border;
 		margin-left: 0;
 	}
-}
-
-.elfinder-toolbar {
-	@include border-top-radius(($panel-border-radius - 1));
-
-	border-bottom: 1px solid transparent;
-	padding: $panel-heading-padding;
 }
 
 .elfinder-workzone {

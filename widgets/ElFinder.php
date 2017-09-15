@@ -34,7 +34,7 @@ class ElFinder extends Widget {
 	const REQUEST_POST = 'post';
 
 	/**
-	 * @var string Connector URL. This is the only required option. Can be absolute or relative
+	 * @var string/array Connector URL. This is the only required option. Can be absolute or relative
 	 */
 	public $url = '';
 
@@ -305,6 +305,10 @@ class ElFinder extends Widget {
 	 */
 	public $options = [];
 
+	/**
+	 * @var string name of the instance used in module configuration (defaults to default)
+	 */
+	public $instanceName = 'default';
 
 	/**
 	 * @inheritdoc
@@ -314,7 +318,12 @@ class ElFinder extends Widget {
 			$this->options['id'] = $this->getId();
 		}
 		if (empty($this->url)) {
-			$this->url = ['elfinder/connection'];
+			$this->url = ['elfinder/connection', 'instanceName' => $this->instanceName];
+		} else {
+			if (!is_array($this->url)) {
+				$this->url = [$this->url];
+			}
+			$this->url['instanceName'] = $this->instanceName;
 		}
 		if (empty($this->lang)) {
 			$this->lang = Yii::$app->language;

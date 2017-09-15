@@ -28,7 +28,37 @@ to the ```require``` section of your `composer.json`
 
 ### Setup Module
 
-`TODO`
+Add the module `elfinder` to the modules section of your configuration file:
+
+```php
+'modules' => [
+	'elfinder' => [
+		'class'           => 'simialbi\yii2\elfinder\Module',
+		'connectionSets'  => [
+			'default' => [ // like elfinder roots
+				[
+					'class' => 'simialbi\yii2\elfinder\ElFinderConfigurationLocalFileSystem',
+					'path'  => '@webroot/files',
+					'URL'   => '@web/files'
+				]
+			]
+		],
+		'volumeBehaviors' => [
+			'default' => [ // like elfinder plugins, add behaviors
+				'as resizer'   => [
+					'class'     => 'simialbi\yii2\elfinder\behaviors\ImageResizeBehavior',
+					'maxWidth'  => 1920,
+					'maxHeight' => 1080,
+					'quality'   => 70
+				],
+				'as optimizer' => [
+					'class' => 'simialbi\yii2\elfinder\behaviors\ImageOptimizeBehavior'
+				]
+			]
+		]
+	]
+]
+```
 
 ### Configuration
 
@@ -36,7 +66,26 @@ to the ```require``` section of your `composer.json`
 
 ## Example Usage
 
-`TODO`
+To include an elfinder instance in one of your pages, call the widget like this:
+```php
+<?php
+/* @var $this yii\web\View */
+
+use simialbi\yii2\elfinder\widgets\ElFinder;
+
+$this->title = 'elFinder';
+$this->params['breadcrumbs'][] = $this->title;
+
+?>
+<div class="my-elfinder">
+<?php
+	echo ElFinder::widget([
+		'instanceName' => 'default' // from module connectionSets/volumeBehaviors configuration (array key)
+	]);
+?>
+</div>
+
+```
 
 ## License
 

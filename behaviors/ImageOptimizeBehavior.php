@@ -51,7 +51,7 @@ class ImageOptimizeBehavior extends Behavior {
 	/**
 	 * @var string
 	 */
-	public $pngOptimizer = 'optipng -o7 -strip all -out {to} {from}';
+	public $pngOptimizer = 'optipng -o2 -strip all -out {to} {from}';
 
 	/**
 	 * @inheritdoc

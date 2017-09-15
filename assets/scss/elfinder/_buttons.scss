@@ -91,6 +91,12 @@
 			}
 		}
 	}
+
+	.elfinder-button-icon {
+		+ .elfinder-button-text {
+			margin-left: 5px;
+		}
+	}
 }
 
 a.elfinder-button {

@@ -114,7 +114,5 @@ class ImageRotateBehavior extends Behavior {
 			'degree'     => $degree,
 			'jpgQuality' => $this->quality
 		]);
-
-		$event->handled = true;
 	}
 }

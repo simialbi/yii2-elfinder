@@ -111,7 +111,5 @@ class ImageOptimizeBehavior extends Behavior {
 			default:
 				return;
 		}
-
-		$event->handled = true;
 	}
 }

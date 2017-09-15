@@ -142,7 +142,6 @@ class ImageResizeBehavior extends Behavior {
 				'preserveExif' => $this->preserveExif,
 				'unenlarge'    => true
 			]);
-			$event->handled = true;
 		}
 	}
 }

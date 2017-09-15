@@ -24,6 +24,10 @@
 	}
 }
 
+.elfinder-tree .elfinder-navbar-subtree:empty {
+	display: none;
+}
+
 .elfinder-navbar-wrapper {
 	> .elfinder-navbar-dir {
 		background-color: $list-group-bg;

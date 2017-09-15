@@ -25,7 +25,6 @@ class ElFinder extends Widget {
 	const SORT_KIND = 'kind';
 	const SORT_SIZE = 'size';
 	const SORT_DATE = 'date';
-	const SORT_NAMEDIRSFIRST = 'nameDirsFirst';
 
 	const FILE_MODE_STRING = 'string';
 	const FILE_MODE_OCTAL = 'octal';
@@ -113,8 +112,8 @@ class ElFinder extends Widget {
 	public $defaultView = self::VIEW_ICONS;
 
 	/**
-	 * @var string Default sort type. Can be [[ElFinder::SORT_NAMEDIRSFIRST]], [[ElFinder::SORT_NAME]],
-	 * [[ElFinder::SORT_KIND]], [[ElFinder::SORT_SIZE]], [[ElFinder::SORT_DATE]]
+	 * @var string Default sort type. Can be [[ElFinder::SORT_NAME]], [[ElFinder::SORT_KIND]], [[ElFinder::SORT_SIZE]]
+	 * or [[ElFinder::SORT_DATE]]
 	 */
 	public $sortType;
 

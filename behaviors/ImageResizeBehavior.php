@@ -9,10 +9,9 @@
 namespace simialbi\yii2\elfinder\behaviors;
 
 
+use simialbi\yii2\elfinder\base\ElFinderEvent;
 use simialbi\yii2\elfinder\ElFinder;
 use yii\base\Behavior;
-use yii\base\Event;
-use yii\helpers\ArrayHelper;
 
 /**
  * ImageResizeBehavior automatically resize images to predefined maximal dimensions and reduced quality to given max
@@ -76,7 +75,7 @@ class ImageResizeBehavior extends Behavior {
 	/**
 	 * @var integer Target image formats
 	 */
-	public $targetType = IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP;
+	public $targetType = 0;
 
 	/**
 	 * @var integer|null To disable it if it is dropped with pressing the meta key
@@ -85,6 +84,13 @@ class ImageResizeBehavior extends Behavior {
 	 */
 	public $offDropWith = null;
 
+	/**
+	 * @inheritdoc
+	 */
+	public function init() {
+		$this->targetType = IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP;
+		parent::init();
+	}
 
 	/**
 	 * @inheritdoc
@@ -96,12 +102,12 @@ class ImageResizeBehavior extends Behavior {
 	}
 
 	/**
-	 * @param Event $event
+	 * @param ElFinderEvent $event
 	 */
-	public function afterUploadBeforeSave(&$event) {
+	public function afterUploadBeforeSave($event) {
 //		$elfinder = $event->sender;
-		$src      = ArrayHelper::getValue($event->data, 'tmpname', '');
-		$volume   = ArrayHelper::getValue($event->data, 'volume');
+		$src    = $event->fileTmpName;
+		$volume = $event->volume;
 		/* @var $elfinder \elFinder */
 		/* @var $volume \elFinderVolumeDriver */
 

@@ -337,15 +337,13 @@ class ElFinder extends Component {
 	 */
 	public function handleApiBeforeEvent($cmd, &$args, $instance, $dstVolume) {
 		$event = Yii::createObject([
-			'class'  => 'yii\base\Event',
-			'name'   => $cmd,
-			'sender' => $instance,
-			'data'   => [
-				'arguments' => &$args,
-				'volume'    => $dstVolume
-			]
+			'class'     => 'simialbi\yii2\elfinder\base\ElFinderEvent',
+			'name'      => self::EVENT_UPLOAD_BEFORE_SAVE,
+			'sender'    => $instance,
+			'arguments' => $args,
+			'volume'    => $dstVolume
 		]);
-		/* @var $event \yii\base\Event */
+		/* @var $event \simialbi\yii2\elfinder\base\ElFinderEvent */
 
 		$this->trigger($cmd, $event);
 
@@ -365,16 +363,14 @@ class ElFinder extends Component {
 	 */
 	public function handleApiAfterEvent($cmd, &$result, $args, $instance, $dstVolume) {
 		$event = Yii::createObject([
-			'class'  => 'yii\base\Event',
-			'name'   => $cmd,
-			'sender' => $instance,
-			'data'   => [
-				'arguments' => $args,
-				'volume'    => $dstVolume,
-				'result'    => &$result
-			]
+			'class'     => 'simialbi\yii2\elfinder\base\ElFinderEvent',
+			'name'      => self::EVENT_UPLOAD_BEFORE_SAVE,
+			'sender'    => $instance,
+			'arguments' => $args,
+			'result'    => $result,
+			'volume'    => $dstVolume
 		]);
-		/* @var $event \yii\base\Event */
+		/* @var $event \simialbi\yii2\elfinder\base\ElFinderEvent */
 
 		$this->trigger($cmd, $event);
 
@@ -394,17 +390,15 @@ class ElFinder extends Component {
 	 */
 	public function handleApiUploadBeforeSave(&$path, &$name, $tmpname, $instance, $dstVolume) {
 		$event = Yii::createObject([
-			'class'  => 'yii\base\Event',
-			'name'   => self::EVENT_UPLOAD_BEFORE_SAVE,
-			'sender' => $instance,
-			'data'   => [
-				'path'    => &$path,
-				'name'    => &$name,
-				'tmpname' => $tmpname,
-				'volume'  => $dstVolume
-			]
+			'class'       => 'simialbi\yii2\elfinder\base\ElFinderEvent',
+			'name'        => self::EVENT_UPLOAD_BEFORE_SAVE,
+			'sender'      => $instance,
+			'path'        => $path,
+			'fileName'    => $name,
+			'fileTmpName' => $tmpname,
+			'volume'      => $dstVolume
 		]);
-		/* @var $event \yii\base\Event */
+		/* @var $event \simialbi\yii2\elfinder\base\ElFinderEvent */
 
 		$this->trigger(self::EVENT_UPLOAD_BEFORE_SAVE, $event);
 

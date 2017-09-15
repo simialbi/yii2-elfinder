@@ -8,10 +8,9 @@
 
 namespace simialbi\yii2\elfinder\behaviors;
 
+use simialbi\yii2\elfinder\base\ElFinderEvent;
 use simialbi\yii2\elfinder\ElFinder;
 use yii\base\Behavior;
-use yii\base\Event;
-use yii\helpers\ArrayHelper;
 
 /**
  * ImageOptimizeBehavior automatically optimizes images after upload before saving in elFinder.
@@ -64,11 +63,11 @@ class ImageOptimizeBehavior extends Behavior {
 	}
 
 	/**
-	 * @param Event $event
+	 * @param ElFinderEvent $event
 	 */
-	public function afterUploadBeforeSave(&$event) {
+	public function afterUploadBeforeSave($event) {
 //		$elfinder = $event->sender;
-		$src      = ArrayHelper::getValue($event->data, 'tmpname', '');
+		$src = $event->fileTmpName;
 //		$volume   = ArrayHelper::getValue($event->data, 'volume');
 		/* @var $elfinder \elFinder */
 		/* @var $volume \elFinderVolumeDriver */

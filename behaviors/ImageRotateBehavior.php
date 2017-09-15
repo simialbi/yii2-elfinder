@@ -9,10 +9,9 @@
 namespace simialbi\yii2\elfinder\behaviors;
 
 
+use simialbi\yii2\elfinder\base\ElFinderEvent;
 use simialbi\yii2\elfinder\ElFinder;
 use yii\base\Behavior;
-use yii\base\Event;
-use yii\helpers\ArrayHelper;
 
 /**
  * ImageRotateBehavior automatically rotates jpeg images with exif data to correct position on upload.
@@ -68,12 +67,12 @@ class ImageRotateBehavior extends Behavior {
 	}
 
 	/**
-	 * @param Event $event
+	 * @param ElFinderEvent $event
 	 */
-	public function afterUploadBeforeSave(&$event) {
+	public function afterUploadBeforeSave($event) {
 //		$elfinder = $event->sender;
-		$src      = ArrayHelper::getValue($event->data, 'tmpname', '');
-		$volume   = ArrayHelper::getValue($event->data, 'volume');
+		$src    = $event->fileTmpName;
+		$volume = $event->volume;
 		/* @var $elfinder \elFinder */
 		/* @var $volume \elFinderVolumeDriver */
 

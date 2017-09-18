@@ -1,7 +1,7 @@
 # yii2-elfinder
 This extension integrates the jQuery elFinder into yii2 framework (the yii way: with elFinder component, behaviors, 
-configurable objects etc.). Additionally it prevents jui css from loading and provides it's own styles for elfinder 
-(bootstrap3 / fontawesome scss based style).
+configurable objects, events etc.). Additionally it prevents jui/elfinder css from loading and provides it's own styles
+for elfinder (bootstrap3 / fontawesome scss based style).
 
 ## Resources
  * [elFinder](https://github.com/Studio-42/elFinder)
@@ -30,7 +30,6 @@ to the ```require``` section of your `composer.json`
 ### Setup Module
 
 Add the module `elfinder` to the modules section of your configuration file:
-
 ```php
 'modules' => [
 	'elfinder' => [
@@ -61,10 +60,6 @@ Add the module `elfinder` to the modules section of your configuration file:
 ]
 ```
 
-### Configuration
-
-`TODO`
-
 ## Example Usage
 
 To include an elfinder instance in one of your pages, call the widget like this:
@@ -80,13 +75,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="my-elfinder">
 <?php
+	// @see https://github.com/Studio-42/elFinder/wiki/Client-configuration-options-2.1
 	echo ElFinder::widget([
 		'instanceName' => 'default' // from module connectionSets/volumeBehaviors configuration (array key)
 	]);
 ?>
 </div>
-
 ```
+
+All options from [elfinder client configuration options](https://github.com/Studio-42/elFinder/wiki/Client-configuration-options-2.1)
+and `instanceName` can be used to configure the widget.
 
 ## License
 

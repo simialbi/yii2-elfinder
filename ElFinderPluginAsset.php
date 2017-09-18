@@ -37,7 +37,8 @@ class ElFinderPluginAsset extends AssetBundle {
 	 */
 	public $publishOptions = [
 		'only' => [
-			'js/*'
+			'js/*',
+			'js/i18n/*'
 		],
 		'forceCopy' => YII_DEBUG
 	];

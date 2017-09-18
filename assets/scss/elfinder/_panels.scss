@@ -23,9 +23,10 @@
 	> .elfinder-navbar {
 		border-right: 1px solid $panel-inner-border;
 		float: left;
+		max-width: 50%;
 		padding-right: 0;
 		position: relative;
-		width: percentage($grid-columns / 4);
+		width: percentage(4 / $grid-columns);
 		z-index: $zindex-navbar - 1;
 
 		> .ui-resizable-handle {

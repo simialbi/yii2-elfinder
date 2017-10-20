@@ -99,6 +99,9 @@ class ElFinderInput extends InputWidget {
 				$this->inputOptions['id'] = $this->options['id'].'-input';
 			}
 		}
+
+		$this->registerTranslations();
+
 		parent::init();
 	}
 
@@ -166,5 +169,16 @@ class ElFinderInput extends InputWidget {
 		$html .= ob_get_clean();
 
 		return $html;
+	}
+
+	/**
+	 * Init translations
+	 */
+	public function registerTranslations() {
+		Yii::$app->i18n->translations['simialbi/elfinder*'] = [
+			'class'          => 'yii\i18n\GettextMessageSource',
+			'sourceLanguage' => 'en-US',
+			'basePath'       => __DIR__.'/messages'
+		];
 	}
 }

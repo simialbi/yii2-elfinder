@@ -105,6 +105,7 @@ class Module extends \yii\base\Module {
 			$components[$name] = new ElFinder($config);
 		}
 		$this->setComponents($components);
+		$this->registerTranslations();
 
 		parent::init();
 	}

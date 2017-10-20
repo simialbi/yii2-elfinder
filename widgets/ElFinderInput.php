@@ -6,6 +6,7 @@ use yii\bootstrap\Html;
 use yii\bootstrap\Modal;
 use yii\web\JsExpression;
 use yii\widgets\InputWidget;
+use Yii;
 
 /**
  * ElFinderInput widget renders an bootstrap form group with input group button which opens an elfinder modal for
@@ -109,7 +110,7 @@ class ElFinderInput extends InputWidget {
 		$inputOptions = $this->inputOptions;
 
 		$html  = Html::beginTag('div', $options);
-		$label = '';
+		$label = Yii::t('simialbi/elfinder/input-widget', 'Choose file');
 		if ($this->hasModel()) {
 			$label = $this->model->getAttributeLabel($this->attribute);
 		} elseif ($this->label) {
@@ -145,10 +146,10 @@ class ElFinderInput extends InputWidget {
 			'id'     => $options['id'].'-modal',
 			'size'   => Modal::SIZE_LARGE,
 			'header' => $this->modalIcon.Html::tag('h4', $label, ['class' => 'modal-title']),
-			'footer' => Html::button('Cancel', [
+			'footer' => Html::button(Yii::t('simialbi/elfinder/input-widget', 'Close'), [
 					'class'        => ['btn', 'btn-default'],
 					'data-dismiss' => 'modal'
-				]).Html::button('Save', [
+				]).Html::button(Yii::t('simialbi/elfinder/input-widget', 'Save'), [
 					'class'        => ['btn', 'btn-primary', 'pull-right'],
 					'data-dismiss' => 'modal'
 				])

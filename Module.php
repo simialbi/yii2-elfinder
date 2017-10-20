@@ -108,4 +108,15 @@ class Module extends \yii\base\Module {
 
 		parent::init();
 	}
+
+	/**
+	 * Init translations
+	 */
+	public function registerTranslations() {
+		Yii::$app->i18n->translations['simialbi/elfinder*'] = [
+			'class'          => 'yii\i18n\GettextMessageSource',
+			'sourceLanguage' => 'en-US',
+			'basePath'       => __DIR__.'/messages'
+		];
+	}
 }

@@ -1,0 +1,14 @@
+#: widgets/ElFinderInput.php
+msgctxt "simialbi/elfinder/input-widget"
+msgid "Choose file"
+msgstr "Datei wählen"
+
+#: widgets/ElFinderInput.php
+msgctxt "simialbi/elfinder/input-widget"
+msgid "Close"
+msgstr "Schliessen"
+
+#: widgets/ElFinderInput.php
+msgctxt "simialbi/elfinder/input-widget"
+msgid "Save"
+msgstr "Speichern"

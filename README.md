@@ -62,7 +62,9 @@ Add the module `elfinder` to the modules section of your configuration file:
 
 ## Example Usage
 
-To include an elfinder instance in one of your pages, call the widget like this:
+### Elfinder widget
+
+To include an elfinder instance in one of your pages, call the elfinder widget like this:
 ```php
 <?php
 /* @var $this yii\web\View */
@@ -85,6 +87,41 @@ $this->params['breadcrumbs'][] = $this->title;
 
 All options from [elfinder client configuration options](https://github.com/Studio-42/elFinder/wiki/Client-configuration-options-2.1)
 and `instanceName` can be used to configure the widget.
+
+### ElFinderInput widget
+
+To include an elfinder input field widget, call the input widget like this:
+```php
+<?php
+/* @var $this yii\web\View */
+
+use simialbi\yii2\elfinder\widgets\ElFinderInput;
+
+$this->title = 'elFinder';
+$this->params['breadcrumbs'][] = $this->title;
+
+?>
+<div class="my-elfinder">
+<?php
+	// @see https://github.com/Studio-42/elFinder/wiki/Client-configuration-options-2.1
+	echo ElFinderInput::widget([
+		'name' => 'my-file',
+		'value' => '/path/to/my/file.ext',
+		'instanceName' => 'default',
+		'label' => 'Choose File'
+	]);
+	// or model like usage
+	/* @var $form \yii\widgets\ActiveForm */
+	/* @var $model \yii\base\Model */
+	echo $form->field($model, 'my-file')->widget(
+		ElFinderInput::className(),
+		[
+		   'instanceName' => 'default'
+		]
+	);
+?>
+</div>
+```
 
 ## License
 

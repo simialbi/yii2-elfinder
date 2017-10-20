@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: karlen
- * Date: 04.09.2017
- * Time: 15:19
- */
-
 namespace simialbi\yii2\elfinder\widgets;
 
 
@@ -17,6 +10,18 @@ use yii\helpers\Url;
 use yii\web\View;
 use Yii;
 
+/**
+ * ElFinder widget renders elfinder instance.
+ *
+ * ```php
+ * <?php echo ElFinder::widget([
+ *      'instanceName' => 'default' // from module connectionSets/volumeBehaviors configuration (array key)
+ * ]); ?>
+ * ```
+ *
+ * @author Simon Karlen <simi.albi@gmail.com>
+ * @since 1.0
+ */
 class ElFinder extends Widget {
 	const VIEW_ICONS = 'icons';
 	const VIEW_LIST = 'list';

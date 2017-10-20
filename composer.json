@@ -14,12 +14,12 @@
 			"email": "simi.albi@gmail.com"
 		}
 	],
-	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"yiisoft/yii2": ">=2.0.5",
+		"yiisoft/yii2": "~2.0",
+		"yiisoft/yii2-bootstrap": "~2.0",
 		"bower-asset/jquery-ui": "1.11.*@stable",
-		"studio-42/elfinder": "2.1.28"
+		"studio-42/elfinder": "~2.1"
 	},
 	"config": {
 		"process-timeout": 1800,

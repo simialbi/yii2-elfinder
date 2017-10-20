@@ -18,10 +18,9 @@
 	> .elfinder-cwd-wrapper {
 		.elfinder-cwd {
 			&.elfinder-cwd-view-icons {
-				@include clearfix;
+				@include flex-container(row, flex-start, wrap, flex-start);
 
 				.elfinder-cwd-file {
-					float: left;
 					margin: 1px;
 					min-height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
 					padding-left: floor($grid-gutter-width / 4);
@@ -34,7 +33,7 @@
 						text-align: center;
 					}
 					.elfinder-cwd-filename {
-						max-height: 2 * $line-height-computed;
+						max-height: (2 * $line-height-computed) + 1px;
 						overflow: hidden;
 						text-align: center;
 						word-break: break-all;

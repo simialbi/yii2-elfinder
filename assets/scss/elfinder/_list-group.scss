@@ -24,8 +24,13 @@
 	}
 }
 
-.elfinder-tree .elfinder-navbar-subtree:empty {
-	display: none !important;
+.elfinder-tree .elfinder-navbar-subtree {
+	&:empty {
+		display: none !important;
+	}
+	&:last-child {
+		margin-bottom: 9px;
+	}
 }
 
 .elfinder-navbar-wrapper {

@@ -6,15 +6,16 @@
 		border-radius: $badge-border-radius;
 		color: $badge-color;
 		display: block;
+		font-family: $font-family-sans-serif;
 		font-size: $font-size-small;
 		font-weight: $badge-font-weight;
 		line-height: $badge-line-height;
-		left: 5px;
+		left: 0;
 		min-width: 10px;
 		padding: 3px 7px;
 		position: absolute;
 		text-align: center;
-		top: 10px;
+		top: $font-size-small;
 		vertical-align: middle;
 		white-space: nowrap;
 	}

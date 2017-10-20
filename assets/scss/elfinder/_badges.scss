@@ -1,0 +1,38 @@
+.elfinder-cwd-icon {
+	position: relative;
+
+	&::before {
+		background-color: $badge-bg;
+		border-radius: $badge-border-radius;
+		color: $badge-color;
+		display: block;
+		font-size: $font-size-small;
+		font-weight: $badge-font-weight;
+		line-height: $badge-line-height;
+		left: 5px;
+		min-width: 10px;
+		padding: 3px 7px;
+		position: absolute;
+		text-align: center;
+		top: 10px;
+		vertical-align: middle;
+		white-space: nowrap;
+	}
+
+	&.ui-selected {
+		&::before {
+			background-color: $badge-active-bg;
+			color: $badge-active-color;
+		}
+	}
+
+	&:hover, &:focus, &.ui-state-hover {
+		&::before {
+			color: $badge-link-hover-color;
+		}
+	}
+}
+
+.elfinder-cwd.elfinder-cwd-view-list .elfinder-cwd-icon::before {
+	display: none;
+}

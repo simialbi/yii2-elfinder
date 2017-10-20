@@ -358,6 +358,7 @@ class ElFinder extends Widget {
 		ElFinderAsset::register($view);
 
 		$js = [
+			"jQuery('#$id').data('cssautoloadHide', jQuery('<style>.elfinder{visibility:hidden;overflow:hidden}</style>'));",
 			"jQuery('#$id').elfinder({$this->getClientOptions()});"
 		];
 

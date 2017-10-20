@@ -24,6 +24,7 @@
 		border-right: 1px solid $panel-inner-border;
 		float: left;
 		max-width: 50%;
+		overflow: auto;
 		padding-right: 0;
 		position: relative;
 		width: percentage(4 / $grid-columns);

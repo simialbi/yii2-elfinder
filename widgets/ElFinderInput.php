@@ -73,7 +73,7 @@ class ElFinderInput extends InputWidget {
 	/**
 	 * @var array ElFinder widget configuration options
 	 */
-	public $elfinderConfiguration = [];
+	public $elfinderOptions = [];
 
 	/**
 	 * @inheritdoc
@@ -96,7 +96,7 @@ class ElFinderInput extends InputWidget {
 	 * @inheritdoc
 	 */
 	public function run() {
-		$options      = $this->options;
+		$options = $this->options;
 
 		$label = Yii::t('simialbi/elfinder/input-widget', 'Choose file');
 		if ($this->hasModel()) {
@@ -135,6 +135,7 @@ class ElFinderInput extends InputWidget {
 					'data-dismiss' => 'modal'
 				])
 		]);
+		$elfinderOptions                    = $this->elfinderOptions;
 		$elfinderOptions['instanceName']    = $this->instanceName;
 		$elfinderOptions['getFileCallback'] = new JsExpression("function (file) {
 			var parser = document.createElement('a');

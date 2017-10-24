@@ -21,6 +21,9 @@
 		"bower-asset/jquery-ui": "1.11.*@stable",
 		"studio-42/elfinder": "~2.1"
 	},
+	"suggest": {
+		"demi/cropper": "Add an image cropper widget to ElFinderInput"
+	},
 	"config": {
 		"process-timeout": 1800,
 		"secure-http": false,

@@ -4,6 +4,7 @@ namespace simialbi\yii2\elfinder\widgets;
 
 use yii\bootstrap\Html;
 use yii\bootstrap\Modal;
+use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 use yii\widgets\InputWidget;
 use Yii;
@@ -76,6 +77,16 @@ class ElFinderInput extends InputWidget {
 	public $elfinderOptions = [];
 
 	/**
+	 * @var boolean add an image cropper widget (requires demi/cropper)
+	 */
+	public $addImageCrop = false;
+
+	/**
+	 * @var array options for image cropper
+	 */
+	public $cropperOptions = [];
+
+	/**
 	 * @var boolean return only path or full url
 	 */
 	public $onlyPath = false;
@@ -101,7 +112,8 @@ class ElFinderInput extends InputWidget {
 	 * @inheritdoc
 	 */
 	public function run() {
-		$options = $this->options;
+		$options    = $this->options;
+		$expression = '';
 
 		$label = Yii::t('simialbi/elfinder/input-widget', 'Choose file');
 		if ($this->hasModel()) {
@@ -114,6 +126,19 @@ class ElFinderInput extends InputWidget {
 			$html .= Html::activeTextInput($this->model, $this->attribute, $options);
 		} else {
 			$html .= Html::textInput($this->name, $this->value, $options);
+		}
+		if ($this->addImageCrop && class_exists('demi\cropper\Cropper')) {
+			$cropperOptions = ArrayHelper::merge([
+				'modal'   => true,
+				'image'   => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
+				'options' => ['id' => $options['id'].'-crop']
+			], $this->cropperOptions);
+			$html           .= Html::tag('div', call_user_func(['demi\cropper\Cropper', 'widget'], $cropperOptions), [
+				'class' => 'input-group-btn'
+			]);
+			$expression .= <<<JS
+			jQuery('#{$options['id']}-crop').find('.crop-image-container > img').cropper('replace', file.url);
+JS;
 		}
 		$html .= Html::tag('div', Html::button($this->icon, [
 			'id'    => $options['id'].'-btn',
@@ -147,7 +172,7 @@ class ElFinderInput extends InputWidget {
 			var fullUrl = $fullUrl,
 				parser = document.createElement('a');
 			parser.href = file.url;
-			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url);
+			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url); $expression
 		}");
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();

@@ -76,6 +76,11 @@ class ElFinderInput extends InputWidget {
 	public $elfinderOptions = [];
 
 	/**
+	 * @var boolean return only path or full url
+	 */
+	public $onlyPath = false;
+
+	/**
 	 * @inheritdoc
 	 */
 	public function init() {
@@ -135,12 +140,14 @@ class ElFinderInput extends InputWidget {
 					'data-dismiss' => 'modal'
 				])
 		]);
+		$fullUrl                            = $this->onlyPath ? 'false' : 'true';
 		$elfinderOptions                    = $this->elfinderOptions;
 		$elfinderOptions['instanceName']    = $this->instanceName;
 		$elfinderOptions['getFileCallback'] = new JsExpression("function (file) {
-			var parser = document.createElement('a');
+			var fullUrl = $fullUrl,
+				parser = document.createElement('a');
 			parser.href = file.url;
-			jQuery('#{$options['id']}').val(parser.pathname ? parser.pathname : file.url);
+			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url);
 		}");
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();

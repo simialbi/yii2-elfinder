@@ -107,8 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	echo ElFinderInput::widget([
 		'name' => 'my-file',
 		'value' => '/path/to/my/file.ext',
-		'instanceName' => 'default',
-		'label' => 'Choose File'
+		'instanceName' => 'default'
 	]);
 	// or model like usage
 	/* @var $form \yii\widgets\ActiveForm */

@@ -16,8 +16,7 @@ use Yii;
  * <?php echo ElFinderInput::widget([
  *      'name' => 'my-file',
  *      'value' => '/path/to/my/file.ext',
- *      'instanceName' => 'default',
- *      'label' => 'Choose File'
+ *      'instanceName' => 'default'
  * ]); ?>
  * ```
  * or with model usage
@@ -47,16 +46,7 @@ class ElFinderInput extends InputWidget {
 	 *
 	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */
-	public $options = ['class' => 'form-group'];
-	/**
-	 * @var array the default options for the input tags. The parameter passed to individual input methods
-	 * (e.g. [[textInput()]]) will be merged with this property when rendering the input tag.
-	 *
-	 * If you set a custom `id` for the input element, you may need to adjust the [[$selectors]] accordingly.
-	 *
-	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-	 */
-	public $inputOptions = ['class' => 'form-control'];
+	public $options = ['class' => 'form-control'];
 
 	/**
 	 * @var string label text. It will NOT be HTML-encoded. Therefore you can pass in HTML code
@@ -90,13 +80,10 @@ class ElFinderInput extends InputWidget {
 	 */
 	public function init() {
 		if (!isset($this->options['id'])) {
-			$this->options['id'] = $this->getId();
-		}
-		if (!isset($this->inputOptions['id'])) {
 			if ($this->hasModel()) {
-				$this->inputOptions['id'] = Html::getInputId($this->model, $this->attribute);
+				$this->options['id'] = Html::getInputId($this->model, $this->attribute);
 			} else {
-				$this->inputOptions['id'] = $this->options['id'].'-input';
+				$this->options['id'] = $this->getId();
 			}
 		}
 
@@ -110,26 +97,18 @@ class ElFinderInput extends InputWidget {
 	 */
 	public function run() {
 		$options      = $this->options;
-		$inputOptions = $this->inputOptions;
 
-		$html  = Html::beginTag('div', $options);
 		$label = Yii::t('simialbi/elfinder/input-widget', 'Choose file');
 		if ($this->hasModel()) {
 			$label = $this->model->getAttributeLabel($this->attribute);
-		} elseif ($this->label) {
-			$label = $this->label;
 		}
-		$html .= Html::label($label, $inputOptions['id']);
-		$html .= Html::beginTag('div', [
+		$html = Html::beginTag('div', [
 			'class' => 'input-group'
 		]);
 		if ($this->hasModel()) {
-			if ($this->hasModel() && $this->model->hasErrors($this->attribute)) {
-				Html::addCssClass($options, 'has-error');
-			}
-			$html .= Html::activeTextInput($this->model, $this->attribute, $inputOptions);
+			$html .= Html::activeTextInput($this->model, $this->attribute, $options);
 		} else {
-			$html .= Html::textInput($this->name, $this->value, $inputOptions);
+			$html .= Html::textInput($this->name, $this->value, $options);
 		}
 		$html .= Html::tag('div', Html::button($this->icon, [
 			'id'    => $options['id'].'-btn',
@@ -141,7 +120,6 @@ class ElFinderInput extends InputWidget {
 		]), [
 			'class' => 'input-group-btn'
 		]);
-		$html .= Html::endTag('div');
 		$html .= Html::endTag('div');
 
 		ob_start();
@@ -161,7 +139,7 @@ class ElFinderInput extends InputWidget {
 		$elfinderOptions['getFileCallback'] = new JsExpression("function (file) {
 			var parser = document.createElement('a');
 			parser.href = file.url;
-			jQuery('#{$inputOptions['id']}').val(parser.pathname ? parser.pathname : file.url);
+			jQuery('#{$options['id']}').val(parser.pathname ? parser.pathname : file.url);
 		}");
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();

@@ -127,30 +127,28 @@ class ElFinderInput extends InputWidget {
 		} else {
 			$html .= Html::textInput($this->name, $this->value, $options);
 		}
+		$html .= Html::beginTag('div', ['class' => 'input-group-btn']);
 		if ($this->addImageCrop && class_exists('demi\cropper\Cropper')) {
 			$cropperOptions = ArrayHelper::merge([
 				'modal'   => true,
 				'image'   => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
 				'options' => ['id' => $options['id'].'-crop']
 			], $this->cropperOptions);
-			$html           .= Html::tag('div', call_user_func(['demi\cropper\Cropper', 'widget'], $cropperOptions), [
-				'class' => 'input-group-btn'
-			]);
-			$expression .= <<<JS
+			$html           .= call_user_func(['demi\cropper\Cropper', 'widget'], $cropperOptions);
+			$expression     .= <<<JS
 			jQuery('#{$options['id']}-crop').find('.crop-image-container > img').cropper('replace', file.url);
 JS;
 		}
-		$html .= Html::tag('div', Html::button($this->icon, [
+		$html .= Html::button($this->icon, [
 			'id'    => $options['id'].'-btn',
 			'class' => ['btn', 'btn-default'],
 			'data'  => [
 				'toggle' => 'modal',
 				'target' => '#'.$options['id'].'-modal'
 			]
-		]), [
-			'class' => 'input-group-btn'
 		]);
-		$html .= Html::endTag('div');
+		$html .= Html::endTag('div'); // <!-- input-group-btn -->
+		$html .= Html::endTag('div'); // <!-- input-group -->
 
 		ob_start();
 		Modal::begin([

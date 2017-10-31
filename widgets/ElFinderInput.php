@@ -128,16 +128,13 @@ class ElFinderInput extends InputWidget {
 			$html .= Html::textInput($this->name, $this->value, $options);
 		}
 		$html .= Html::beginTag('div', ['class' => 'input-group-btn']);
-		if ($this->addImageCrop && class_exists('demi\cropper\Cropper')) {
+		if ($this->addImageCrop && class_exists('simialbi\yii2\crop\Cropper')) {
 			$cropperOptions = ArrayHelper::merge([
-				'modal'   => true,
+				'type'    => 'modal',
 				'image'   => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
 				'options' => ['id' => $options['id'].'-crop']
 			], $this->cropperOptions);
-			$html           .= call_user_func(['demi\cropper\Cropper', 'widget'], $cropperOptions);
-			$expression     .= <<<JS
-			jQuery('#{$options['id']}-crop').find('.crop-image-container > img').cropper('replace', file.url);
-JS;
+			$html           .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
 		}
 		$html .= Html::button($this->icon, [
 			'id'    => $options['id'].'-btn',

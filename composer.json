@@ -22,7 +22,7 @@
 		"studio-42/elfinder": "~2.1"
 	},
 	"suggest": {
-		"demi/cropper": "Add an image cropper widget to ElFinderInput"
+		"simialbi/yii2-widget-crop": "Add an image cropper widget to ElFinderInput"
 	},
 	"config": {
 		"process-timeout": 1800,

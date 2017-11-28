@@ -330,8 +330,8 @@ class ElFinder extends Widget {
 			}
 			$this->url['instanceName'] = $this->instanceName;
 		}
-		if (empty($this->lang)) {
-			$this->lang = Yii::$app->language;
+		if (empty($this->lang) && !empty(Yii::$app->language)) {
+			$this->lang = strtolower(substr(Yii::$app->language, 0, 2));
 		}
 
 		$this->url = Url::to($this->url);

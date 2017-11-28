@@ -24,6 +24,7 @@
 		border-right: 1px solid $panel-inner-border;
 		float: left;
 		max-width: 50%;
+		min-height: 100%;
 		overflow: auto;
 		padding-right: 0;
 		position: relative;
@@ -47,6 +48,14 @@
 				top: 50%;
 			}
 		}
+	}
+	> .elfinder-navdock {
+		@include box-sizing(border-box);
+		bottom: 0;
+		height: auto;
+		overflow: auto;
+		position: absolute;
+		width: percentage(4 / $grid-columns);
 	}
 	> .elfinder-cwd-wrapper {
 		float: none;

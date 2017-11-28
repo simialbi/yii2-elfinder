@@ -76,9 +76,11 @@ class ImageOptimizeBehavior extends Behavior {
 			return;
 		}
 
-		$mime = mime_content_type($src);
-		if (substr($mime, 0, 5) !== 'image') {
-			return;
+		if (function_exists('mime_content_type')) {
+			$mime = mime_content_type($src);
+			if (substr($mime, 0, 5) !== 'image') {
+				return;
+			}
 		}
 
 		$srcImgInfo = getimagesize($src);

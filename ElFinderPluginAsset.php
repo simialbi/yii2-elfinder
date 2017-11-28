@@ -28,7 +28,7 @@ class ElFinderPluginAsset extends AssetBundle {
 	 * @var array list of bundle class names that this bundle depends on.
 	 */
 	public $depends = [
-		'simialbi\yii2\elfinder\JuiAsset'
+		'yii\jui\JuiAsset'
 	];
 
 	/**

@@ -15,24 +15,23 @@
 		}
 	],
 	"prefer-stable": true,
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://asset-packagist.org"
+		}
+	],
 	"require": {
 		"yiisoft/yii2": "~2.0",
 		"yiisoft/yii2-bootstrap": "~2.0",
-		"bower-asset/jquery-ui": "1.11.*@stable",
+		"yiisoft/yii2-jui": "~2.0",
 		"studio-42/elfinder": "~2.1"
 	},
 	"suggest": {
 		"simialbi/yii2-widget-crop": "Add an image cropper widget to ElFinderInput"
 	},
 	"config": {
-		"process-timeout": 1800,
-		"secure-http": false,
-		"fxp-asset": {
-			"installer-paths": {
-				"npm-asset-library": "vendor/npm",
-				"bower-asset-library": "vendor/bower"
-			}
-		}
+		"process-timeout": 1800
 	},
 	"autoload": {
 		"psr-4": { "simialbi\\yii2\\elfinder\\": "" }

@@ -113,6 +113,14 @@
 		}
 	}
 
+	.elfinder-button-search {
+		> .elfinder-button-menu {
+			left: auto;
+			right: 0;
+			min-width: 250px;
+		}
+	}
+
 	.elfinder-statusbar {
 		@include clearfix;
 

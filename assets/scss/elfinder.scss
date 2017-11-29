@@ -121,6 +121,10 @@
 		}
 		.elfinder-path {
 			float: left;
+
+			.elfinder-path-dir {
+				max-width: none !important;
+			}
 		}
 		.elfinder-stat-selected {
 			text-align: center;

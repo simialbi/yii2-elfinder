@@ -31,6 +31,17 @@
 						display: block;
 						font-size: $font-size-h1;
 						text-align: center;
+
+						&.elfinder-cwd-bgurl {
+							background-repeat: no-repeat;
+							background-size: contain;
+							background-position: top center;
+							min-height: floor($line-height-base * $font-size-h1);
+
+							&::after {
+								content: "";
+							}
+						}
 					}
 					.elfinder-cwd-filename {
 						max-height: (2 * $line-height-computed) + 1px;
@@ -84,7 +95,7 @@
 				}
 			}
 			&.elfinder-cwd-view-list {
-				@include make-row();
+				@include make-row(min(14px, $panel-body-padding * 2));
 
 				.elfinder-cwd-file {
 					.elfinder-cwd-icon {

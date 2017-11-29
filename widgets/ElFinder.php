@@ -305,6 +305,12 @@ class ElFinder extends Widget {
 	public $uploadMaxChunkSize;
 
 	/**
+	 * @var boolean play sounds? Defaults to true
+	 * @since 1.1.13
+	 */
+	public $sound;
+
+	/**
 	 * @var array the HTML attributes for the title tag.
 	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */

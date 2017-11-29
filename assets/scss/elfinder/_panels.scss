@@ -60,7 +60,7 @@
 	> .elfinder-cwd-wrapper {
 		float: none;
 		overflow: auto;
-		padding: $panel-body-padding;
+		padding: min(7px, $panel-body-padding);
 		position: relative;
 		width: auto;
 		z-index: 0;

@@ -162,6 +162,7 @@ class ElFinderInput extends InputWidget {
 		]);
 		$fullUrl                            = $this->onlyPath ? 'false' : 'true';
 		$elfinderOptions                    = $this->elfinderOptions;
+		$elfinderOptions['sound']           = false;
 		$elfinderOptions['instanceName']    = $this->instanceName;
 		$elfinderOptions['getFileCallback'] = new JsExpression("function (file) {
 			var fullUrl = $fullUrl,

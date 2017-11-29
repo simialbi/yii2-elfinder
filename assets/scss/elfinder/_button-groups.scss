@@ -1,4 +1,4 @@
-.elfinder-buttonset, .ui-buttonset {
+.elfinder-buttonset, .ui-buttonset, .ui-controlgroup {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
@@ -32,6 +32,16 @@
 	}
 }
 
+.ui-controlgroup {
+	 .ui-button + .ui-button,
+	 .ui-button + .ui-helper-hidden-accessible + .ui-button,
+	 .ui-button + .ui-controlgroup,
+	 .ui-controlgroup + .ui-button,
+	 .ui-controlgroup + .ui-controlgroup {
+		 margin-left: -1px;
+	 }
+ }
+
 .elfinder-button-menu {
 	@include clearfix;
 
@@ -40,14 +50,16 @@
 	.elfinder-button,
 	.elfinder-buttonset,
 	.ui-button,
-	.ui-buttonset {
+	.ui-buttonset,
+	.ui-controlgroup {
 		float: left;
 	}
 
 	> .elfinder-button,
 	> .elfinder-buttonset,
 	> .ui-button,
-	> .ui-buttonset {
+	> .ui-buttonset,
+	> .ui-controlgroup {
 		margin-left: 5px;
 	}
 }
@@ -71,7 +83,7 @@
 	}
 }
 
-.elfinder-buttonset, .ui-buttonset {
+.elfinder-buttonset, .ui-buttonset, .ui-controlgroup {
 	> .elfinder-button, > .ui-button {
 		&:not(:first-child):not(:last-child) {
 			border-radius: 0;
@@ -88,7 +100,7 @@
 		}
 	}
 
-	> .elfinder-buttonset, > .ui-buttonset {
+	> .elfinder-buttonset, > .ui-buttonset, > .ui-controlgroup {
 		float: left;
 
 		&:not(:first-child):not(:last-child) > .elfinder-button {

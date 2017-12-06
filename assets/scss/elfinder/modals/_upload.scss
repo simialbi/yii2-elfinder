@@ -1,0 +1,30 @@
+.elfinder-upload-dialog-wrapper {
+	text-align: center;
+
+	.elfinder-upload-dropbox {
+		border: 2px dashed $input-border;
+		color: $input-color-placeholder;
+		height: $line-height-computed * 6;
+		line-height: $line-height-computed * 6;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.elfinder-upload-dialog-or {
+		margin: $line-height-computed 0;
+	}
+
+	.ui-button {
+		overflow: hidden;
+		position: relative;
+
+		form {
+			@include opacity(0);
+
+			bottom: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+}

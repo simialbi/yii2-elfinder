@@ -329,7 +329,7 @@ class ElFinder extends Widget {
 			$this->options['id'] = $this->getId();
 		}
 		if (empty($this->url)) {
-			$this->url = ['elfinder/connection', 'instanceName' => $this->instanceName];
+			$this->url = ['/elfinder/connection', 'instanceName' => $this->instanceName];
 		} else {
 			if (!is_array($this->url)) {
 				$this->url = [$this->url];

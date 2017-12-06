@@ -231,6 +231,141 @@ class ElFinder extends Component {
 	 * After upload before save event
 	 */
 	const EVENT_UPLOAD_BEFORE_SAVE = 'upload.presave';
+	/**
+	 * Before and after "open" event
+	 */
+	const EVENT_BEFORE_OPEN = 'beforeOpen';
+	const EVENT_AFTER_OPEN = 'afterOpen';
+	/**
+	 * Before and after "file" event
+	 */
+	const EVENT_BEFORE_FILE = 'beforeFile';
+	const EVENT_AFTER_FILE = 'afterFile';
+	/**
+	 * Before and after "tree" event
+	 */
+	const EVENT_BEFORE_TREE = 'beforeTree';
+	const EVENT_AFTER_TREE = 'afterTree';
+	/**
+	 * Before and after "parents" event
+	 */
+	const EVENT_BEFORE_PARENTS = 'beforeParents';
+	const EVENT_AFTER_PARENTS = 'afterParents';
+	/**
+	 * Before and after "ls" event
+	 */
+	const EVENT_BEFORE_LS = 'beforeLs';
+	const EVENT_AFTER_LS = 'afterLs';
+	/**
+	 * Before and after "tmb" event
+	 */
+	const EVENT_BEFORE_TMB = 'beforeTmb';
+	const EVENT_AFTER_TMB = 'afterTmb';
+	/**
+	 * Before and after "size" event
+	 */
+	const EVENT_BEFORE_SIZE = 'beforeSize';
+	const EVENT_AFTER_SIZE = 'afterSize';
+	/**
+	 * Before and after "dim" event
+	 */
+	const EVENT_BEFORE_DIM = 'beforeDim';
+	const EVENT_AFTER_DIM = 'afterDim';
+	/**
+	 * Before and after "mkdir" event
+	 */
+	const EVENT_BEFORE_MKDIR = 'beforeMkdir';
+	const EVENT_AFTER_MKDIR = 'afterMkdir';
+	/**
+	 * Before and after "mkfile" event
+	 */
+	const EVENT_BEFORE_MKFILE = 'beforeMkfile';
+	const EVENT_AFTER_MKFILE = 'afterMkfile';
+	/**
+	 * Before and after "rm" event
+	 */
+	const EVENT_BEFORE_RM = 'beforeRm';
+	const EVENT_AFTER_RM = 'afterRm';
+	/**
+	 * Before and after "rename" event
+	 */
+	const EVENT_BEFORE_RENAME = 'beforeRename';
+	const EVENT_AFTER_RENAME = 'afterRename';
+	/**
+	 * Before and after "duplicate" event
+	 */
+	const EVENT_BEFORE_DUPLICATE = 'beforeDuplicate';
+	const EVENT_AFTER_DUPLICATE = 'afterDuplicate';
+	/**
+	 * Before and after "paste" event
+	 */
+	const EVENT_BEFORE_PASTE = 'beforePaste';
+	const EVENT_AFTER_PASTE = 'afterPaste';
+	/**
+	 * Before and after "upload" event
+	 */
+	const EVENT_BEFORE_UPLOAD = 'beforeUpload';
+	const EVENT_AFTER_UPLOAD = 'afterUpload';
+	/**
+	 * Before and after "get" event
+	 */
+	const EVENT_BEFORE_GET = 'beforeGet';
+	const EVENT_AFTER_GET = 'afterGet';
+	/**
+	 * Before and after "put" event
+	 */
+	const EVENT_BEFORE_PUT = 'beforePut';
+	const EVENT_AFTER_PUT = 'afterPut';
+	/**
+	 * Before and after "archive" event
+	 */
+	const EVENT_BEFORE_ARCHIVE = 'beforeArchive';
+	const EVENT_AFTER_ARCHIVE = 'afterArchive';
+	/**
+	 * Before and after "extract" event
+	 */
+	const EVENT_BEFORE_EXTRACT = 'beforeExtract';
+	const EVENT_AFTER_EXTRACT = 'afterExtract';
+	/**
+	 * Before and after "search" event
+	 */
+	const EVENT_BEFORE_SEARCH = 'beforeSearch';
+	const EVENT_AFTER_SEARCH = 'afterSearch';
+	/**
+	 * Before and after "info" event
+	 */
+	const EVENT_BEFORE_INFO = 'beforeInfo';
+	const EVENT_AFTER_INFO = 'afterInfo';
+	/**
+	 * Before and after "resize" event
+	 */
+	const EVENT_BEFORE_RESIZE = 'beforereSize';
+	const EVENT_AFTER_RESIZE = 'afterreSize';
+	/**
+	 * Before and after "url" event
+	 */
+	const EVENT_BEFORE_URL = 'beforeUrl';
+	const EVENT_AFTER_URL = 'afterUrl';
+	/**
+	 * Before and after "netmount" event
+	 */
+	const EVENT_BEFORE_NETMOUNT = 'beforeNetmount';
+	const EVENT_AFTER_NETMOUNT = 'afterNetmount';
+	/**
+	 * Before and after "zipdl" event
+	 */
+	const EVENT_BEFORE_ZIPDL = 'beforeZipdl';
+	const EVENT_AFTER_ZIPDL = 'afterZipdl';
+	/**
+	 * Before and after "callback" event
+	 */
+	const EVENT_BEFORE_CALLBACK = 'beforeCallback';
+	const EVENT_AFTER_CALLBACK = 'afterCallback';
+	/**
+	 * Before and after "chmod" event
+	 */
+	const EVENT_BEFORE_CHMOD = 'beforeChmod';
+	const EVENT_AFTER_CHMOD = 'afterChmod';
 
 	const FTP_MODE_ACTIVE = 'active';
 	const FTP_MODE_PASSIVE = 'passive';
@@ -334,6 +469,7 @@ class ElFinder extends Component {
 	 * @param \elFinderVolumeDriver $dstVolume Volume Driver instance
 	 *
 	 * @return boolean
+	 * @throws InvalidConfigException
 	 */
 	public function handleApiBeforeEvent($cmd, &$args, $instance, $dstVolume) {
 		$event = Yii::createObject([
@@ -345,7 +481,7 @@ class ElFinder extends Component {
 		]);
 		/* @var $event \simialbi\yii2\elfinder\base\ElFinderEvent */
 
-		$this->trigger($cmd, $event);
+		$this->trigger('before'.ucfirst(strtolower($cmd)), $event);
 
 		return $event->handled;
 	}
@@ -360,6 +496,7 @@ class ElFinder extends Component {
 	 * @param \elFinderVolumeDriver $dstVolume Volume Driver instance
 	 *
 	 * @return boolean
+	 * @throws InvalidConfigException
 	 */
 	public function handleApiAfterEvent($cmd, &$result, $args, $instance, $dstVolume) {
 		$event = Yii::createObject([
@@ -372,7 +509,7 @@ class ElFinder extends Component {
 		]);
 		/* @var $event \simialbi\yii2\elfinder\base\ElFinderEvent */
 
-		$this->trigger($cmd, $event);
+		$this->trigger('after'.ucfirst(strtolower($cmd)), $event);
 
 		return $event->handled;
 	}
@@ -387,6 +524,7 @@ class ElFinder extends Component {
 	 * @param \elFinderVolumeDriver $dstVolume Volume Driver instance
 	 *
 	 * @return boolean
+	 * @throws InvalidConfigException
 	 */
 	public function handleApiUploadBeforeSave(&$path, &$name, $tmpname, $instance, $dstVolume) {
 		$event = Yii::createObject([

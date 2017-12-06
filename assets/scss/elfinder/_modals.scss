@@ -12,7 +12,7 @@
 	position: absolute;
 	z-index: $zindex-modal;
 
-	.ui-dialog-titlebar {
+	.ui-dialog-titlebar { // header
 		@include clearfix;
 
 		border-bottom: 1px solid $modal-header-border-color;
@@ -31,9 +31,19 @@
 			margin-top: -2px;
 		}
 	}
-	.ui-dialog-content {
+	.ui-dialog-content { // body
 		overflow-y: auto !important;
 		padding: $modal-inner-padding;
 		position: relative;
 	}
+	.ui-dialog-buttonpane { // footer
+		@include clearfix;
+
+		border-top: 1px solid $modal-footer-border-color;
+		padding: $modal-inner-padding;
+		text-align: right;
+	}
+
+	@import "modals/info";
+	@import "modals/resize";
 }

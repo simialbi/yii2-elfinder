@@ -1,0 +1,152 @@
+.elfinder-resize-handle {
+	position: relative;
+}
+.elfinder-resize-handle-hline, .elfinder-resize-handle-vline {
+	background: url('data:image/gif;base64,R0lGODlhCAAIAJEAAKqqqv///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCgAAACwAAAAACAAIAAACDZQFCadrzVRMB9FZ5SwAIfkECQoAAAAsAAAAAAgACAAAAg+ELqCYaudeW9ChyOyltQAAIfkECQoAAAAsAAAAAAgACAAAAg8EhGKXm+rQYtC0WGl9oAAAIfkECQoAAAAsAAAAAAgACAAAAg+EhWKQernaYmjCWLF7qAAAIfkECQoAAAAsAAAAAAgACAAAAg2EISmna81UTAfRWeUsACH5BAkKAAAALAAAAAAIAAgAAAIPFA6imGrnXlvQocjspbUAACH5BAkKAAAALAAAAAAIAAgAAAIPlIBgl5vq0GLQtFhpfaIAACH5BAUKAAAALAAAAAAIAAgAAAIPlIFgknq52mJowlixe6gAADs=') transparent;
+	position: absolute;
+}
+.elfinder-resize-handle-hline {
+	background-repeat: repeat-x;
+	height: 1px !important;
+	left: 0;
+	width: 100%;
+}
+.elfinder-resize-handle-vline {
+	background-repeat: repeat-y;
+	height: 100%;
+	top: 0;
+	width: 1px !important;
+}
+.elfinder-resize-handle-hline-bottom {
+	bottom: 0;
+}
+.elfinder-resize-handle-hline-top {
+	top: 0;
+}
+.elfinder-resize-handle-vline-left {
+	left: 0;
+}
+.elfinder-resize-handle-vline-right {
+	right: 0;
+}
+
+.elfinder-resize-handle-point {
+	border: 1px solid $gray-dark;
+	height: 7px;
+	position: absolute;
+	width: 7px;
+}
+.elfinder-resize-handle-point-nw {
+	left: 0;
+	margin-left: -3px;
+	margin-top: -3px;
+	top: 0;
+}
+.elfinder-resize-handle-point-n {
+	left: 50%;
+	margin-left: -3px;
+	margin-top: -3px;
+	top: 0;
+}
+.elfinder-resize-handle-point-ne {
+	margin-right: -3px;
+	margin-top: -3px;
+	right: 0;
+	top: 0;
+}
+.elfinder-resize-handle-point-e {
+	margin-right: -3px;
+	margin-top: -3px;
+	right: 0;
+	top: 50%;
+}
+.elfinder-resize-handle-point-se {
+	bottom: 0;
+	margin-bottom: -3px;
+	margin-right: -3px;
+	right: 0;
+}
+.elfinder-resize-handle-point-s {
+	bottom: 0;
+	left: 50%;
+	margin-bottom: -3px;
+	margin-left: -3px;
+}
+.elfinder-resize-handle-point-sw {
+	bottom: 0;
+	left: 0;
+	margin-bottom: -3px;
+	margin-left: -3px;
+}
+.elfinder-resize-handle-point-w {
+	left: 0;
+	margin-left: -3px;
+	margin-top: -3px;
+	top: 50%;
+}
+
+.ui-resizable-handle {
+	-ms-touch-action: none;
+	touch-action: none;
+
+	display: block;
+	font-size: 0.1px;
+	position: absolute;
+}
+
+.ui-resizable-nw {
+	cursor: nw-resize;
+	height: 9px;
+	left: 5px;
+	top: 5px;
+	width: 9px;
+}
+.ui-resizable-n {
+	cursor: n-resize;
+	height: 7px;
+	left: 0;
+	top: 5px;
+	width: 100%;
+}
+.ui-resizable-ne {
+	cursor: ne-resize;
+	height: 9px;
+	right: 5px;
+	top: 5px;
+	width: 9px;
+}
+.ui-resizable-e {
+	cursor: e-resize;
+	height: 100%;
+	right: 5px;
+	top: 0;
+	width: 7px;
+}
+.ui-resizable-se {
+	bottom: 1px;
+	cursor: se-resize;
+	height: 12px;
+	right: 1px;
+	width: 12px;
+}
+.ui-resizable-s {
+	bottom: 5px;
+	cursor: s-resize;
+	height: 7px;
+	left: 0;
+	width: 100%;
+}
+.ui-resizable-sw {
+	bottom: 5px;
+	cursor: sw-resize;
+	height: 9px;
+	left: 9px;
+	width: 9px;
+}
+.ui-resizable-w {
+	cursor: w-resize;
+	height: 100%;
+	left: 5px;
+	top: 0;
+	width: 7px;
+}

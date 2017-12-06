@@ -1,0 +1,66 @@
+.elfinder-dialog-resize {
+	@include make-row();
+
+	.elfinder-resize-type {
+		@include make-xs-column($grid-columns);
+
+		border-bottom: 1px solid $modal-footer-border-color;
+		margin-bottom: $line-height-computed;
+		margin-top: -1 * $modal-inner-padding;
+		padding: $modal-inner-padding;
+	}
+	.elfinder-resize-preview {
+		@include make-xs-column($grid-columns);
+		@include make-md-column($grid-columns / 3 * 2);
+
+		float: right !important;
+		height: 400px;
+
+	}
+	.elfinder-resize-control {
+		@include make-xs-column($grid-columns);
+		@include make-md-column($grid-columns / 3);
+	}
+
+	.ui-resizable-handle {
+		&.ui-resizable-w, &.ui-resizable-e {
+			width: 10px;
+		}
+		&.ui-resizable-n, &.ui-resizable-s {
+			height: 10px;
+		}
+		&.ui-resizable-nw, &.ui-resizable-ne, &.ui-resizable-se, &.ui-resizable-sw {
+			height: 10px;
+			width: 10px;
+		}
+
+		&.ui-resizable-nw {
+			margin-left: -7px;
+			margin-top: -7px;
+		}
+		&.ui-resizable-n {
+			margin-top: -7px;
+		}
+		&.ui-resizable-ne {
+			margin-right: -7px;
+			margin-top: -7px;
+		}
+		&.ui-resizable-e {
+			margin-right: -7px;
+		}
+		&.ui-resizable-se {
+			margin-bottom: -7px;
+			margin-right: -7px;
+		}
+		&.ui-resizable-s {
+			margin-bottom: -7px;
+		}
+		&.ui-resizable-sw {
+			margin-bottom: -7px;
+			margin-left: -7px;
+		}
+		&.ui-resizable-w {
+			margin-left: -7px;
+		}
+	}
+}

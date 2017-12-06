@@ -33,9 +33,9 @@
 						text-align: center;
 
 						&.elfinder-cwd-bgurl {
+							background-position: top center;
 							background-repeat: no-repeat;
 							background-size: contain;
-							background-position: top center;
 							min-height: floor($line-height-base * $font-size-h1);
 
 							&::after {

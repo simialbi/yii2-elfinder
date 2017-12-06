@@ -1,4 +1,4 @@
-.elfinder-buttonset, .ui-buttonset, .ui-controlgroup {
+.elfinder-buttonset, .ui-buttonset, .ui-dialog-buttonset, .ui-controlgroup {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
@@ -22,12 +22,17 @@
 	}
 }
 
-.ui-buttonset {
+.ui-buttonset, .ui-dialog-buttonset {
 	.ui-button + .ui-button,
 	.ui-button + .ui-helper-hidden-accessible + .ui-button,
 	.ui-button + .ui-buttonset,
+	.ui-button + .ui-dialog-buttonset,
 	.ui-buttonset + .ui-button,
-	.ui-buttonset + .ui-buttonset {
+	.ui-buttonset + .ui-buttonset,
+	.ui-buttonset + .ui-dialog-buttonset,
+	.ui-dialog-buttonset + .ui-button,
+	.ui-dialog-buttonset + .ui-buttonset,
+	.ui-dialog-buttonset + .ui-dialog-buttonset {
 		margin-left: -1px;
 	}
 }
@@ -51,6 +56,7 @@
 	.elfinder-buttonset,
 	.ui-button,
 	.ui-buttonset,
+	.ui-dialog-buttonset,
 	.ui-controlgroup {
 		float: left;
 	}
@@ -59,6 +65,7 @@
 	> .elfinder-buttonset,
 	> .ui-button,
 	> .ui-buttonset,
+	> .ui-dialog-buttonset,
 	> .ui-controlgroup {
 		margin-left: 5px;
 	}
@@ -83,7 +90,7 @@
 	}
 }
 
-.elfinder-buttonset, .ui-buttonset, .ui-controlgroup {
+.elfinder-buttonset, .ui-buttonset, .ui-dialog-buttonset, .ui-controlgroup {
 	> .elfinder-button, > .ui-button {
 		&:not(:first-child):not(:last-child) {
 			border-radius: 0;
@@ -100,7 +107,7 @@
 		}
 	}
 
-	> .elfinder-buttonset, > .ui-buttonset, > .ui-controlgroup {
+	> .elfinder-buttonset, > .ui-buttonset, > .ui-dialog-buttonset, > .ui-controlgroup {
 		float: left;
 
 		&:not(:first-child):not(:last-child) > .elfinder-button {

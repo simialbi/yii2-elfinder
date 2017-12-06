@@ -1,0 +1,27 @@
+.elfinder-info-title {
+	@include clearfix;
+	padding-bottom: $padding-base-vertical;
+
+	.elfinder-cwd-icon {
+		display: block;
+		float: left;
+		font-size: $font-size-h1;
+		height: floor($line-height-base * $font-size-h1);
+		padding: 0 ($grid-gutter-width / 2);
+		text-align: center;
+		width: floor($line-height-base * $font-size-h1) + $grid-gutter-width;
+
+		&.elfinder-cwd-bgurl {
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&::after {
+				content: "";
+			}
+		}
+	}
+	strong {
+		display: block;
+	}
+}

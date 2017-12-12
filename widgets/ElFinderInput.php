@@ -113,7 +113,6 @@ class ElFinderInput extends InputWidget {
 	 */
 	public function run() {
 		$options    = $this->options;
-		$expression = '';
 
 		$label = Yii::t('simialbi/elfinder/input-widget', 'Choose file');
 		if ($this->hasModel()) {
@@ -168,7 +167,7 @@ class ElFinderInput extends InputWidget {
 			var fullUrl = $fullUrl,
 				parser = document.createElement('a');
 			parser.href = file.url;
-			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url); $expression
+			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url).trigger('change');
 		}");
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();

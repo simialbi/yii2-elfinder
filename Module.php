@@ -7,6 +7,7 @@
 namespace simialbi\yii2\elfinder;
 
 use yii\helpers\ArrayHelper;
+use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use Yii;
 
@@ -95,7 +96,7 @@ class Module extends \simialbi\yii2\base\Module {
 		foreach ($this->connectionSets as $name => $connectionSet) {
 			for ($i = 0; $i < count($connectionSet); $i++) {
 				$connectionSet[$i]      = Yii::createObject($connectionSet[$i]);
-				$connectionSet[$i]->URL = Url::to(['/'.$this->id.'/proxy/index', 'baseUrl' => $connectionSet[$i]->URL]);
+				$connectionSet[$i]->URL = Url::to(['/'.$this->id.'/proxy/index', 'baseUrl' => StringHelper::base64UrlEncode($connectionSet[$i]->URL)]).'&path=';
 			}
 
 			$behaviors = ArrayHelper::getValue($this->volumeBehaviors, $name, []);

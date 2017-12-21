@@ -96,7 +96,7 @@ class Module extends \simialbi\yii2\base\Module implements BootstrapInterface {
 		foreach ($this->connectionSets as $name => $connectionSet) {
 			for ($i = 0; $i < count($connectionSet); $i++) {
 				$connectionSet[$i]      = Yii::createObject($connectionSet[$i]);
-				$connectionSet[$i]->URL = Url::to(['proxy/index', 'baseUrl' => $connectionSet[$i]->URL]);
+				$connectionSet[$i]->URL = Url::to(['/'.$this->id.'/proxy/index', 'baseUrl' => $connectionSet[$i]->URL]);
 			}
 
 			$behaviors = ArrayHelper::getValue($this->volumeBehaviors, $name, []);

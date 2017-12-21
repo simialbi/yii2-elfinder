@@ -112,7 +112,8 @@ class ElFinderInput extends InputWidget {
 	 * @inheritdoc
 	 */
 	public function run() {
-		$options    = $this->options;
+		$options         = $this->options;
+		$cropperCallback = '';
 
 		$label = Yii::t('simialbi/elfinder/input-widget', 'Choose file');
 		if ($this->hasModel()) {
@@ -128,12 +129,13 @@ class ElFinderInput extends InputWidget {
 		}
 		$html .= Html::beginTag('div', ['class' => 'input-group-btn']);
 		if ($this->addImageCrop && class_exists('simialbi\yii2\crop\Cropper')) {
-			$cropperOptions = ArrayHelper::merge([
+			$cropperOptions  = ArrayHelper::merge([
 				'type'    => 'modal',
 				'image'   => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
 				'options' => ['id' => $options['id'].'-crop']
 			], $this->cropperOptions);
-			$html           .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
+			$html            .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
+			$cropperCallback = "jQuery('#{$options['id']}-crop > img').cropper('replace', file.url);";
 		}
 		$html .= Html::button($this->icon, [
 			'id'    => $options['id'].'-btn',
@@ -168,6 +170,7 @@ class ElFinderInput extends InputWidget {
 				parser = document.createElement('a');
 			parser.href = file.url;
 			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url).trigger('change');
+			$cropperCallback
 		}");
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();

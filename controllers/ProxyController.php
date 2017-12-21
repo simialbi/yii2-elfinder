@@ -6,7 +6,8 @@
 
 namespace simialbi\yii2\elfinder\controllers;
 
-use yii\httpclient\Client;
+use linslin\yii2\curl\Curl;
+use yii\helpers\StringHelper;
 use yii\web\Controller;
 use Yii;
 
@@ -26,23 +27,23 @@ class ProxyController extends Controller {
 	 * @return mixed
 	 */
 	public function actionIndex($baseUrl, $path) {
-		$client = new Client([
-			'baseUrl' => $baseUrl
-		]);
+		$curl = new Curl();
+		$url  = rtrim(StringHelper::base64UrlDecode($baseUrl), '/').'/'.ltrim($path, '/');
 
 		$method = Yii::$app->request->method;
-		$data   = ($method === 'get') ? Yii::$app->request->queryParams : Yii::$app->request->bodyParams;
-		if (!method_exists($client, $method)) {
+		if (!method_exists($curl, $method)) {
 			$method = 'get';
 		}
-		$request = $client->$method($path, $data, Yii::$app->request->headers->toArray());
-		/* @var $request \yii\httpclient\Request */
-		$response = $request->send();
 
-		foreach ($response->headers->toArray() as $name => $header) {
-			Yii::$app->response->headers->set($name, $header);
+		$response = $curl->$method($url);
+		$headers  = $curl->responseHeaders;
+
+		foreach ($headers as $header => $value) {
+			if (strcasecmp('content-type', $header) === 0) {
+				Yii::$app->response->headers->set('Content-Type', $value);
+			}
 		}
 
-		return $response->data;
+		return $response;
 	}
 }

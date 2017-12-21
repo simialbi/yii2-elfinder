@@ -10,9 +10,9 @@ namespace simialbi\yii2\elfinder;
 
 use yii\base\Arrayable;
 use yii\base\ArrayableTrait;
-use yii\base\Object;
+use yii\base\BaseObject;
 
-class ElFinderConfiguration extends Object implements Arrayable {
+class ElFinderConfiguration extends BaseObject implements Arrayable {
 	use ArrayableTrait;
 
 	/**

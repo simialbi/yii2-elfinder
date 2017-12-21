@@ -1,9 +1,8 @@
 <?php
 namespace simialbi\yii2\elfinder\widgets;
 
-
 use simialbi\yii2\elfinder\ElFinderAsset;
-use yii\base\Widget;
+use simialbi\yii2\widgets\Widget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -356,8 +355,10 @@ class ElFinder extends Widget {
 
 	/**
 	 * Registers the elfinder javascript assets and builds the required js for the widget
+	 *
+	 * @param string $pluginName plugin name
 	 */
-	protected function registerPlugin() {
+	protected function registerPlugin($pluginName = 'elfinder') {
 		$id   = $this->options['id'];
 		$view = $this->getView();
 
@@ -365,7 +366,7 @@ class ElFinder extends Widget {
 
 		$js = [
 			"jQuery('#$id').data('cssautoloadHide', jQuery('<style>.elfinder{visibility:hidden;overflow:hidden}</style>'));",
-			"jQuery('#$id').elfinder({$this->getClientOptions()});"
+			"jQuery('#$id').$pluginName({$this->getClientOptions()});"
 		];
 
 		$view->registerJs(implode("\n", $js), View::POS_READY);

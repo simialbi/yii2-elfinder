@@ -2,11 +2,11 @@
 
 namespace simialbi\yii2\elfinder\widgets;
 
+use simialbi\yii2\widgets\InputWidget;
 use yii\bootstrap\Html;
 use yii\bootstrap\Modal;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
-use yii\widgets\InputWidget;
 use Yii;
 
 /**
@@ -178,16 +178,5 @@ class ElFinderInput extends InputWidget {
 		$html .= ob_get_clean();
 
 		return $html;
-	}
-
-	/**
-	 * Init translations
-	 */
-	public function registerTranslations() {
-		Yii::$app->i18n->translations['simialbi/elfinder*'] = [
-			'class'          => 'yii\i18n\GettextMessageSource',
-			'sourceLanguage' => 'en-US',
-			'basePath'       => __DIR__.'/messages'
-		];
 	}
 }

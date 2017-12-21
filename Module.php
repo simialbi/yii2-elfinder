@@ -1,18 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: karlen
- * Date: 30.08.2017
- * Time: 10:43
+ * @package yii2-simialbi-base
+ * @author Simon Karlen <simi.albi@gmail.com>
  */
 
 namespace simialbi\yii2\elfinder;
 
-
+use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
 use Yii;
+use yii\helpers\Url;
 
-class Module extends \yii\base\Module {
+class Module extends \simialbi\yii2\base\Module implements BootstrapInterface {
 	/**
 	 * @var string the namespace that controller classes are in.
 	 * This namespace will be used to load controller classes by prepending it to the controller
@@ -96,7 +95,8 @@ class Module extends \yii\base\Module {
 		$components = [];
 		foreach ($this->connectionSets as $name => $connectionSet) {
 			for ($i = 0; $i < count($connectionSet); $i++) {
-				$connectionSet[$i] = Yii::createObject($connectionSet[$i]);
+				$connectionSet[$i]      = Yii::createObject($connectionSet[$i]);
+				$connectionSet[$i]->URL = Url::to(['proxy/index', 'baseUrl' => $connectionSet[$i]->URL]);
 			}
 
 			$behaviors = ArrayHelper::getValue($this->volumeBehaviors, $name, []);
@@ -111,13 +111,13 @@ class Module extends \yii\base\Module {
 	}
 
 	/**
-	 * Init translations
+	 * @inheritdoc
 	 */
-	public function registerTranslations() {
-		Yii::$app->i18n->translations['simialbi/elfinder*'] = [
-			'class'          => 'yii\i18n\GettextMessageSource',
-			'sourceLanguage' => 'en-US',
-			'basePath'       => __DIR__.'/messages'
-		];
+	public function bootstrap($app) {
+		if ($app instanceof \yii\web\Application) {
+			$app->urlManager->addRules([
+				$this->id.'/proxy/<path:[a-zA-Z0-9-\/]+>' => $this->id.'/proxy/index'
+			]);
+		}
 	}
 }

@@ -6,12 +6,11 @@
 
 namespace simialbi\yii2\elfinder;
 
-use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
-use Yii;
 use yii\helpers\Url;
+use Yii;
 
-class Module extends \simialbi\yii2\base\Module implements BootstrapInterface {
+class Module extends \simialbi\yii2\base\Module {
 	/**
 	 * @var string the namespace that controller classes are in.
 	 * This namespace will be used to load controller classes by prepending it to the controller
@@ -108,16 +107,5 @@ class Module extends \simialbi\yii2\base\Module implements BootstrapInterface {
 		$this->registerTranslations();
 
 		parent::init();
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function bootstrap($app) {
-		if ($app instanceof \yii\web\Application) {
-			$app->urlManager->addRules([
-				$this->id.'/proxy/<path:[a-zA-Z0-9-\/]+>' => $this->id.'/proxy/index'
-			]);
-		}
 	}
 }

@@ -172,10 +172,17 @@ class ElFinderInput extends InputWidget {
 			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url).trigger('change');
 			$cropperCallback
 		}");
+		if (!isset($elfinderOptions['id'])) {
+			$elfinderOptions['id'] = $this->options['id'].'-elfinder';
+		}
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();
 
 		$html .= ob_get_clean();
+
+		$this->view->registerJs("jQuery(document).one('shown.bs.modal', '#{$options['id']}-modal', function () {
+			jQuery('#{$elfinderOptions['id']}').trigger('resize');
+		});");
 
 		return $html;
 	}

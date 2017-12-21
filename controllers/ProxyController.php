@@ -9,6 +9,8 @@ namespace simialbi\yii2\elfinder\controllers;
 use linslin\yii2\curl\Curl;
 use yii\helpers\StringHelper;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use Yii;
 
 /**
@@ -25,6 +27,7 @@ class ProxyController extends Controller {
 	 * @param string $path
 	 *
 	 * @return mixed
+	 * @throws NotFoundHttpException
 	 */
 	public function actionIndex($baseUrl, $path) {
 		$curl = new Curl();
@@ -38,11 +41,20 @@ class ProxyController extends Controller {
 		$response = $curl->$method($url);
 		$headers  = $curl->responseHeaders;
 
+		if (false === $response) {
+			throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
+		}
+
 		foreach ($headers as $header => $value) {
 			if (strcasecmp('content-type', $header) === 0) {
-				Yii::$app->response->headers->set('Content-Type', $value);
+				Yii::$app->response->headers
+					->set('Content-Type', $value)
+					->set('Content-Transfer-Encoding', 'binary');
+				break;
 			}
 		}
+
+		Yii::$app->response->format = Response::FORMAT_RAW;
 
 		return $response;
 	}

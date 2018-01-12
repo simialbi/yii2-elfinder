@@ -166,10 +166,10 @@ class ElFinderInput extends InputWidget {
 		$elfinderOptions['sound']           = false;
 		$elfinderOptions['instanceName']    = $this->instanceName;
 		$elfinderOptions['getFileCallback'] = new JsExpression("function (file) {
-			var fullUrl = $fullUrl,
-				parser = document.createElement('a');
-			parser.href = file.url;
-			jQuery('#{$options['id']}').val(parser.pathname && !fullUrl ? parser.pathname : file.url).trigger('change');
+//			var fullUrl = $fullUrl,
+//				parser = document.createElement('a');
+//			parser.href = file.url;
+			jQuery('#{$options['id']}').val(file.url).trigger('change');
 			$cropperCallback
 		}");
 		if (!isset($elfinderOptions['id'])) {

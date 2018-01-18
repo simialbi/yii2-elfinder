@@ -31,7 +31,11 @@ class ProxyController extends Controller {
 	 */
 	public function actionIndex($baseUrl, $path) {
 		$curl = new Curl();
-		$url  = rtrim(StringHelper::base64UrlDecode($baseUrl), '/').'/'.ltrim($path, '/');
+		$url  = str_replace(' ', '%20', sprintf(
+			'%s/%s',
+			rtrim(StringHelper::base64UrlDecode($baseUrl), '/'),
+			ltrim($path, '/')
+		));
 
 		$method = Yii::$app->request->method;
 		if (!method_exists($curl, $method)) {

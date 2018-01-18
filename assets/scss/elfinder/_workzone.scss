@@ -18,7 +18,12 @@
 	> .elfinder-cwd-wrapper {
 		.elfinder-cwd {
 			&.elfinder-cwd-view-icons {
-				@include flex-container(row, flex-start, wrap, flex-start);
+				display: grid;
+				grid-auto-columns: max-content;
+				grid-auto-flow: row;
+				grid-auto-rows: max-content;
+				grid-gap: $line-height-computed;
+				grid-template-columns: repeat(auto-fill, ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4));
 
 				.elfinder-cwd-file {
 					margin: 1px;

@@ -25,6 +25,16 @@
 	}
 }
 
+.elfinder-quicklook-fullscreen {
+	bottom: 0;
+	display: block;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
 .elfinder-quicklook-titlebar {
 	@include clearfix;
 
@@ -52,10 +62,18 @@
 		right: $modal-title-padding;
 		top: 50%;
 
+		&.elfinder-icon-minimize {
+			display: none;
+			pointer-events: none;
+		}
 		&::after {
 			content: map-get($fa-icons, times);
 		}
 	}
+}
+
+.elfinder-quicklook-preview {
+	text-align: center;
 }
 
 .elfinder-quicklook-preview, .elfinder-quicklook-info-wrapper, .elfinder-quicklook-cover {
@@ -70,8 +88,9 @@
 	height: calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
 
 	&:empty {
-		display: none;
+		display: none !important;
 		height: 0;
+		padding: 0;
 	}
 }
 

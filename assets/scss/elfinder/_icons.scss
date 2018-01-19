@@ -1096,6 +1096,7 @@ $icons: (
 	elfinder-quicklook-navbar: (
 		prev: map-get($fa-icons, arrow-left),
 		fullscreen: map-get($fa-icons, expand),
+		fullscreen-off: map-get($fa-icons, compress),
 		next: map-get($fa-icons, arrow-right)
 	)
 );

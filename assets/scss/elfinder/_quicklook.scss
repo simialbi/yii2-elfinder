@@ -35,6 +35,8 @@
 	top: 0;
 
 	.elfinder-quicklook-navbar {
+		-moz-opacity: 1 !important;
+		opacity: 1 !important;
 		cursor: default;
 		display: block !important;
 		left: 0 !important;

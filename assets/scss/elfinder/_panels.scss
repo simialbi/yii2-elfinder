@@ -42,7 +42,7 @@
 			&::after {
 				@include translate(-50%, -50%);
 
-				content: $fa-var-ellipsis-v;
+				content: fa-content($fa-var-ellipsis-v);
 				left: 50%;
 				position: absolute;
 				top: 50%;

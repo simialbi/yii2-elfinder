@@ -113,7 +113,7 @@
 			@include fa-icon;
 
 			&::after {
-				content: $fa-var-caret-right;
+				content: fa-content($fa-var-caret-right);
 			}
 		}
 		> .elfinder-contextmenu-extra-icon {

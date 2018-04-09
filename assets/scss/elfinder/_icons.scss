@@ -320,7 +320,7 @@ $icons: (
 					@include fa-icon;
 
 					&::after {
-						content: $content;
+						content: fa-content($content);
 					}
 				}
 			} @else {
@@ -328,7 +328,7 @@ $icons: (
 					@include fa-icon;
 
 					&::after {
-						content: $content;
+						content: fa-content($content);
 					}
 				}
 			}
@@ -340,11 +340,11 @@ $icons: (
 			@each $icon-name, $content in $type-icons {
 				@if ($icon-name == default) {
 					&::after {
-						content: $content;
+						content: fa-content($content);
 					}
 				} @else {
 					&.#{$icon-type}-icon-#{$icon-name}::after {
-						content: $content;
+						content: fa-content($content);
 					}
 				}
 			}
@@ -383,15 +383,15 @@ $icons: (
 
 	&.elfinder-navbar-collapsed {
 		.elfinder-navbar-arrow::after {
-			content: $fa-var-caret-right;
+			content: fa-content($fa-var-caret-right);
 		}
 		&.elfinder-navbar-expanded {
 			.elfinder-navbar-arrow::after {
-				content: $fa-var-caret-down;
+				content: fa-content($fa-var-caret-right);
 			}
 			&:not(.elfinder-navbar-root) {
 				.elfinder-navbar-icon::after {
-					content: $fa-var-folder-open;
+					content: fa-content($fa-var-caret-right);
 				}
 			}
 		}

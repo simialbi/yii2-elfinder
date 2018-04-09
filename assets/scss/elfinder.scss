@@ -2,8 +2,6 @@
 @import "bootstrap/mixins";
 @import "elfinder/mixins";
 
-@import "../../vendor/rmrevin/yii2-fontawesome/assets/web-fonts-with-css/scss/variables";
-
 .elfinder {
 	@import "elfinder/icons";
 
@@ -35,14 +33,14 @@
 			color: $brand-info;
 
 			&::after {
-				content: $fa-var-arrow-right;
+				content: fa-content($fa-var-arrow-right);
 			}
 		}
 		&.elfinder-drag-helper-plus .elfinder-drag-helper-icon-status {
 			color: $brand-success;
 
 			&::after {
-				content: $fa-var-plus;
+				content: fa-content($fa-var-plus);
 			}
 		}
 
@@ -57,7 +55,7 @@
 			right: 0;
 
 			&::after {
-				content: $fa-var-ban;
+				content: fa-content($fa-var-ban);
 			}
 		}
 		.elfinder-cwd-icon {

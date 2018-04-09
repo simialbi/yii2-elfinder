@@ -27,7 +27,8 @@ class ElFinderAsset extends AssetBundle {
 	 * @var array list of bundle class names that this bundle depends on.
 	 */
 	public $depends = [
-		'simialbi\yii2\elfinder\ElFinderPluginAsset'
+		'simialbi\yii2\elfinder\ElFinderPluginAsset',
+		'rmrevin\yii\fontawesome\AssetBundle'
 	];
 
 	/**

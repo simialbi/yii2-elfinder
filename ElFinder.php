@@ -382,6 +382,7 @@ class ElFinder extends Component {
 
 	/**
 	 * @inheritdoc
+	 * @throws InvalidConfigException
 	 */
 	public function init() {
 		if (empty($this->roots)) {

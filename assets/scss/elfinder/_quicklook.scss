@@ -77,7 +77,7 @@
 			pointer-events: none;
 		}
 		&::after {
-			content: map-get($fa-icons, times);
+			content: $fa-var-times;
 		}
 	}
 }

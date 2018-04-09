@@ -42,7 +42,7 @@
 			&::after {
 				@include translate(-50%, -50%);
 
-				content: map-get($fa-icons, ellipsis-v);
+				content: $fa-var-ellipsis-v;
 				left: 50%;
 				position: absolute;
 				top: 50%;

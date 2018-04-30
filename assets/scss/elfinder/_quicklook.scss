@@ -117,9 +117,19 @@
 	}
 	> .elfinder-cwd-icon {
 		font-size: $font-size-h1;
-		padding-right: 10px;
+
+		&.elfinder-cwd-bgurl {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&::after {
+				content: "";
+			}
+		}
 	}
 	> .elfinder-quicklook-info {
+		padding-left: 10px;
 		width: 10000px;
 
 		> .elfinder-quicklook-info-data {

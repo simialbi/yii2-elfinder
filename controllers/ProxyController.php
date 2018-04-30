@@ -42,6 +42,8 @@ class ProxyController extends Controller {
 			$method = 'get';
 		}
 
+		$curl->setOption(CURLOPT_FOLLOWLOCATION, true);
+
 		$response = $curl->$method($url);
 		$headers  = $curl->responseHeaders;
 

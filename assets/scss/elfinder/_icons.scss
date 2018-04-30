@@ -387,11 +387,11 @@ $icons: (
 		}
 		&.elfinder-navbar-expanded {
 			.elfinder-navbar-arrow::after {
-				content: fa-content($fa-var-caret-right);
+				content: fa-content($fa-var-caret-down);
 			}
 			&:not(.elfinder-navbar-root) {
 				.elfinder-navbar-icon::after {
-					content: fa-content($fa-var-caret-right);
+					content: fa-content($fa-var-folder-open);
 				}
 			}
 		}

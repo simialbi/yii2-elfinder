@@ -14,7 +14,10 @@
 	@include gradient-striped();
 	@include transition(width .6s ease);
 
-	background-color: $progress-bar-bg;
+	background: {
+		color: $progress-bar-bg;
+		size: 40px 40px;
+	}
 	color: $progress-bar-color;
 	float: left;
 	font-size: $font-size-small;

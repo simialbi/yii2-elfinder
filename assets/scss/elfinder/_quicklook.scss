@@ -116,12 +116,17 @@
 		vertical-align: top;
 	}
 	> .elfinder-cwd-icon {
-		font-size: $font-size-h1;
+		font-size: 2 * $font-size-h1;
+
+		&::before {
+			@include translate(-50%, 0);
+		}
 
 		&.elfinder-cwd-bgurl {
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;
+			min-width: 3 * $grid-gutter-width;
 
 			&::after {
 				content: "";

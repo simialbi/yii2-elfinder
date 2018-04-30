@@ -1,0 +1,10 @@
+.elfinder-dialog-notfiy {
+	.elfinder-notify {
+		.elfinder-dialog-icon {
+			display: inline-block;
+			font-size: $font-size-h1;
+			vertical-align: middle;
+			width: floor($line-height-base * $font-size-h1);
+		}
+	}
+}

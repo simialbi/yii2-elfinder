@@ -1,0 +1,25 @@
+.elfinder-notify-progressbar {
+	@include box-shadow(inset 0 1px 2px rgba($gray-base, .1));
+
+	background-color: $progress-bg;
+	border-radius: $progress-border-radius;
+	height: $line-height-computed;
+	margin-bottom: $line-height-computed;
+	overflow: hidden;
+}
+
+.elfinder-notify-progress {
+	@include animation(progress-bar-stripes 2s linear infinite);
+	@include box-shadow(inset 0 1px 2px rgba($gray-base, .1));
+	@include gradient-striped();
+	@include transition(width .6s ease);
+
+	background-color: $progress-bar-bg;
+	color: $progress-bar-color;
+	float: left;
+	font-size: $font-size-small;
+	height: 100%;
+	line-height: $line-height-computed;
+	text-align: center;
+	width: 100%;
+}

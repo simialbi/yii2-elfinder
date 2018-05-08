@@ -154,6 +154,29 @@
 						}
 					}
 				}
+				&.elfinder-table-header-sticky {
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+
+					td {
+						position: relative;
+
+						.ui-resizable-handle {
+							font-size: $font-size-base;
+							right: 0;
+
+							&::after {
+								@include translate(-50%, -50%);
+
+								left: 50%;
+								position: absolute;
+								top: 50%;
+							}
+						}
+					}
+				}
 			}
 		}
 	}

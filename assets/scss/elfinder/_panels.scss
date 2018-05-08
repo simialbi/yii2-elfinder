@@ -28,7 +28,7 @@
 		overflow: auto;
 		padding-right: 0;
 		position: relative;
-		width: percentage(4 / $grid-columns);
+		width: percentage(3 / $grid-columns);
 		z-index: $zindex-navbar - 1;
 
 		> .ui-resizable-handle {
@@ -55,7 +55,7 @@
 		height: auto;
 		overflow: auto;
 		position: absolute;
-		width: percentage(4 / $grid-columns);
+		width: percentage(3 / $grid-columns);
 	}
 	> .elfinder-cwd-wrapper {
 		float: none;

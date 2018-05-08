@@ -37,11 +37,11 @@
 	.elfinder-quicklook-navbar {
 		-moz-opacity: 1 !important;
 		opacity: 1 !important;
+		bottom: 0 !important;
 		cursor: default;
 		display: block !important;
 		left: 0 !important;
-		position: static !important;
-		top: 0 !important;
+		position: absolute !important;
 	}
 }
 
@@ -90,7 +90,7 @@
 	height: 100%;
 	overflow: auto;
 	padding: $modal-inner-padding;
-	position: relative;
+	position: absolute;
 	width: 100%;
 
 	height: -webkit-calc(100% - #{ceil($font-size-h4 * $modal-title-line-height) + (2 * $modal-title-padding)} - #{$font-size-h2 + (2 * $modal-inner-padding)});
@@ -154,7 +154,11 @@
 	@include clearfix;
 
 	border-top: 1px solid $modal-footer-border-color;
+	bottom: 0;
+	left: 0;
 	padding: $modal-inner-padding;
+	position: absolute;
+	right: 0;
 	text-align: center;
 
 	.elfinder-quicklook-navbar-icon {

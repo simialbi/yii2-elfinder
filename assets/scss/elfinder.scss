@@ -115,11 +115,44 @@
 		}
 	}
 
-	.elfinder-button-search {
-		> .elfinder-button-menu {
-			left: auto;
-			right: 0;
-			min-width: 250px;
+	.elfinder-button-search-menu {
+		background: $panel-bg;
+		border: 1px solid $panel-default-border;
+		left: auto;
+		padding: $panel-heading-padding;
+		position: absolute;
+		right: 0;
+		top: 55px;
+		width: 300px;
+
+		> .buttonset {
+			@include clearfix;
+
+			display: block;
+
+			&:first-child {
+				margin-bottom: $padding-small-vertical;
+			}
+		}
+	}
+	.elfinder-button-menu {
+		> .elfinder-button-menu-item {
+			> .ui-icon {
+				&.ui-icon-arrowthick-1-n, &.ui-icon-arrowthick-1-s {
+					display: none;
+				}
+			}
+
+			&.elfinder-button-menu-item-selected-asc {
+				> .ui-icon.ui-icon-arrowthick-1-n{
+					display: block;
+				}
+			}
+			&.elfinder-button-menu-item-selected-desc {
+				> .ui-icon.ui-icon-arrowthick-1-s {
+					display: block;
+				}
+			}
 		}
 	}
 

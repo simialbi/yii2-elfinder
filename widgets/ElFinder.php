@@ -3,6 +3,7 @@
 namespace simialbi\yii2\elfinder\widgets;
 
 use simialbi\yii2\elfinder\ElFinderAsset;
+use simialbi\yii2\elfinder\ElFinderPluginAsset;
 use simialbi\yii2\widgets\Widget;
 use Yii;
 use yii\base\InvalidConfigException;
@@ -341,7 +342,7 @@ class ElFinder extends Widget {
 		}
 		if (empty($options['baseUrl'])) {
 			try {
-				$bundle             = $this->view->assetManager->getBundle(ElFinderAsset::class);
+				$bundle             = $this->view->assetManager->getBundle(ElFinderPluginAsset::class);
 				$options['baseUrl'] = $this->view->assetManager->getAssetUrl($bundle, '');
 			} catch (InvalidConfigException $e) {
 				unset($options['baseUrl']);

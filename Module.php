@@ -11,6 +11,11 @@ use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use Yii;
 
+/**
+ * ElFinder Module class
+ *
+ * @package simialbi\yii2\elfinder
+ */
 class Module extends \simialbi\yii2\base\Module {
 	/**
 	 * @var string the namespace that controller classes are in.
@@ -89,7 +94,9 @@ class Module extends \simialbi\yii2\base\Module {
 	public $volumeBehaviors = [];
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
+	 * @throws \yii\base\InvalidConfigException
+	 * @throws \ReflectionException
 	 */
 	public function init() {
 		$components = [];

@@ -179,5 +179,20 @@
 				}
 			}
 		}
+		.elfinder-cwd-message-board {
+			height: calc(100% - .01px);
+			left: 0;
+			margin: 0;
+			padding: 0;
+			pointer-events: none;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+			width: 100%;
+
+			.elfinder-cwd-trash {
+				display: none;
+			}
+		}
 	}
 }

@@ -40,6 +40,14 @@
 		@include opacity(.65);
 		cursor: $cursor-disabled;
 	}
+	&.ui-button-icon-only {
+		@include text-hide;
+
+		.ui-icon, .ui-button-icon {
+			font-size: $font-size-base;
+			line-height: $line-height-base;
+		}
+	}
 
 	&.elfinder-button-search {
 		background-color: transparent;

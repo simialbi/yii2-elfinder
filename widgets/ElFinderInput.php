@@ -3,11 +3,11 @@
 namespace simialbi\yii2\elfinder\widgets;
 
 use simialbi\yii2\widgets\InputWidget;
+use Yii;
 use yii\bootstrap\Html;
 use yii\bootstrap\Modal;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
-use Yii;
 
 /**
  * ElFinderInput widget renders an bootstrap form group with input group button which opens an elfinder modal for
@@ -48,51 +48,59 @@ class ElFinderInput extends InputWidget {
 	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */
 	public $options = ['class' => 'form-control'];
-
 	/**
 	 * @var string label text. It will NOT be HTML-encoded. Therefore you can pass in HTML code
 	 * such as an image tag. If this is is coming from end users, you should [[encode()]]
 	 * it to prevent XSS attacks.
 	 */
 	public $label;
-
 	/**
-	 * @var string
+	 * @var string Elfinder button icon
 	 */
 	public $icon = '<span class="glyphicon glyphicon-option-horizontal"></span>';
-
 	/**
-	 * @var string
+	 * @var string Icon in modal header
 	 */
 	public $modalIcon = '<span class="glyphicon glyphicon-folder-open"></span>';
-
 	/**
 	 * @var string name of the instance used in module configuration (defaults to default)
 	 */
 	public $instanceName = 'default';
-
 	/**
 	 * @var array ElFinder widget configuration options
 	 */
 	public $elfinderOptions = [];
-
 	/**
 	 * @var boolean add an image cropper widget (requires demi/cropper)
 	 */
 	public $addImageCrop = false;
-
 	/**
 	 * @var array options for image cropper
 	 */
 	public $cropperOptions = [];
-
+	/**
+	 * @var boolean add a preview button
+	 */
+	public $addPreview = false;
+	/**
+	 * @var string Preview button content
+	 */
+	public $previewContent = '<span class="glyphicon glyphicon-eye-open"></span>';
+	/**
+	 * @var array Preview button options
+	 */
+	public $previewOptions = [
+		'class'  => ['btn', 'btn-default'],
+		'target' => '_blank'
+	];
 	/**
 	 * @var boolean return only path or full url
 	 */
 	public $onlyPath = false;
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
+	 * @throws \ReflectionException
 	 */
 	public function init() {
 		if (!isset($this->options['id'])) {
@@ -110,6 +118,7 @@ class ElFinderInput extends InputWidget {
 
 	/**
 	 * @inheritdoc
+	 * @throws \Exception
 	 */
 	public function run() {
 		$options         = $this->options;
@@ -128,21 +137,25 @@ class ElFinderInput extends InputWidget {
 			$html .= Html::textInput($this->name, $this->value, $options);
 		}
 		$html .= Html::beginTag('div', ['class' => 'input-group-btn']);
+		if ($this->addPreview) {
+			$value = $this->hasModel() ? $this->model->{$this->attribute} : $this->value;
+			$html  .= Html::a($this->previewContent, $value, $this->previewOptions);
+		}
 		if ($this->addImageCrop && class_exists('simialbi\yii2\crop\Cropper')) {
 			$cropperOptions  = ArrayHelper::merge([
 				'type'    => 'modal',
 				'image'   => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
-				'options' => ['id' => $options['id'].'-crop']
+				'options' => ['id' => $options['id'] . '-crop']
 			], $this->cropperOptions);
 			$html            .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
 			$cropperCallback = "jQuery('#{$options['id']}-crop > img').cropper('replace', file.url);";
 		}
 		$html .= Html::button($this->icon, [
-			'id'    => $options['id'].'-btn',
+			'id'    => $options['id'] . '-btn',
 			'class' => ['btn', 'btn-default'],
 			'data'  => [
 				'toggle' => 'modal',
-				'target' => '#'.$options['id'].'-modal'
+				'target' => '#' . $options['id'] . '-modal'
 			]
 		]);
 		$html .= Html::endTag('div'); // <!-- input-group-btn -->
@@ -150,13 +163,13 @@ class ElFinderInput extends InputWidget {
 
 		ob_start();
 		Modal::begin([
-			'id'     => $options['id'].'-modal',
+			'id'     => $options['id'] . '-modal',
 			'size'   => Modal::SIZE_LARGE,
-			'header' => $this->modalIcon.Html::tag('h4', $label, ['class' => 'modal-title']),
+			'header' => $this->modalIcon . Html::tag('h4', $label, ['class' => 'modal-title']),
 			'footer' => Html::button(Yii::t('simialbi/elfinder/input-widget', 'Close'), [
 					'class'        => ['btn', 'btn-default'],
 					'data-dismiss' => 'modal'
-				]).Html::button(Yii::t('simialbi/elfinder/input-widget', 'Save'), [
+				]) . Html::button(Yii::t('simialbi/elfinder/input-widget', 'Save'), [
 					'class'        => ['btn', 'btn-primary', 'pull-right'],
 					'data-dismiss' => 'modal'
 				])
@@ -173,7 +186,7 @@ class ElFinderInput extends InputWidget {
 			$cropperCallback
 		}");
 		if (!isset($elfinderOptions['id'])) {
-			$elfinderOptions['id'] = $this->options['id'].'-elfinder';
+			$elfinderOptions['id'] = $this->options['id'] . '-elfinder';
 		}
 		echo ElFinder::widget($elfinderOptions);
 		Modal::end();

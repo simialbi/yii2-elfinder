@@ -165,7 +165,7 @@ class ElFinderInput extends InputWidget {
 		Modal::begin([
 			'id'     => $options['id'] . '-modal',
 			'size'   => Modal::SIZE_LARGE,
-			'header' => $this->modalIcon . Html::tag('h4', $label, ['class' => 'modal-title']),
+			'header' => $options['modalIcon'] . Html::tag('h4', $label, ['class' => 'modal-title']),
 			'footer' => Html::button(Yii::t('simialbi/elfinder/input-widget', 'Close'), [
 					'class'        => ['btn', 'btn-default'],
 					'data-dismiss' => 'modal'

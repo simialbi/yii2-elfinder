@@ -8,5 +8,6 @@
 
 namespace simialbi\yii2\elfinder\elfinder;
 
-class ElFinder extends \elFinder {
+class ElFinder extends \elFinder
+{
 }

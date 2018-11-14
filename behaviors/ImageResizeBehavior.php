@@ -46,104 +46,108 @@ use yii\base\Behavior;
  * @package simialbi\yii2\elfinder\behaviors
  * @author Simon Karlen <simi.albi@gmail.com>
  */
-class ImageResizeBehavior extends Behavior {
-	use BehaviorTrait;
+class ImageResizeBehavior extends Behavior
+{
+    use BehaviorTrait;
 
-	/**
-	 * @var integer Maximal width of image
-	 */
-	public $maxWidth = 1024;
-	/**
-	 * @var integer Maximal height of image
-	 */
-	public $maxHeight = 1024;
-	/**
-	 * @var integer Reduce quality
-	 */
-	public $quality = 95;
+    /**
+     * @var integer Maximal width of image
+     */
+    public $maxWidth = 1024;
+    /**
+     * @var integer Maximal height of image
+     */
+    public $maxHeight = 1024;
+    /**
+     * @var integer Reduce quality
+     */
+    public $quality = 95;
 
-	/**
-	 * @var boolean Preserve EXIF data (Imagick only)
-	 */
-	public $preserveExif = false;
+    /**
+     * @var boolean Preserve EXIF data (Imagick only)
+     */
+    public $preserveExif = false;
 
-	/**
-	 * @var boolean Force quality changing even if image is inside max bounds
-	 */
-	public $forceEffect = false;
+    /**
+     * @var boolean Force quality changing even if image is inside max bounds
+     */
+    public $forceEffect = false;
 
-	/**
-	 * @var integer Target image formats
-	 */
-	public $targetType = 0;
+    /**
+     * @var integer Target image formats
+     */
+    public $targetType = 0;
 
-	/**
-	 * @var integer|null To disable it if it is dropped with pressing the meta key
-	 * Alt: 8, Ctrl: 4, Meta: 2, Shift: 1 - sum of each value
-	 * In case of using any key, specify it as an array
-	 */
-	public $offDropWith = null;
+    /**
+     * @var integer|null To disable it if it is dropped with pressing the meta key
+     * Alt: 8, Ctrl: 4, Meta: 2, Shift: 1 - sum of each value
+     * In case of using any key, specify it as an array
+     */
+    public $offDropWith = null;
 
-	/**
-	 * @inheritdoc
-	 */
-	public function init() {
-		$this->targetType = IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP;
-		parent::init();
-	}
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->targetType = IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP;
+        parent::init();
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function events() {
-		return [
-			ElFinder::EVENT_UPLOAD_BEFORE_SAVE => 'afterUploadBeforeSave'
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function events()
+    {
+        return [
+            ElFinder::EVENT_UPLOAD_BEFORE_SAVE => 'afterUploadBeforeSave'
+        ];
+    }
 
-	/**
-	 * @param ElFinderEvent $event
-	 */
-	public function afterUploadBeforeSave($event) {
+    /**
+     * @param ElFinderEvent $event
+     */
+    public function afterUploadBeforeSave($event)
+    {
 //		$elfinder = $event->sender;
-		$src    = $event->fileTmpName;
-		$volume = $event->volume;
-		/* @var $elfinder \elFinder */
-		/* @var $volume \elFinderVolumeDriver */
+        $src = $event->fileTmpName;
+        $volume = $event->volume;
+        /* @var $elfinder \elFinder */
+        /* @var $volume \elFinderVolumeDriver */
 
-		if (function_exists('mime_content_type')) {
-			$mime = mime_content_type($src);
-			if (substr($mime, 0, 5) !== 'image') {
-				return;
-			}
-		}
+        if (function_exists('mime_content_type')) {
+            $mime = mime_content_type($src);
+            if (substr($mime, 0, 5) !== 'image') {
+                return;
+            }
+        }
 
-		$srcImgInfo = getimagesize($src);
-		if ($srcImgInfo === false) {
-			return;
-		}
+        $srcImgInfo = getimagesize($src);
+        if ($srcImgInfo === false) {
+            return;
+        }
 
-		// check target image type
-		$imgTypes = [
-			IMAGETYPE_GIF  => IMG_GIF,
-			IMAGETYPE_JPEG => IMG_JPEG,
-			IMAGETYPE_PNG  => IMG_PNG,
-			IMAGETYPE_BMP  => IMG_WBMP,
-			IMAGETYPE_WBMP => IMG_WBMP
-		];
-		if (!isset($imgTypes[$srcImgInfo[2]]) || !($this->targetType & $imgTypes[$srcImgInfo[2]])) {
-			return;
-		}
+        // check target image type
+        $imgTypes = [
+            IMAGETYPE_GIF => IMG_GIF,
+            IMAGETYPE_JPEG => IMG_JPEG,
+            IMAGETYPE_PNG => IMG_PNG,
+            IMAGETYPE_BMP => IMG_WBMP,
+            IMAGETYPE_WBMP => IMG_WBMP
+        ];
+        if (!isset($imgTypes[$srcImgInfo[2]]) || !($this->targetType & $imgTypes[$srcImgInfo[2]])) {
+            return;
+        }
 
-		if ($this->forceEffect || $srcImgInfo[0] > $this->maxWidth || $srcImgInfo[1] > $this->maxHeight) {
-			$zoom = $zoom = min(($this->maxWidth / $srcImgInfo[0]), ($this->maxHeight / $srcImgInfo[1]));
-			$volume->imageUtil('resize', $src, [
-				'width'        => round($srcImgInfo[0] * $zoom),
-				'height'       => round($srcImgInfo[1] * $zoom),
-				'jpgQuality'   => $this->quality,
-				'preserveExif' => $this->preserveExif,
-				'unenlarge'    => true
-			]);
-		}
-	}
+        if ($this->forceEffect || $srcImgInfo[0] > $this->maxWidth || $srcImgInfo[1] > $this->maxHeight) {
+            $zoom = $zoom = min(($this->maxWidth / $srcImgInfo[0]), ($this->maxHeight / $srcImgInfo[1]));
+            $volume->imageUtil('resize', $src, [
+                'width' => round($srcImgInfo[0] * $zoom),
+                'height' => round($srcImgInfo[1] * $zoom),
+                'jpgQuality' => $this->quality,
+                'preserveExif' => $this->preserveExif,
+                'unenlarge' => true
+            ]);
+        }
+    }
 }

@@ -33,8 +33,14 @@ Add the module `elfinder` to the modules section of your configuration file:
 ```php
 'modules' => [
 	'elfinder' => [
-		'class'           => 'simialbi\yii2\elfinder\Module',
-		'connectionSets'  => [
+		'class'          => 'simialbi\yii2\elfinder\Module',
+		'options'        => [
+			'default' => [
+				'locale'     => 'de_DE.UTF-8',
+				'maxTargets' => 0
+			]
+		],
+		'connectionSets' => [
 			'default' => [ // like elfinder roots
 				[
 					'class' => 'simialbi\yii2\elfinder\ElFinderConfigurationLocalFileSystem',
@@ -46,7 +52,7 @@ Add the module `elfinder` to the modules section of your configuration file:
 		'volumeBehaviors' => [
 			'default' => [ // like elfinder plugins, add behaviors
 				'as resizer'   => [
-					'class'     => 'simialbi\yii2\elfinder\behaviors\ImageResizeBehavior',
+					'class'	    => 'simialbi\yii2\elfinder\behaviors\ImageResizeBehavior',
 					'maxWidth'  => 1920,
 					'maxHeight' => 1080,
 					'quality'   => 70

@@ -10,10 +10,10 @@ namespace simialbi\yii2\elfinder\controllers;
 
 use simialbi\yii2\elfinder\ElFinder;
 use simialbi\yii2\elfinder\Module;
+use Yii;
 use yii\helpers\ArrayHelper;
 use yii\rest\Controller;
 use yii\web\NotFoundHttpException;
-use Yii;
 
 /**
  * Class ConnectionController
@@ -21,20 +21,22 @@ use Yii;
  *
  * @property Module $module
  */
-class ConnectionController extends Controller {
-	/**
-	 * @param string $instanceName
-	 *
-	 * @throws NotFoundHttpException
-	 */
-	public function actionIndex($instanceName = 'default') {
-		$elFinder = ArrayHelper::getValue($this->module->components, $instanceName);
+class ConnectionController extends Controller
+{
+    /**
+     * @param string $instanceName
+     *
+     * @throws NotFoundHttpException
+     */
+    public function actionIndex($instanceName = 'default')
+    {
+        $elFinder = ArrayHelper::getValue($this->module->components, $instanceName);
 
-		if (is_null($elFinder) || !$elFinder instanceof ElFinder) {
-			throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
-		}
+        if (is_null($elFinder) || !$elFinder instanceof ElFinder) {
+            throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
+        }
 
-		$connector = new \elFinderConnector($elFinder->getApi());
-		$connector->run();
-	}
+        $connector = new \elFinderConnector($elFinder->getApi());
+        $connector->run();
+    }
 }

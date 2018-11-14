@@ -13,5 +13,6 @@ namespace simialbi\yii2\elfinder\behaviors;
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  */
-trait BehaviorTrait {
+trait BehaviorTrait
+{
 }

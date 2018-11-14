@@ -56,14 +56,6 @@ class ElFinderInput extends InputWidget
      */
     public $label;
     /**
-     * @var string Elfinder button icon
-     */
-    public $icon = '<span class="glyphicon glyphicon-option-horizontal"></span>';
-    /**
-     * @var string Icon in modal header
-     */
-    public $modalIcon = '<span class="glyphicon glyphicon-folder-open"></span>';
-    /**
      * @var string name of the instance used in module configuration (defaults to default)
      */
     public $instanceName = 'default';
@@ -100,6 +92,11 @@ class ElFinderInput extends InputWidget
     public $openButtonOptions = [
         'class' => ['btn', 'btn-default'],
     ];
+    /**
+     * @var array modal options
+     * @see \yii\bootstrap\Modal
+     */
+    public $modalOptions = [];
     /**
      * @var boolean return only path or full url
      */
@@ -159,21 +156,25 @@ class ElFinderInput extends InputWidget
             $html .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
             $cropperCallback = "jQuery('#{$options['id']}-crop > img').cropper('replace', file.url);";
         }
-        $html .= Html::button($this->icon, ArrayHelper::merge([
+        $buttonOptions = ArrayHelper::merge([
             'id' => $options['id'] . '-btn',
             'data' => [
                 'toggle' => 'modal',
                 'target' => '#' . $options['id'] . '-modal'
             ]
-        ], $this->openButtonOptions));
+        ], $this->openButtonOptions);
+        $icon = ArrayHelper::remove($buttonOptions, 'icon', '<span class="glyphicon glyphicon-option-horizontal"></span>');
+        $html .= Html::button($icon, $buttonOptions);
         $html .= Html::endTag('div'); // <!-- input-group-btn -->
         $html .= Html::endTag('div'); // <!-- input-group -->
 
         ob_start();
-        Modal::begin([
-            'id' => $options['id'] . '-modal',
+        $modalOptions = $this->modalOptions;
+        $icon = ArrayHelper::remove($modalOptions, 'icon', '<span class="glyphicon glyphicon-folder-open"></span>');
+        ArrayHelper::setValue($modalOptions, 'id', $options['id'] . '-modal');
+        Modal::begin(ArrayHelper::merge([
             'size' => Modal::SIZE_LARGE,
-            'header' => $this->modalIcon . Html::tag('h4', $label, ['class' => 'modal-title']),
+            'header' => $icon . Html::tag('h4', $label, ['class' => 'modal-title']),
             'footer' => Html::button(Yii::t('simialbi/elfinder/input-widget', 'Close'), [
                     'class' => ['btn', 'btn-default'],
                     'data-dismiss' => 'modal'
@@ -181,7 +182,7 @@ class ElFinderInput extends InputWidget
                     'class' => ['btn', 'btn-primary', 'pull-right'],
                     'data-dismiss' => 'modal'
                 ])
-        ]);
+        ], $modalOptions));
         $fullUrl = $this->onlyPath ? 'false' : 'true';
         $elfinderOptions = $this->elfinderOptions;
         $elfinderOptions['sound'] = false;

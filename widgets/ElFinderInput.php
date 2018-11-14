@@ -30,6 +30,10 @@ use yii\web\JsExpression;
  * ); ?>
  * ```
  *
+ * @property-write string $icon Elfinder button icon
+ * @property-write string $modalIcon Icon in modal header
+ * @property-write array $previewOptions Preview button options
+ *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 1.1
  */
@@ -207,5 +211,35 @@ class ElFinderInput extends InputWidget
 		});");
 
         return $html;
+    }
+
+    /**
+     * Icon setter for backwards compatibility
+     *
+     * @param string $icon
+     * @deprecated
+     */
+    public function setIcon($icon) {
+        ArrayHelper::setValue($this->openButtonOptions, 'icon', $icon);
+    }
+
+    /**
+     * Modal icon setter for backwards compatibility
+     *
+     * @param string $modalIcon
+     * @deprecated
+     */
+    public function setModalIcon($modalIcon) {
+        ArrayHelper::setValue($this->modalOptions, 'icon', $modalIcon);
+    }
+
+    /**
+     * Preview button options setter for backwards compatibility
+     *
+     * @param array $previewOptions
+     * @deprecated
+     */
+    public function setPreviewOptions(array $previewOptions) {
+        $this->previewButtonOptions = $previewOptions;
     }
 }

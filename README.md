@@ -36,6 +36,7 @@ Add the module `elfinder` to the modules section of your configuration file:
 		'class'          => 'simialbi\yii2\elfinder\Module',
 		'options'        => [
 			'default' => [
+				'class'      => 'simialbi\yii2\elfinder\ElFinderOptions',
 				'locale'     => 'de_DE.UTF-8',
 				'maxTargets' => 0
 			]

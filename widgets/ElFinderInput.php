@@ -89,9 +89,15 @@ class ElFinderInput extends InputWidget {
 	/**
 	 * @var array Preview button options
 	 */
-	public $previewOptions = [
+	public $previewButtonOptions = [
 		'class'  => ['btn', 'btn-default'],
 		'target' => '_blank'
+	];
+	/**
+	 * @var array Open elfinder button options
+	 */
+	public $openButtonOptions = [
+		'class' => ['btn', 'btn-default'],
 	];
 	/**
 	 * @var boolean return only path or full url
@@ -139,7 +145,7 @@ class ElFinderInput extends InputWidget {
 		$html .= Html::beginTag('div', ['class' => 'input-group-btn']);
 		if ($this->addPreview) {
 			$value = $this->hasModel() ? $this->model->{$this->attribute} : $this->value;
-			$html  .= Html::a($this->previewContent, $value, $this->previewOptions);
+			$html  .= Html::a($this->previewContent, $value, $this->previewButtonOptions);
 		}
 		if ($this->addImageCrop && class_exists('simialbi\yii2\crop\Cropper')) {
 			$cropperOptions  = ArrayHelper::merge([
@@ -150,14 +156,13 @@ class ElFinderInput extends InputWidget {
 			$html            .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
 			$cropperCallback = "jQuery('#{$options['id']}-crop > img').cropper('replace', file.url);";
 		}
-		$html .= Html::button($this->icon, [
+		$html .= Html::button($this->icon, ArrayHelper::merge([
 			'id'    => $options['id'] . '-btn',
-			'class' => ['btn', 'btn-default'],
 			'data'  => [
 				'toggle' => 'modal',
 				'target' => '#' . $options['id'] . '-modal'
 			]
-		]);
+		], $this->openButtonOptions));
 		$html .= Html::endTag('div'); // <!-- input-group-btn -->
 		$html .= Html::endTag('div'); // <!-- input-group -->
 

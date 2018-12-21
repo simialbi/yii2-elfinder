@@ -1,4 +1,8 @@
 &.elfinder-dialog-notify {
+	min-width: $modal-sm;
+	right: 0;
+	top: 0;
+
 	.elfinder-notify {
 		.elfinder-dialog-icon {
 			display: inline-block;

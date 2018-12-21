@@ -41,7 +41,7 @@ class Module extends \simialbi\yii2\base\Module
     public $defaultRoute = 'connection';
 
     /**
-     * @var ElFinderOptions|array the main options of elfinder per instance.
+     * @var array the main options of elfinder per instance.
      *
      * Example:
      * ```php

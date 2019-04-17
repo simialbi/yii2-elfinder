@@ -30,6 +30,7 @@
 	&:active,
 	&.ui-state-active {
 		@include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+		
 		background-image: none;
 		outline: 0;
 	}
@@ -38,12 +39,16 @@
 	&.ui-state-disabled {
 		@include box-shadow(none);
 		@include opacity(.65);
+
 		cursor: $cursor-disabled;
 	}
 	&.ui-button-icon-only {
 		@include text-hide;
 
+		background-color: $btn-default-bg;
+
 		.ui-icon, .ui-button-icon {
+			color: $btn-default-color;
 			font-size: $font-size-base;
 			line-height: $line-height-base;
 		}

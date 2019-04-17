@@ -1,4 +1,4 @@
-.elfinder-dialog-resize {
+&.elfinder-dialog-resize {
 	@include make-row();
 
 	.elfinder-resize-type {
@@ -6,12 +6,46 @@
 
 		border-bottom: 1px solid $modal-footer-border-color;
 		margin-bottom: $line-height-computed;
-		margin-top: -1 * $modal-inner-padding;
-		padding: $modal-inner-padding;
+		padding-left: 0;
+		padding-right: 0;
+
+		> label {
+			@include box-shadow(none transparent);
+
+			background-color: transparent;
+			border: 1px solid transparent;
+			border-radius: $border-radius-base $border-radius-base 0 0 !important;
+			display: block;
+			float: left;
+			line-height: $line-height-base;
+			margin-bottom: -1px;
+			margin-right: 2px;
+			padding: $nav-link-padding;
+			position: relative;
+
+			&:hover, &:focus {
+				background-color: $nav-link-hover-bg;
+				text-decoration: none;
+			}
+			&:hover {
+				border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+			}
+			&.ui-state-active {
+				&, &:hover, &:focus {
+					background-color: $nav-tabs-active-link-hover-bg;
+					border: 1px solid $nav-tabs-active-link-hover-border-color;
+					border-bottom-color: transparent;
+					color: $nav-tabs-active-link-hover-color;
+					cursor: default;
+				}
+			}
+		}
+		//margin-top: -1 * $modal-inner-padding;
+		//padding: $modal-inner-padding;
 	}
 	.elfinder-resize-preview {
 		@include make-xs-column($grid-columns);
-		@include make-md-column($grid-columns / 3 * 2);
+		@include make-md-column($grid-columns / 12 * 7);
 
 		float: right !important;
 		height: 400px;
@@ -19,7 +53,7 @@
 	}
 	.elfinder-resize-control {
 		@include make-xs-column($grid-columns);
-		@include make-md-column($grid-columns / 3);
+		@include make-md-column($grid-columns / 12 * 5);
 	}
 
 	.ui-resizable-handle {
@@ -61,6 +95,72 @@
 		}
 		&.ui-resizable-w {
 			margin-left: -7px;
+		}
+	}
+
+	.elfinder-resize-row {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		> span {
+			font-size: $font-size-small;
+		}
+		> .elfinder-resize-label, > .elfinder-resize-jpgsize {
+			font-size: $font-size-small;
+			width: 30%;
+		}
+		> input {
+
+			@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+			@include transition(border-color .15s ease-in-out, box-shadow .15s ease-in-out);
+
+			background-color: $input-bg;
+			background-image: none;
+			border: 1px solid $input-border;
+			border-radius: $input-border-radius;
+			color: $input-color;
+			display: block;
+			font-size: $font-size-small;
+			height: $input-height-small;
+			line-height: $line-height-base;
+			padding: $padding-small-vertical $padding-small-horizontal;
+			width: 35%;
+
+			@include form-control-focus();
+			@include placeholder();
+
+			&[disabled],
+			&[readonly],
+			&.ui-state-disabled,
+			fieldset[disabled] & {
+				background-color: $input-bg-disabled;
+				cursor: $cursor-disabled;
+				opacity: 1;
+			}
+		}
+		> .elfinder-resize-whctrls, > .elfinder-resize-jpgsize {
+			margin-left: 5%;
+		}
+
+		.ui-button {
+			-webkit-border-radius: $btn-border-radius-small;
+			-moz-border-radius: $btn-border-radius-small;
+			border-radius: $btn-border-radius-small;
+			font-size: $font-size-small;
+			line-height: $line-height-small;
+			padding: $padding-small-vertical $padding-small-horizontal;
+
+			&.ui-button-icon-only {
+				@include text-hide;
+
+				background-color: $btn-default-bg;
+			}
+		}
+
+		+ .elfinder-resize-row {
+			margin-top: $line-height-computed;
 		}
 	}
 }

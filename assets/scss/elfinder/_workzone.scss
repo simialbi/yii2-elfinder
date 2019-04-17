@@ -40,6 +40,7 @@
 					min-height: ceil(($font-size-h1 * $line-height-base) + $line-height-computed);
 					padding-left: floor($grid-gutter-width / 4);
 					padding-right: floor($grid-gutter-width / 4);
+					position: relative;
 					width: ceil((($font-size-h1 * $line-height-base) + $line-height-computed) / 3 * 4);
 
 					.elfinder-cwd-icon {
@@ -81,6 +82,9 @@
 							padding: $padding-base-vertical $padding-base-horizontal;
 							width: 100% !important;
 						}
+					}
+					.elfinder-cwd-select {
+						display: none;
 					}
 
 					&.ui-state-hover, &:hover, &:focus {
@@ -153,6 +157,9 @@
 							width: calc(100% - #{$line-height-computed + 5px}) !important;
 						}
 					}
+					.elfinder-cwd-select {
+						display: none;
+					}
 				}
 				&.elfinder-table-header-sticky {
 					left: 0;
@@ -193,5 +200,8 @@
 				display: none;
 			}
 		}
+	}
+	.elfinder-cwd-selectall {
+		display: none;
 	}
 }

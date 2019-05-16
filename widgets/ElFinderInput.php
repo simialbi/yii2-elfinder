@@ -152,13 +152,19 @@ class ElFinderInput extends InputWidget
             $html .= Html::a($this->previewContent, $value, $this->previewButtonOptions);
         }
         if ($this->addImageCrop && class_exists('simialbi\yii2\crop\Cropper')) {
-            $cropperOptions = ArrayHelper::merge([
+            $cropperOptions  = ArrayHelper::merge([
                 'type' => 'modal',
                 'image' => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
                 'options' => ['id' => $options['id'] . '-crop']
             ], $this->cropperOptions);
-            $html .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
-            $cropperCallback = "jQuery('#{$options['id']}-crop > img').cropper('replace', file.url);";
+            $force           = ArrayHelper::remove($cropperOptions, 'force', false);
+            $html            .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
+            $cropperCallback = "jQuery('#{$options['id']}-crop > img').prop('src', file.url);";
+            if ($force) {
+                $cropperCallback .= "\njQuery(document).one('hidden.bs.modal', '#{$options['id']}-modal', function () {\n";
+                $cropperCallback .= "jQuery('#{$cropperOptions['options']['id']}-target').modal('show');\n";
+                $cropperCallback .= "});\n";
+            }
         }
         $buttonOptions = ArrayHelper::merge([
             'id' => $options['id'] . '-btn',

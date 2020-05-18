@@ -14,7 +14,7 @@
   "authors": [
     {
       "name": "Simon Karlen",
-      "email": "simi.albi@gmail.com"
+      "email": "simi.albi@outlook.com"
     }
   ],
   "prefer-stable": true,
@@ -40,6 +40,8 @@
     "yiisoft/yii2-coding-standards": "~2.0"
   },
   "suggest": {
+    "ext-fileinfo": "To use mime content type detection in behaviors",
+    "ext-exif": "To use image rotate behavior",
     "simialbi/yii2-widget-crop": "Add an image cropper widget to ElFinderInput"
   },
   "config": {

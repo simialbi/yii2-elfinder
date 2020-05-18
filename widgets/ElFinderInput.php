@@ -152,13 +152,13 @@ class ElFinderInput extends InputWidget
             $html .= Html::a($this->previewContent, $value, $this->previewButtonOptions);
         }
         if ($this->addImageCrop && class_exists('simialbi\yii2\crop\Cropper')) {
-            $cropperOptions  = ArrayHelper::merge([
+            $cropperOptions = ArrayHelper::merge([
                 'type' => 'modal',
                 'image' => $this->hasModel() ? $this->model->{$this->attribute} : $this->value,
                 'options' => ['id' => $options['id'] . '-crop']
             ], $this->cropperOptions);
-            $force           = ArrayHelper::remove($cropperOptions, 'force', false);
-            $html            .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
+            $force = ArrayHelper::remove($cropperOptions, 'force', false);
+            $html .= call_user_func(['simialbi\yii2\crop\Cropper', 'widget'], $cropperOptions);
             $cropperCallback = "jQuery('#{$options['id']}-crop > img').prop('src', file.url);";
             if ($force) {
                 $cropperCallback .= "\njQuery(document).one('hidden.bs.modal', '#{$options['id']}-modal', function () {\n";
@@ -173,7 +173,8 @@ class ElFinderInput extends InputWidget
                 'target' => '#' . $options['id'] . '-modal'
             ]
         ], $this->openButtonOptions);
-        $icon = ArrayHelper::remove($buttonOptions, 'icon', '<span class="glyphicon glyphicon-option-horizontal"></span>');
+        $icon = ArrayHelper::remove($buttonOptions, 'icon',
+            '<span class="glyphicon glyphicon-option-horizontal"></span>');
         $html .= Html::button($icon, $buttonOptions);
         $html .= Html::endTag('div'); // <!-- input-group-btn -->
         $html .= Html::endTag('div'); // <!-- input-group -->
@@ -225,7 +226,8 @@ class ElFinderInput extends InputWidget
      * @param string $icon
      * @deprecated
      */
-    public function setIcon($icon) {
+    public function setIcon($icon)
+    {
         ArrayHelper::setValue($this->openButtonOptions, 'icon', $icon);
     }
 
@@ -235,7 +237,8 @@ class ElFinderInput extends InputWidget
      * @param string $modalIcon
      * @deprecated
      */
-    public function setModalIcon($modalIcon) {
+    public function setModalIcon($modalIcon)
+    {
         ArrayHelper::setValue($this->modalOptions, 'icon', $modalIcon);
     }
 
@@ -245,7 +248,8 @@ class ElFinderInput extends InputWidget
      * @param array $previewOptions
      * @deprecated
      */
-    public function setPreviewOptions(array $previewOptions) {
+    public function setPreviewOptions(array $previewOptions)
+    {
         $this->previewButtonOptions = $previewOptions;
     }
 }

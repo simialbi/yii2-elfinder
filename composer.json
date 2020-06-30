@@ -33,7 +33,7 @@
     "yiisoft/yii2-jui": "~2.0",
     "studio-42/elfinder": "~2.1",
     "rmrevin/yii2-fontawesome": "~3.0",
-    "simialbi/yii2-simialbi-base": "^0.4.0",
+    "simialbi/yii2-simialbi-base": ">=0.5 <1.0 | ^1.0.0",
     "linslin/yii2-curl": "~1.2"
   },
   "require-dev": {

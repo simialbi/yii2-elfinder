@@ -173,8 +173,7 @@ class ElFinderInput extends InputWidget
                 'target' => '#' . $options['id'] . '-modal'
             ]
         ], $this->openButtonOptions);
-        $icon = ArrayHelper::remove($buttonOptions, 'icon',
-            '<span class="glyphicon glyphicon-option-horizontal"></span>');
+        $icon = ArrayHelper::remove($buttonOptions, 'icon', '<span class="glyphicon glyphicon-option-horizontal"></span>');
         $html .= Html::button($icon, $buttonOptions);
         $html .= Html::endTag('div'); // <!-- input-group-btn -->
         $html .= Html::endTag('div'); // <!-- input-group -->

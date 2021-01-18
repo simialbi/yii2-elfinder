@@ -6,7 +6,6 @@
 
 namespace simialbi\yii2\elfinder\controllers;
 
-use linslin\yii2\curl\Curl;
 use Yii;
 use yii\helpers\StringHelper;
 use yii\web\Controller;
@@ -32,22 +31,24 @@ class ProxyController extends Controller
      */
     public function actionIndex($baseUrl, $path)
     {
-        $curl = new Curl();
+        $curl = curl_init();
         $url = str_replace(' ', '%20', sprintf(
             '%s/%s',
             rtrim(StringHelper::base64UrlDecode($baseUrl), '/'),
             ltrim($path, '/')
         ));
 
-        $method = Yii::$app->request->method;
-        if (!method_exists($curl, $method)) {
-            $method = 'get';
-        }
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper(Yii::$app->request->method));
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Yii2-Curl-Agent');
+        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, true);
 
-        $curl->setOption(CURLOPT_FOLLOWLOCATION, true);
-
-        $response = $curl->$method($url);
-        $headers = $curl->responseHeaders;
+        $response = curl_exec($curl);
+        list ($headers, $body) = $this->parseCurlResponse($curl, $response);
 
         if (false === $response) {
             throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
@@ -64,6 +65,30 @@ class ProxyController extends Controller
 
         Yii::$app->response->format = Response::FORMAT_RAW;
 
-        return $response;
+        return $body;
+    }
+
+    /**
+     * Parse curl response into header and body
+     * @param resource $curl
+     * @param string $response
+     * @return array
+     */
+    protected function parseCurlResponse($curl, $response)
+    {
+        $headers = [];
+        $headerText = substr($response, 0, strpos($response, "\r\n\r\n"));
+        $body = substr($response, curl_getinfo($curl, CURLINFO_HEADER_SIZE));
+
+        foreach (explode("\r\n", $headerText) as $i => $line) {
+            if ($i === 0) {
+                $headers['http_code'] = $line;
+            } else {
+                list($key, $value) = explode(':', $line, 2);
+                $headers[$key] = trim($value);
+            }
+        }
+
+        return [$headers, $body];
     }
 }

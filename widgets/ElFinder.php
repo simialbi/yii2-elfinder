@@ -278,7 +278,7 @@ class ElFinder extends Widget
     public $instanceName = 'default';
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
     public function init()
     {
@@ -303,7 +303,7 @@ class ElFinder extends Widget
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
     public function run()
     {
@@ -313,20 +313,22 @@ class ElFinder extends Widget
     }
 
     /**
-     * Registers the elfinder javascript assets and builds the required js for the widget
-     *
-     * @param string $pluginName plugin name
+     * {@inheritDoc}
      */
-    protected function registerPlugin($pluginName = 'elfinder')
+    protected function registerPlugin($pluginName = 'elfinder', $selector = null)
     {
         $id = $this->options['id'];
         $view = $this->getView();
 
         ElFinderAsset::register($view);
 
+        if (empty($selector)) {
+            $selector = '#' . $id;
+        }
+
         $js = [
-            "jQuery('#$id').data('cssautoloadHide', jQuery('<style>.elfinder{visibility:hidden;overflow:hidden}</style>'));",
-            "jQuery('#$id').$pluginName({$this->getClientOptions()});"
+            "jQuery('$selector').data('cssautoloadHide', jQuery('<style>.elfinder{visibility:hidden;overflow:hidden}</style>'));",
+            "jQuery('$selector').$pluginName({$this->getClientOptions()});"
         ];
 
         $view->registerJs(implode("\n", $js), View::POS_READY);

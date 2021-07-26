@@ -48,12 +48,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
             'vendorPath' => dirname(__DIR__) . '/vendor',
             'modules' => [
                 'elfinder' => [
-                    'class' => '\simialbi\yii2\elfinder\Module',
+                    'class' => 'simialbi\yii2\elfinder\Module',
                     'options' => [],
                     'connectionSets' => [
                         'default' => [
                             [
-                                'class' => '\simialbi\yii2\elfinder\ElfinderConfigurationLocalFileSystem',
+                                'class' => 'simialbi\yii2\elfinder\ElfinderConfigurationLocalFileSystem',
                                 'path' => '@webroot/default',
                                 'URL' => '@web/default'
                             ]
@@ -62,7 +62,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'volumeBehaviors' => [
                         'default' => [
                             'as resizer' => [
-                                'class' => '\simialbi\yii2\elfinder\behaviors\ImageResizeBehavior',
+                                'class' => 'simialbi\yii2\elfinder\behaviors\ImageResizeBehavior',
                                 'maxWidth' => 1920,
                                 'maxHeight' => 1080,
                                 'quality' => 70
@@ -80,9 +80,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'cookieValidationKey' => '2VYuNNIognPSVv0zqj1C9sdmgk_O1UBa',
                     'scriptFile' => __DIR__ . '/index.php',
                     'scriptUrl' => '/index.php',
-                ],
-                'ews' => [
-                    'class' => 'simialbi\yii2\ews\Connection'
                 ],
                 'log' => [
                     'traceLevel' => YII_DEBUG ? 3 : 0,

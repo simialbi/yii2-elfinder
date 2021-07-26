@@ -177,7 +177,7 @@ class Module extends \simialbi\yii2\base\Module
         $this->volumeBehaviors[$name] = $behaviors;
         $components[$name] = new ElFinder(ArrayHelper::merge($behaviors, [
             'options' => $options,
-            'roots' => ArrayHelper::merge(ArrayHelper::getValue($components, [$name, 'roots']), [$configuration])
+            'roots' => ArrayHelper::merge(ArrayHelper::getValue($components, [$name, 'roots'], []), [$configuration])
         ]));
         $this->setComponents($components);
     }

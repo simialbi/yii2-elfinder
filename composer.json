@@ -3,7 +3,8 @@
     "description": "Elfinder implementation for yii2 framework",
     "keywords": [
         "yii2",
-        "src/elfinder"
+        "elfinder",
+        "file browser"
     ],
     "type": "yii2-extension",
     "license": "MIT",

@@ -163,7 +163,7 @@ class Module extends \simialbi\yii2\base\Module
         if (is_array($configuration)) {
             $configuration = Yii::createObject($configuration);
         }
-        if (is_array($options)) {
+        if (is_array($options) && !empty($options)) {
             $options = Yii::createObject($options);
         }
         $configuration->URL = Url::to([

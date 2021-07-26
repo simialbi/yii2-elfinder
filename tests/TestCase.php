@@ -50,7 +50,25 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 'elfinder' => [
                     'class' => '\simialbi\yii2\elfinder\Module',
                     'options' => [],
-                    'connectionSets' => []
+                    'connectionSets' => [
+                        'default' => [
+                            [
+                                'class' => '\simialbi\yii2\elfinder\ElfinderConfigurationLocalFileSystem',
+                                'path' => '@webroot/default',
+                                'URL' => '@web/default'
+                            ]
+                        ]
+                    ],
+                    'volumeBehaviors' => [
+                        'default' => [
+                            'as resizer' => [
+                                'class' => '\simialbi\yii2\elfinder\behaviors\ImageResizeBehavior',
+                                'maxWidth' => 1920,
+                                'maxHeight' => 1080,
+                                'quality' => 70
+                            ]
+                        ]
+                    ]
                 ]
             ],
             'aliases' => [

@@ -3,6 +3,11 @@ This extension integrates the jQuery elFinder into yii2 framework (the yii way: 
 configurable objects, events etc.). Additionally it prevents jui/elfinder css from loading and provides it's own styles
 for elfinder (bootstrap3 / fontawesome scss based style).
 
+[![Latest Stable Version](https://poser.pugx.org/simialbi/yii2-elfinder/v/stable?format=flat-square)](https://packagist.org/packages/simialbi/yii2-elfinder)
+[![Total Downloads](https://poser.pugx.org/simialbi/yii2-elfinder/downloads?format=flat-square)](https://packagist.org/packages/simialbi/yii2-elfinder)
+[![License](https://poser.pugx.org/simialbi/yii2-elfinder/license?format=flat-square)](https://packagist.org/packages/simialbi/yii2-elfinder)
+[![Build Status](https://github.com/simialbi/yii2-elfinder/actions/workflows/build.yml/badge.svg)](https://github.com/simialbi/yii2-elfinder/actions/workflows/build.yml)
+
 ## Resources
  * [elFinder](https://github.com/Studio-42/elFinder)
  * [yii2](https://github.com/yiisoft/yii2) framework

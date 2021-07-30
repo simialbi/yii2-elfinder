@@ -24,21 +24,4 @@ class BasicTest extends TestCase
         $this->assertArrayHasKey('resizer', $default->getBehaviors());
         $this->assertInstanceOf('\simialbi\yii2\elfinder\behaviors\ImageResizeBehavior', $default->getBehaviors()['resizer']);
     }
-
-    public function testDynamicConnectionSetCreation()
-    {
-        /** @var \simialbi\yii2\elfinder\Module $module */
-        $module = Yii::$app->getModule('elfinder');
-
-
-        $configuration = [
-            'class' => 'simialbi\yii2\elfinder\ElFinderConfigurationLocalFileSystem',
-            'path' => '@webroot/test/2',
-            'URL' => '@web/test/2'
-        ];
-        $module->addConnectionSet('test', $configuration);
-
-        $this->assertArrayHasKey('test', $module->components);
-        $this->assertInstanceOf('simialbi\yii2\elfinder\ElFinder', $module->components['test']);
-    }
 }

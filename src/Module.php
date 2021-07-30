@@ -145,40 +145,4 @@ class Module extends \simialbi\yii2\base\Module
 
         parent::init();
     }
-
-    /**
-     * Add a connection set
-     *
-     * @param string $name The name of the connection set to add
-     * @param array|ElFinderConfiguration $configuration the configuration
-     * @param array|ElFinderOptions $options The connection set specific options
-     * @param array $behaviors The behaviors of the connection set
-     *
-     * @throws \yii\base\InvalidConfigException
-     * @throws \Exception
-     */
-    public function addConnectionSet($name, $configuration, $options = [], $behaviors = [])
-    {
-        /** @var ElFinderConfiguration $configuration */
-        if (is_array($configuration)) {
-            $configuration = Yii::createObject($configuration);
-        }
-        if (is_array($options) && !empty($options)) {
-            $options = Yii::createObject($options);
-        }
-        $configuration->URL = Url::to([
-            '/' . $this->id . '/proxy/index',
-            'baseUrl' => StringHelper::base64UrlEncode($configuration->URL)
-        ]) . '&path=';
-
-        $components = $this->getComponents(false);
-        $this->connectionSets[$name][] = $configuration;
-        $this->options[$name] = $options;
-        $this->volumeBehaviors[$name] = $behaviors;
-        $components[$name] = new ElFinder(ArrayHelper::merge($behaviors, [
-            'options' => $options,
-            'roots' => ArrayHelper::merge(ArrayHelper::getValue($components, [$name, 'roots'], []), [$configuration])
-        ]));
-        $this->setComponents($components);
-    }
 }

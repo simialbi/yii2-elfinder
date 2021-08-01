@@ -31,12 +31,17 @@ class ProxyController extends Controller
      */
     public function actionIndex($baseUrl, $path)
     {
+        $link = $this->getLink();
         $curl = curl_init();
         $url = str_replace(' ', '%20', sprintf(
             '%s/%s',
-            rtrim(StringHelper::base64UrlDecode($baseUrl), '/'),
+            rtrim(Yii::getAlias(StringHelper::base64UrlDecode($baseUrl)), '/'),
             ltrim($path, '/')
         ));
+        
+
+        $url = $link . $url;
+        //VarDumper::dump($link.$url);die;
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper(Yii::$app->request->method));
@@ -48,7 +53,7 @@ class ProxyController extends Controller
         curl_setopt($curl, CURLOPT_HEADER, true);
 
         $response = curl_exec($curl);
-        list ($headers, $body) = $this->parseCurlResponse($curl, $response);
+        list($headers, $body) = $this->parseCurlResponse($curl, $response);
 
         if (false === $response) {
             throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
@@ -90,5 +95,21 @@ class ProxyController extends Controller
         }
 
         return [$headers, $body];
+    }
+
+
+    protected function getLink(){
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
+            $link = "https";
+        }else{
+            $link = "http";
+        }
+        // Here append the common URL characters.
+        $link .= "://";
+
+        // Append the host(domain name, ip) to the URL.
+        $link .= $_SERVER['HTTP_HOST'];
+
+        return $link;
     }
 }

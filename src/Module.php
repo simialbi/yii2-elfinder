@@ -41,6 +41,12 @@ class Module extends \simialbi\yii2\base\Module
     public $defaultRoute = 'connection';
 
     /**
+     * @var array|string the url to to the elfinder proxy. Will be set automatically if not set
+     * (works only if root module).
+     */
+    public $proxyUrl = [];
+
+    /**
      * @var array the main options of elfinder per instance.
      *
      * Example:
@@ -122,13 +128,16 @@ class Module extends \simialbi\yii2\base\Module
     public function init()
     {
         $components = [];
+        if (empty($this->proxyUrl)) {
+            $this->proxyUrl = ['/' . $this->id . '/proxy/index'];
+        }
         foreach ($this->connectionSets as $name => $connectionSet) {
             for ($i = 0; $i < count($connectionSet); $i++) {
                 $connectionSet[$i] = Yii::createObject($connectionSet[$i]);
-                $connectionSet[$i]->URL = Url::to([
-                        '/' . $this->id . '/proxy/index',
+
+                $connectionSet[$i]->URL = Url::to(ArrayHelper::merge((array)$this->proxyUrl, [
                         'baseUrl' => StringHelper::base64UrlEncode($connectionSet[$i]->URL)
-                    ]) . '&path=';
+                    ])) . '&path=';
             }
 
             $behaviors = ArrayHelper::getValue($this->volumeBehaviors, $name, []);

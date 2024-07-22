@@ -39,55 +39,55 @@ class ElFinder extends Widget
     const REQUEST_GET = 'get';
     const REQUEST_POST = 'post';
     /**
-     * @var string/array Connector URL. This is the only required option. Can be absolute or relative
+     * @var string|array Connector URL. This is the only required option. Can be absolute or relative
      */
-    public $url = '';
+    public string|array $url = '';
     /**
      * @var string Base URL of elFinder library starting from Manager HTML
      */
-    public $baseUrl = '';
+    public string $baseUrl = '';
     /**
      * @var string The interface lang to use. Can currently be one of the following: ar, bg, ca, cs, de, en, es, fr, hu,
      * jp, nl, pl, pt_BR, ru, zh_CN. You will also need to include corresponding language file from js/i18n directory.
      */
-    public $lang;
+    public string $lang;
     /**
      * @var array Data to append to all requests and to upload files. These can be any extra data that must be passed to
      * the connector script. For example, you could use these to pass authentication information.
      */
-    public $customData;
+    public array $customData;
     /**
      * @var string Additional css class for filemanager node. This will be applied to the main filemanager container.
      */
-    public $cssClass;
+    public string $cssClass;
     /**
      * @var boolean|array Auto load required CSS (elfinder.min.css and theme.css).
      *
      * false to disable this function or CSS URL Array to load additional CSS files
      */
-    public $cssAutoLoad = false;
+    public array|bool $cssAutoLoad = false;
     /**
      * @var boolean Remeber last opened dir to open it after reload or in next session. This is stored in browser cookie.
      */
-    public $rememberLastDir;
+    public bool $rememberLastDir;
     /**
      * @var boolean Clear historys(elFinder) on reload(not browser) function. Historys was cleared on Reload function on
      * elFinder 2.0. (value is true)
      */
-    public $reloadClearHistory;
+    public bool $reloadClearHistory;
     /**
      * @var boolean Use browser native history by hash-change with supported browsers. This option give URI hash that
      * holder position hash of elFinder.
      */
-    public $useBrowserHistory;
+    public bool $useBrowserHistory;
     /**
      * @var array Display only certain files based on their mime type.
      */
-    public $onlyMimes;
+    public array $onlyMimes;
     /**
      * @var boolean|string|\yii\web\JsExpression Used to validate file names. By default, no empty names or '..' allowed.
      */
-    public $validName;
+    public string|bool|\yii\web\JsExpression $validName;
     /**
      * @var string Hash of default directory path to open.
      *
@@ -103,77 +103,77 @@ class ElFinder extends Widget
      * var hash = volumeId + btoa(path).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '.').rep
      * ```
      */
-    public $startPathHash;
+    public string $startPathHash;
     /**
      * @var string Default view mode. Can be [[ElFinder::VIEW_ICONS]] and [[ElFinder::VIEW_LIST]].
      */
-    public $defaultView = self::VIEW_ICONS;
+    public string $defaultView = self::VIEW_ICONS;
     /**
      * @var string Default sort type. Can be [[ElFinder::SORT_NAME]], [[ElFinder::SORT_KIND]], [[ElFinder::SORT_SIZE]]
      * or [[ElFinder::SORT_DATE]]
      */
-    public $sortType;
+    public string $sortType;
     /**
      * @var integer Default sort order. Either [[SORT_ASC]] or [[SORT_DESC]]
      */
-    public $sortOrder = SORT_ASC;
+    public int $sortOrder = SORT_ASC;
     /**
      * @var boolean Display folders first?
      */
-    public $sortStickFolders = true;
+    public bool $sortStickFolders = true;
     /**
      * @var string|integer The width of the elFinder main interface.
      */
-    public $width;
+    public string|int $width;
     /**
      * @var integer The height of the elFinder main interface (in pixels).
      */
-    public $height;
+    public int $height;
     /**
      * @var boolean Format dates using client. If set to false - backend date format will be used.
      */
-    public $clientFormatDate;
+    public bool $clientFormatDate;
     /**
      * @var boolean Show datetime in UTC timezone. Requires clientFormatDate set to true.
      */
-    public $UTCDate;
+    public bool $UTCDate;
     /**
      * @var string File modification datetime format. Value from selected language is used by default.
      * Set format here to overwrite it. Format is set in PHP date maner
      */
-    public $dateFormat;
+    public string $dateFormat;
     /**
      * @var string File modification datetime format for last two days (today, yesterday).
      * Same syntax as for dateFormat. Use $1 for "Today" and "Yesterday" placeholder.
      */
-    public $fancyDateFormat;
+    public string $fancyDateFormat;
     /**
      * @var string Style of file mode at cwd-list, info dialog [[ElFinder::FILE_MODE_STRING]] (ex. rwxr-xr-x)
      * or [[ElFinder::FILE_MODE_OCTAL]] (ex. 755) or [[ElFinder::FILE_MODE_BOTH]] (ex. rwxr-xr-x (755))
      */
-    public $fileModeStyle;
+    public string $fileModeStyle;
     /**
      * @var array Active commands list. You can set any list of enabled commands here if some minimal required commands
      * will be missed here, elFinder will add them to list automatically.
      *
      * '*' means all of the commands that have been load.
      */
-    public $commands;
+    public array $commands;
     /**
      * @var null|\yii\web\JsExpression Commands options used to interact with external callbacks, editors, plugins.
      */
-    public $commandsOptions;
+    public ?\yii\web\JsExpression $commandsOptions;
     /**
      * @var null|\yii\web\JsExpression Callback function for "getfile" command. Required to use elFinder with WYSIWYG
      * editors, external callbacks.
      * For more info how to use this function refer to wiki WYSIWYG integrations examples.
      */
-    public $getFileCallback;
+    public ?\yii\web\JsExpression $getFileCallback;
     /**
      * @var \yii\web\JsExpression[] Event listeners to bind on elFinder init.
      * For more info refer Client event API.
      */
-    public $handlers;
+    public array $handlers;
     /**
      * @var array UI plugins to load. places value not activated by default.
      *
@@ -182,91 +182,91 @@ class ElFinder extends Widget
      * ['toolbar', 'places', 'tree', 'path', 'stat']
      * ```
      */
-    public $ui;
+    public array $ui;
     /**
      * @var null|array Specifies the configuration for the elFinder UI.
      */
-    public $uiOptions;
+    public ?array $uiOptions;
     /**
      * @var array The configuration for the right-click context menu
      */
-    public $contextmenu;
+    public array $contextmenu;
     /**
      * @var boolean Whether or not the elFinder interface will be resizable. This only works if jQuery UI has the
      * resizable plugin loaded.
      */
-    public $resizable;
+    public bool $resizable;
     /**
      * @var integer Timeout in ms for open notification dialogs.
      */
-    public $notifyDelay;
+    public int $notifyDelay;
     /**
      * @var array Position and width of notification dialogs.
      */
-    public $notifyDialog;
+    public array $notifyDialog;
     /**
      * @var string|boolean Allow to drag and drop to upload files.
      */
-    public $dragUploadAllow;
+    public string|bool $dragUploadAllow;
     /**
      * @var boolean Allow shortcuts
      */
-    public $allowShortcuts;
+    public bool $allowShortcuts;
     /**
      * @var integer Number of thumbnails to create per one request
      */
-    public $loadTmbs;
+    public int $loadTmbs;
     /**
      * @var integer Lazy load. Amount of files display at once.
      */
-    public $showFiles;
+    public int $showFiles;
     /**
      * @var integer Lazy load. Distance in px to cwd bottom edge to start displaying files.
      */
-    public $showThreshold;
+    public int $showThreshold;
     /**
      * @var string The AJAX request type. Available choices are [[ElFinder::REQUEST_POST]]
      * and [[ElFinder::REQUEST_GET]].
      */
-    public $requestType;
+    public string $requestType;
     /**
      * @var string Separate URL to upload file to. If not set - connector URL will be used.
      */
-    public $urlUpload;
+    public string $urlUpload;
     /**
      * @var integer Timeout for upload using iframe.
      */
-    public $iframeTimeout;
+    public int $iframeTimeout;
     /**
      * @var integer Sync content by refreshing cwd every N milliseconds. Value must be bigger than 1000. 0 = no sync
      */
-    public $sync;
+    public int $sync;
     /**
      * @var array Cookie option for browsers that does not support localStorage
      */
-    public $cookie;
+    public array $cookie;
     /**
      * @var array Passing custom headers during Ajax calls
      */
-    public $customHeaders;
+    public array $customHeaders;
     /**
      * @var array Any custom xhrFields to send across every ajax request, useful for CORS
      * (Cross-origin resource sharing) support
      */
-    public $xhrFields;
+    public array $xhrFields;
     /**
      * @var array|boolean Debug config
      */
-    public $debug;
+    public array|bool $debug;
     /**
      * @var integer Increase the size of individual chunks.
      */
-    public $uploadMaxChunkSize;
+    public int $uploadMaxChunkSize;
     /**
      * @var boolean play sounds? Defaults to true
      * @since 1.1.13
      */
-    public $sound;
+    public bool $sound;
     /**
      * @var array the HTML attributes for the title tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -275,12 +275,12 @@ class ElFinder extends Widget
     /**
      * @var string name of the instance used in module configuration (defaults to default)
      */
-    public $instanceName = 'default';
+    public string $instanceName = 'default';
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
@@ -305,7 +305,7 @@ class ElFinder extends Widget
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(): void
     {
         echo Html::tag('div', null, $this->options);
 
@@ -315,7 +315,7 @@ class ElFinder extends Widget
     /**
      * {@inheritDoc}
      */
-    protected function registerPlugin($pluginName = 'elfinder', $selector = null)
+    protected function registerPlugin($pluginName = 'elfinder', $selector = null): void
     {
         $id = $this->options['id'];
         $view = $this->getView();
@@ -339,7 +339,7 @@ class ElFinder extends Widget
      *
      * @return string
      */
-    protected function getClientOptions()
+    protected function getClientOptions(): string
     {
         $options = get_object_vars($this);
         if ($options['sortOrder'] === SORT_DESC) {
@@ -360,7 +360,7 @@ class ElFinder extends Widget
         unset($options['options']);
 
         foreach ($options as $key => $option) {
-            if (is_null($option) || substr($key, 0, 1) === '_') {
+            if (is_null($option) || str_starts_with($key, '_')) {
                 unset($options[$key]);
             }
         }

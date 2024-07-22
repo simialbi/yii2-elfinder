@@ -26,27 +26,35 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
+        "php": ">=8.0",
         "ext-curl": "*",
         "ext-gd": "*",
         "yiisoft/yii2": "~2.0",
-        "yiisoft/yii2-bootstrap": "~2.0",
-        "yiisoft/yii2-jui": "~2.0",
+        "yiisoft/yii2-jui": "^2.0.0",
         "studio-42/elfinder": "~2.1",
         "rmrevin/yii2-fontawesome": "~3.0",
         "simialbi/yii2-simialbi-base": ">=0.10.2 <1.0 | ^1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~2.0",
-        "phpunit/phpunit": "^7.5.20"
+        "phpunit/phpunit": "^10.5.0",
+        "yiisoft/yii2-bootstrap": "^2.0.0",
+        "google/apiclient": "^2.17.0"
     },
     "suggest": {
         "ext-fileinfo": "To use mime content type detection in behaviors",
         "ext-exif": "To use image rotate behavior",
-        "simialbi/yii2-widget-crop": "Add an image cropper widget to ElFinderInput"
+        "google/apiclient": "To use with VolumeDriver GoogleDrive",
+        "simialbi/yii2-widget-crop": "Add an image cropper widget to ElFinderInput",
+        "yiisoft/yii2-bootstrap": "To use with bootstrap 3",
+        "yiisoft/yii2-bootstrap4": "To use with bootstrap 4",
+        "yiisoft/yii2-bootstrap5": "To use with bootstrap 5"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
     },
     "autoload": {
         "psr-4": {

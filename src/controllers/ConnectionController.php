@@ -28,11 +28,11 @@ class ConnectionController extends Controller
      *
      * @throws NotFoundHttpException
      */
-    public function actionIndex($instanceName = 'default')
+    public function actionIndex(string $instanceName = 'default'): void
     {
         $elFinder = ArrayHelper::getValue($this->module->components, $instanceName);
 
-        if (is_null($elFinder) || !$elFinder instanceof ElFinder) {
+        if (!($elFinder instanceof ElFinder)) {
             throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
         }
 

@@ -44,7 +44,7 @@ class Module extends \simialbi\yii2\base\Module
      * @var array|string the url to to the elfinder proxy. Will be set automatically if not set
      * (works only if root module).
      */
-    public $proxyUrl = [];
+    public string|array $proxyUrl = [];
 
     /**
      * @var array the main options of elfinder per instance.
@@ -64,7 +64,7 @@ class Module extends \simialbi\yii2\base\Module
      * @see https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1#main-options
      * ```
      */
-    public $options = [];
+    public array $options = [];
 
     /**
      * @var array the connection sets named by array key and $roots configuration as value.
@@ -90,7 +90,7 @@ class Module extends \simialbi\yii2\base\Module
      * ]
      * ```
      */
-    public $connectionSets = [];
+    public array $connectionSets = [];
 
     /**
      * @var array the connection sets named by array key and $behaviors value.
@@ -118,14 +118,14 @@ class Module extends \simialbi\yii2\base\Module
      * ]
      * ```
      */
-    public $volumeBehaviors = [];
+    public array $volumeBehaviors = [];
 
     /**
      * {@inheritdoc}
      * @throws \yii\base\InvalidConfigException
      * @throws \ReflectionException
      */
-    public function init()
+    public function init(): void
     {
         $components = [];
         if (empty($this->proxyUrl)) {

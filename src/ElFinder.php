@@ -372,25 +372,25 @@ class ElFinder extends Component
     const FTP_MODE_PASSIVE = 'passive';
 
     /**
-     * @var ElFinderOptions the main options of elfinder
+     * @var array|ElFinderOptions the main options of elfinder
      */
-    public $options = [];
+    public array|ElFinderOptions $options = [];
 
     /**
      * @var ElFinderConfiguration[] Array of arrays with per root settings. This is the only required option.
      */
-    public $roots = [];
+    public array $roots = [];
 
     /**
      * @var \elFinder api instance
      */
-    protected $_elfinder;
+    protected \elFinder $_elfinder;
 
     /**
      * @inheritdoc
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         if (empty($this->roots)) {
             throw new InvalidConfigException('roots parameter must be set');
@@ -404,7 +404,7 @@ class ElFinder extends Component
      *
      * @return \elFinder
      */
-    public function getApi()
+    public function getApi(): \elFinder
     {
         if (empty($this->_elfinder) || !$this->_elfinder instanceof \elFinder) {
             $this->setApi();
@@ -416,7 +416,7 @@ class ElFinder extends Component
     /**
      * Sets the elFinder API instance
      */
-    public function setApi()
+    public function setApi(): void
     {
         foreach ($this->roots as &$root) {
             $root->path = Yii::getAlias($root->path);
@@ -481,7 +481,7 @@ class ElFinder extends Component
      * @return boolean
      * @throws InvalidConfigException
      */
-    public function handleApiBeforeEvent($cmd, &$args, $instance, $dstVolume)
+    public function handleApiBeforeEvent(string $cmd, array &$args, \elFinder $instance, \elFinderVolumeDriver $dstVolume): bool
     {
         $event = Yii::createObject([
             'class' => 'simialbi\yii2\elfinder\base\ElFinderEvent',
@@ -509,7 +509,7 @@ class ElFinder extends Component
      * @return boolean
      * @throws InvalidConfigException
      */
-    public function handleApiAfterEvent($cmd, &$result, $args, $instance, $dstVolume)
+    public function handleApiAfterEvent(string $cmd, array &$result, array $args, \elFinder $instance, \elFinderVolumeDriver $dstVolume): bool
     {
         $event = Yii::createObject([
             'class' => 'simialbi\yii2\elfinder\base\ElFinderEvent',
@@ -531,14 +531,14 @@ class ElFinder extends Component
      *
      * @param string $path relative path from the upload target
      * @param string $name file name
-     * @param string $tmpname file tmp name
+     * @param string $tmpName file tmp name
      * @param \elFinder $instance elFinder instance
      * @param \elFinderVolumeDriver $dstVolume Volume Driver instance
      *
      * @return boolean
      * @throws InvalidConfigException
      */
-    public function handleApiUploadBeforeSave(&$path, &$name, $tmpname, $instance, $dstVolume)
+    public function handleApiUploadBeforeSave(string &$path, string &$name, string $tmpName, \elFinder $instance, \elFinderVolumeDriver $dstVolume): bool
     {
         $event = Yii::createObject([
             'class' => 'simialbi\yii2\elfinder\base\ElFinderEvent',
@@ -546,7 +546,7 @@ class ElFinder extends Component
             'sender' => $instance,
             'path' => $path,
             'fileName' => $name,
-            'fileTmpName' => $tmpname,
+            'fileTmpName' => $tmpName,
             'volume' => $dstVolume
         ]);
         /* @var $event \simialbi\yii2\elfinder\base\ElFinderEvent */

@@ -58,59 +58,59 @@ class ElFinderInput extends InputWidget
      * such as an image tag. If this is is coming from end users, you should [[encode()]]
      * it to prevent XSS attacks.
      */
-    public $label;
+    public string $label;
     /**
      * @var string name of the instance used in module configuration (defaults to default)
      */
-    public $instanceName = 'default';
+    public string $instanceName = 'default';
     /**
      * @var array ElFinder widget configuration options
      */
-    public $elfinderOptions = [];
+    public array $elfinderOptions = [];
     /**
      * @var boolean add an image cropper widget (requires demi/cropper)
      */
-    public $addImageCrop = false;
+    public bool $addImageCrop = false;
     /**
      * @var array options for image cropper
      */
-    public $cropperOptions = [];
+    public array $cropperOptions = [];
     /**
      * @var boolean add a preview button
      */
-    public $addPreview = false;
+    public bool $addPreview = false;
     /**
      * @var string Preview button content
      */
-    public $previewContent = '<span class="glyphicon glyphicon-eye-open"></span>';
+    public string $previewContent = '<span class="glyphicon glyphicon-eye-open"></span>';
     /**
      * @var array Preview button options
      */
-    public $previewButtonOptions = [
+    public array $previewButtonOptions = [
         'class' => ['btn', 'btn-default'],
         'target' => '_blank'
     ];
     /**
      * @var array Open elfinder button options
      */
-    public $openButtonOptions = [
+    public array $openButtonOptions = [
         'class' => ['btn', 'btn-default'],
     ];
     /**
      * @var array modal options
      * @see \yii\bootstrap\Modal
      */
-    public $modalOptions = [];
+    public array $modalOptions = [];
     /**
      * @var boolean return only path or full url
      */
-    public $onlyPath = false;
+    public bool $onlyPath = false;
 
     /**
      * {@inheritdoc}
      * @throws \ReflectionException
      */
-    public function init()
+    public function init(): void
     {
         if (!isset($this->options['id'])) {
             if ($this->hasModel()) {
@@ -129,7 +129,7 @@ class ElFinderInput extends InputWidget
      * @inheritdoc
      * @throws \Exception
      */
-    public function run()
+    public function run(): string
     {
         $options = $this->options;
         $cropperCallback = '';
@@ -225,7 +225,7 @@ class ElFinderInput extends InputWidget
      * @param string $icon
      * @deprecated
      */
-    public function setIcon($icon)
+    public function setIcon(string $icon): void
     {
         ArrayHelper::setValue($this->openButtonOptions, 'icon', $icon);
     }
@@ -236,7 +236,7 @@ class ElFinderInput extends InputWidget
      * @param string $modalIcon
      * @deprecated
      */
-    public function setModalIcon($modalIcon)
+    public function setModalIcon(string $modalIcon): void
     {
         ArrayHelper::setValue($this->modalOptions, 'icon', $modalIcon);
     }
@@ -247,7 +247,7 @@ class ElFinderInput extends InputWidget
      * @param array $previewOptions
      * @deprecated
      */
-    public function setPreviewOptions(array $previewOptions)
+    public function setPreviewOptions(array $previewOptions): void
     {
         $this->previewButtonOptions = $previewOptions;
     }

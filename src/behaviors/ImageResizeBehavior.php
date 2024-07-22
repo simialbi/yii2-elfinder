@@ -53,42 +53,42 @@ class ImageResizeBehavior extends Behavior
     /**
      * @var integer Maximal width of image
      */
-    public $maxWidth = 1024;
+    public int $maxWidth = 1024;
     /**
      * @var integer Maximal height of image
      */
-    public $maxHeight = 1024;
+    public int $maxHeight = 1024;
     /**
      * @var integer Reduce quality
      */
-    public $quality = 95;
+    public int $quality = 95;
 
     /**
      * @var boolean Preserve EXIF data (Imagick only)
      */
-    public $preserveExif = false;
+    public bool $preserveExif = false;
 
     /**
      * @var boolean Force quality changing even if image is inside max bounds
      */
-    public $forceEffect = false;
+    public bool $forceEffect = false;
 
     /**
      * @var integer Target image formats
      */
-    public $targetType = 0;
+    public int $targetType = 0;
 
     /**
      * @var integer|null To disable it if it is dropped with pressing the meta key
      * Alt: 8, Ctrl: 4, Meta: 2, Shift: 1 - sum of each value
      * In case of using any key, specify it as an array
      */
-    public $offDropWith = null;
+    public ?int $offDropWith = null;
 
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         $this->targetType = IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP;
         parent::init();
@@ -97,7 +97,7 @@ class ImageResizeBehavior extends Behavior
     /**
      * @inheritdoc
      */
-    public function events()
+    public function events(): array
     {
         return [
             ElFinder::EVENT_UPLOAD_BEFORE_SAVE => 'afterUploadBeforeSave'
@@ -106,8 +106,9 @@ class ImageResizeBehavior extends Behavior
 
     /**
      * @param ElFinderEvent $event
+     * @throws \ImagickException|\elFinderAbortException
      */
-    public function afterUploadBeforeSave($event)
+    public function afterUploadBeforeSave(ElFinderEvent $event): void
     {
 //		$elfinder = $event->sender;
         $src = $event->fileTmpName;
@@ -117,7 +118,7 @@ class ImageResizeBehavior extends Behavior
 
         if (function_exists('mime_content_type')) {
             $mime = mime_content_type($src);
-            if (substr($mime, 0, 5) !== 'image') {
+            if (!str_starts_with($mime, 'image')) {
                 return;
             }
         }

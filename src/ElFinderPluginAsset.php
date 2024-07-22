@@ -47,7 +47,7 @@ class ElFinderPluginAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         if (YII_DEBUG) {
             $this->js = [

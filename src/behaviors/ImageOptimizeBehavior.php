@@ -47,17 +47,17 @@ class ImageOptimizeBehavior extends Behavior
     /**
      * @var string
      */
-    public $jpegOptimizer = 'jpegtran -copy none -optimize -progressive -outfile {to} {from}';
+    public string $jpegOptimizer = 'jpegtran -copy none -optimize -progressive -outfile {to} {from}';
 
     /**
      * @var string
      */
-    public $pngOptimizer = 'optipng -o2 -strip all -out {to} {from}';
+    public string $pngOptimizer = 'optipng -o2 -strip all -out {to} {from}';
 
     /**
      * @inheritdoc
      */
-    public function events()
+    public function events(): array
     {
         return [
             ElFinder::EVENT_UPLOAD_BEFORE_SAVE => 'afterUploadBeforeSave'
@@ -67,7 +67,7 @@ class ImageOptimizeBehavior extends Behavior
     /**
      * @param ElFinderEvent $event
      */
-    public function afterUploadBeforeSave($event)
+    public function afterUploadBeforeSave(ElFinderEvent $event): void
     {
 //		$elfinder = $event->sender;
         $src = $event->fileTmpName;
@@ -81,7 +81,7 @@ class ImageOptimizeBehavior extends Behavior
 
         if (function_exists('mime_content_type')) {
             $mime = mime_content_type($src);
-            if (substr($mime, 0, 5) !== 'image') {
+            if (!str_starts_with($mime, 'image')) {
                 return;
             }
         }

@@ -8,56 +8,55 @@
 
 namespace simialbi\yii2\elfinder;
 
-
 class ElFinderConfigurationFTP extends ElFinderConfiguration
 {
     /**
      * @var string Volume driver. Set storage engine for current root, can be one of LocalFileSystem, MySQL, FTP
      */
-    public $driver = ElFinder::DRIVER_FTP;
+    public string $driver = ElFinder::DRIVER_FTP;
 
     /**
      * @var string MySQL host name
      */
-    public $host = 'localhost';
+    public string $host = 'localhost';
 
     /**
      * @var integer FTP connection port (TCP)
      */
-    public $port = 21;
+    public int $port = 21;
 
     /**
      * @var string FTP user name
      */
-    public $user = '';
+    public string $user = '';
 
     /**
      * @var string FTP password
      */
-    public $pass = '';
+    public string $pass = '';
 
     /**
      * @var string Connection mode (passive or active)
      */
-    public $mode = ElFinder::FTP_MODE_PASSIVE;
+    public string $mode = ElFinder::FTP_MODE_PASSIVE;
 
     /**
      * @var integer Connection timeout
      */
-    public $timeout = 20;
+    public int $timeout = 20;
 
     /**
      * @var boolean Returnvalue if file/directory owner is not equal connections user name
      */
-    public $owner = true;
+    public bool $owner = true;
 
     /**
      * @var integer New dirs mode
      */
-    public $dirMode = 0755;
+    public int $dirMode = 0755;
 
     /**
      * @var integer New files mode
      */
-    public $fileMode = 0644;
+    public int $fileMode = 0644;
 }

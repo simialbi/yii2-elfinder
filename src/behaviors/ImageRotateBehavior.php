@@ -48,20 +48,20 @@ class ImageRotateBehavior extends Behavior
     /**
      * @var integer Reduce quality
      */
-    public $quality = 95;
+    public int $quality = 95;
 
     /**
      * @var integer|null To disable it if it is dropped with pressing the meta key
      * Alt: 8, Ctrl: 4, Meta: 2, Shift: 1 - sum of each value
      * In case of using any key, specify it as an array
      */
-    public $offDropWidth = null;
+    public ?int $offDropWidth = null;
 
 
     /**
      * @inheritdoc
      */
-    public function events()
+    public function events(): array
     {
         return [
             ElFinder::EVENT_UPLOAD_BEFORE_SAVE => 'afterUploadBeforeSave'
@@ -70,8 +70,9 @@ class ImageRotateBehavior extends Behavior
 
     /**
      * @param ElFinderEvent $event
+     * @throws \ImagickException|\elFinderAbortException
      */
-    public function afterUploadBeforeSave($event)
+    public function afterUploadBeforeSave(ElFinderEvent $event): void
     {
 //      $elfinder = $event->sender;
         $src = $event->fileTmpName;
@@ -81,7 +82,7 @@ class ImageRotateBehavior extends Behavior
 
         if (function_exists('mime_content_type')) {
             $mime = mime_content_type($src);
-            if (substr($mime, 0, 5) !== 'image') {
+            if (!str_starts_with($mime, 'image')) {
                 return;
             }
         }

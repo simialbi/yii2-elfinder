@@ -14,27 +14,27 @@ use yii\base\Event;
 class ElFinderEvent extends Event
 {
     /**
-     * @var array arugments array
+     * @var array arguments array
      */
-    public $arguments;
+    public array $arguments;
     /**
      * @var array result array
      */
-    public $result;
+    public array $result;
     /**
      * @var string relative path from the upload target
      */
-    public $path;
+    public string $path;
     /**
      * @var string file name
      */
-    public $fileName;
+    public string $fileName;
     /**
      * @var string file tmp name
      */
-    public $fileTmpName;
+    public string $fileTmpName;
     /**
      * @var \elFinderVolumeDriver $volume Volume Driver Instance
      */
-    public $volume;
+    public \elFinderVolumeDriver $volume;
 }

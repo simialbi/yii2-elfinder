@@ -6,6 +6,7 @@
 
 namespace simialbi\yii2\elfinder\controllers;
 
+use phpDocumentor\Reflection\Types\Resource_;
 use Yii;
 use yii\helpers\StringHelper;
 use yii\web\Controller;
@@ -29,7 +30,7 @@ class ProxyController extends Controller
      * @return mixed
      * @throws NotFoundHttpException
      */
-    public function actionIndex($baseUrl, $path)
+    public function actionIndex(string $baseUrl, string $path): mixed
     {
         $curl = curl_init();
         $url = str_replace(' ', '%20', sprintf(
@@ -74,7 +75,7 @@ class ProxyController extends Controller
      * @param string $response
      * @return array
      */
-    protected function parseCurlResponse($curl, $response)
+    protected function parseCurlResponse($curl, string $response): array
     {
         $headers = [];
         $headerText = substr($response, 0, strpos($response, "\r\n\r\n"));

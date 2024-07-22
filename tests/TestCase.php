@@ -21,7 +21,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockWebApplication();
@@ -30,7 +30,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * {@inheritDoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         $this->destroyApplication();
@@ -40,9 +40,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param array $config
      * @param string $appClass
      */
-    protected function mockWebApplication($config = [], $appClass = '\yii\web\Application')
+    protected function mockWebApplication(array $config = [], string $appClass = '\yii\web\Application'): void
     {
-        new $appClass(ArrayHelper::merge([
+        $app = new $appClass(ArrayHelper::merge([
             'id' => 'testapp',
             'basePath' => __DIR__,
             'vendorPath' => dirname(__DIR__) . '/vendor',
@@ -53,7 +53,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'connectionSets' => [
                         'default' => [
                             [
-                                'class' => 'simialbi\yii2\elfinder\ElfinderConfigurationLocalFileSystem',
+                                'class' => 'simialbi\yii2\elfinder\ElFinderConfigurationLocalFileSystem',
                                 'path' => '@webroot/default',
                                 'URL' => '@web/default'
                             ]
@@ -79,7 +79,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 'request' => [
                     'cookieValidationKey' => '2VYuNNIognPSVv0zqj1C9sdmgk_O1UBa',
                     'scriptFile' => __DIR__ . '/index.php',
-                    'scriptUrl' => '/index.php',
+                    'scriptUrl' => '/index.php'
                 ],
                 'log' => [
                     'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -87,16 +87,16 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         [
                             'class' => 'yii\log\FileTarget',
                             'levels' => ['error', 'warning', 'info'],
-                        ],
-                    ],
+                        ]
+                    ]
                 ],
                 'urlManager' => [
                     'showScriptName' => true,
-                ],
+                ]
             ],
             'params' => [
                 'adminEmail' => 'admin@example.com',
-            ],
+            ]
         ], $config));
     }
 
@@ -105,10 +105,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param string $controllerId
      * @param string $actionID
-     * @param string $moduleID
+     * @param string|null $moduleID
      * @param array $params
      */
-    protected function mockAction($controllerId, $actionID, $moduleID = null, $params = [])
+    protected function mockAction(string $controllerId, string $actionID, ?string $moduleID = null, array $params = []): void
     {
         Yii::$app->controller = $controller = new Controller($controllerId, Yii::$app);
         $controller->actionParams = $params;
@@ -122,7 +122,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Removes controller
      */
-    protected function removeMockedAction()
+    protected function removeMockedAction(): void
     {
         Yii::$app->controller = null;
     }
@@ -130,7 +130,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Destroys application in Yii::$app by setting it to null.
      */
-    protected function destroyApplication()
+    protected function destroyApplication(): void
     {
         Yii::$app = null;
         Yii::$container = new Container();
@@ -142,7 +142,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string $expected
      * @param string $actual
      */
-    public function assertEqualsWithoutLE($expected, $actual)
+    public function assertEqualsWithoutLE(string $expected, string $actual): void
     {
         $expected = str_replace("\r\n", "\n", $expected);
         $actual = str_replace("\r\n", "\n", $actual);
@@ -156,7 +156,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string $needle
      * @param string $haystack
      */
-    public function assertContainsWithoutLE($needle, $haystack)
+    public function assertContainsWithoutLE(string $needle, string $haystack): void
     {
         $needle = str_replace("\r\n", "\n", $needle);
         $haystack = str_replace("\r\n", "\n", $haystack);

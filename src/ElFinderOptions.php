@@ -6,7 +6,6 @@
 
 namespace simialbi\yii2\elfinder;
 
-
 use yii\base\Arrayable;
 use yii\base\ArrayableTrait;
 use yii\base\BaseObject;
@@ -18,51 +17,51 @@ class ElFinderOptions extends BaseObject implements Arrayable
     /**
      * @var string Set locale. Currently only UTF-8 locales are supported. Passed to `setLocale` PHP function.
      */
-    public $locale = 'en_US.UTF-8';
+    public string $locale = 'en_US.UTF-8';
 
     /**
      * @var string elFinderVolumeDriver mime.type file path as defaults. This can be overridden in each of the volume
      * by setting the volume root mimefile. The default value '' meaning uses a file 'php/mime.type'.
      */
-    public $defaultMimefile = '';
+    public string $defaultMimefile = '';
 
     /**
      * @var \elFinderSessionInterface Session handling wrapper class object. It must implement elFinderSessionInterface.
      */
-    public $session;
+    public \elFinderSessionInterface $session;
 
     /**
      * @var string Set sessionCacheKey. PHP $_SESSION array key of elFinder caches.
      */
-    public $sessionCacheKey = 'elFinderCaches';
+    public string $sessionCacheKey = 'elFinderCaches';
 
     /**
      * @var boolean elFinder save session data as `UTF-8`. If the session storage
      * mechanism of the system does not allow `UTF-8`, and it must be set `true`.
      */
-    public $base64encodeSessionData = false;
+    public bool $base64encodeSessionData = false;
 
     /**
      * @var string Temp directory path for Upload. Default uses `sys_get_temp_dir()`
      */
-    public $uploadTempPath = '';
+    public string $uploadTempPath = '';
 
     /**
      * @var string Temp directory path for temporally working files. Default uses `./.tmp` if it writable.
      */
-    public $commonTempPath = './.tmp';
+    public string $commonTempPath = './.tmp';
 
     /**
      * @var string Connection flag files path that connection check of current request. A file is created every
      * time an access is made to this location and it is deleted at the end of the request.
      * It is recommended to specify RAM disk such as "/dev/shm".
      */
-    public $connectionFlagsPath = '';
+    public string $connectionFlagsPath = '';
 
     /**
      * @var integer Max allowed archive files size (0 - no limit)
      */
-    public $maxArcFilesSize = 0;
+    public int $maxArcFilesSize = 0;
 
     /**
      * @var array Root options of the network mounting volume
@@ -76,27 +75,27 @@ class ElFinderOptions extends BaseObject implements Arrayable
      * ]
      * ```
      */
-    public $optionsNetVolumes = [];
+    public array $optionsNetVolumes = [];
 
     /**
      * @var integer Max number of limits of selectable items (0 - no limit)
      */
-    public $maxTargets = 1000;
+    public int $maxTargets = 1000;
 
     /**
      * @var boolean Throw Error on exec()
      * `true` need `try{}` block for `$connector->run();`
      */
-    public $throwErrorOnExec = false;
+    public bool $throwErrorOnExec = false;
 
     /**
      * @var boolean Send debug to client.
      */
-    public $debug = false;
+    public bool $debug = false;
 
     /**
      * @var array Configure plugin options of All volumes default value. When this config is omitted, the default
      * value which plugin has is applied.
      */
-    public $plugin = [];
+    public array $plugin = [];
 }

@@ -5,6 +5,11 @@ namespace simialbi\yii2\elfinder;
 class ElFinderConfigurationGoogleDrive extends ElFinderConfiguration
 {
     /**
+     * @inheritdoc
+     */
+    public string $driver = ElFinder::DRIVER_GOOGLE_DRIVE;
+
+    /**
      * @var string Your Google Cloud client ID found in https://developers.google.com/console
      */
     public string $client_id;

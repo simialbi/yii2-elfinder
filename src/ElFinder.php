@@ -8,7 +8,6 @@
 
 namespace simialbi\yii2\elfinder;
 
-
 use simialbi\yii2\elfinder\elfinder\ElFinder as ElFinderApi;
 use Yii;
 use yii\base\Component;
